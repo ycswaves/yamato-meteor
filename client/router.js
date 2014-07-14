@@ -1,33 +1,29 @@
 Router.configure({
-  notFoundTemplate: 'notFound',
-  loadingTemplate: 'loading',
+  // notFoundTemplate: 'notFound',
+  // loadingTemplate: 'loading',
   layoutTemplate: 'layout'
 });
 
 var filters = {
-  isLoggedIn: function() {
-    if (!(Meteor.loggingIn() || Meteor.user())) {
-      this.redirect('home');
-      this.stop();
-    }
-  }
+	isLoggedIn: function() {
+		if (!(Meteor.loggingIn() || Meteor.user())) {
+			this.redirect('home');
+			this.stop();
+		}
+	}
 }
 
-//Router.before(filters.isLoggedIn, {except: ['home','signup']});
-
-
 Router.map(function () {
-  this.route('home',{
+	this.route('landing',{
+		path: '/',
+		template: 'landingPage'
+	});
+
+	this.route('home',{
     path: '/properties',
     template: 'propertyListing',
-    waitOn: function(){
-      return [
-          //IRLibLoader.load('js/custom.js'),
-          //IRLibLoader.load('js/custom-map.js'),
-          //IRLibLoader.load('js/location.js')
-        ];
-    },
     data: function () {
+
       templateData = {
         properties: [{
           title:'blk486 帕尔马路',
@@ -80,4 +76,4 @@ Router.map(function () {
   // matches all urls but doesn't get called until all previous routes have been tested
   // so in this case for invalid url
   this.route('notFound', {path: '*'});
-});
+})
