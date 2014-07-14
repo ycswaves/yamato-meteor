@@ -1,0 +1,191 @@
+<template name="footer">
+	<!-- Page Footer -->
+	<footer id="page-footer">
+		<div class="inner">
+			<section id="footer-main">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3 col-sm-3">
+							<article>
+								<h3>关于我们</h3>
+								<p>Vel fermentum ipsum. Suspendisse quis molestie odio. Interdum et malesuada fames ac ante ipsum
+									primis in faucibus. Quisque aliquet a metus in aliquet. Praesent ut turpis posuere, commodo odio
+									id, ornare tortor
+								</p>
+								<hr>
+								<a href="#" class="link-arrow">阅读更多</a>
+							</article>
+						</div><!-- /.col-sm-3 -->
+						<div class="col-md-3 col-sm-3">
+							<article>
+								<h3>最新房源</h3>
+								<div class="property small">
+									<a href="property-detail.html">
+										<div class="property-image">
+											<img alt="" src="/img/properties/property-06.jpg">
+										</div>
+									</a>
+									<div class="info">
+										<a href="property-detail.html"><h4>2186 Rinehart Road</h4></a>
+										<figure>Doral, FL 33178 </figure>
+										<div class="tag price">$ 72,000</div>
+									</div>
+								</div><!-- /.property -->
+								<div class="property small">
+									<a href="property-detail.html">
+										<div class="property-image">
+											<img alt="" src="/img/properties/property-09.jpg">
+										</div>
+									</a>
+									<div class="info">
+										<a href="property-detail.html"><h4>2479 Murphy Court</h4></a>
+										<figure>Minneapolis, MN 55402</figure>
+										<div class="tag price">$ 36,000</div>
+									</div>
+								</div><!-- /.property -->
+							</article>
+						</div><!-- /.col-sm-3 -->
+						<div class="col-md-3 col-sm-3">
+							<article>
+								<h3>联系我们</h3>
+								<address>
+									<strong>家易</strong><br>
+									1 Lorong 2 Toa Payoh<br>
+									Singapore, 15089
+								</address>
+								+86 8888-9999<br>
+								<a href="#">hello@example.com</a>
+							</article>
+						</div><!-- /.col-sm-3 -->
+						<div class="col-md-3 col-sm-3">
+							<article>
+								<h3>链接</h3>
+								<ul class="list-unstyled list-links">
+									<li><a href="#">所有房源</a></li>
+									<li><a href="#">隐私条例</a></li>
+									<li><a href="#">常见问题</a></li>
+									<li><a href="#">条款与申明</a></li>
+								</ul>
+							</article>
+						</div><!-- /.col-sm-3 -->
+					</div><!-- /.row -->
+				</div><!-- /.container -->
+			</section><!-- /#footer-main -->
+			<section id="footer-copyright">
+				<div class="container">
+					<span>Copyright © 2014. All Rights Reserved.</span>
+					<span class="pull-right"><a href="#page-top" class="roll">Go to top</a></span>
+				</div>
+			</section>
+		</div><!-- /.inner -->
+	</footer>
+	<!-- end Page Footer -->
+
+	<div id="login-wrapper" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-6 b-r">
+							<h1 class="m-t-none m-b">登陆</h1>
+							<p>登陆并管理您的账户</p>
+							<form role="form">
+								<div class="form-group">
+									<label>邮箱</label>
+									<input type="email" class="form-control" placeholder="输入您的邮箱">
+								</div>
+								<div class="form-group">
+									<label>密码</label>
+									<input type="password" class="form-control" placeholder="输入您的密码">
+								</div>
+								<div class="checkbox m-t-lg">
+									<button type="submit" class="btn btn-sm btn-default pull-right text-uc m-t-n-xs"><strong>登入</strong></button>
+									<label>
+										<input type="checkbox"> 记住我
+									</label>
+								</div>                
+							</form>
+						</div>
+						<div class="col-sm-6">
+							<h1>还不是会员 ?</h1>
+							<p>一分钟拥有账号，点击 <a href="#" data-toggle="modal" data-target="#signup-wrapper" class="text-info" >这里</a></p>
+							<p>或者</p>
+							<a href="#" class="btn btn-facebook btn-block m-b-sm"><i class="fa fa-facebook pull-left"></i>使用Facebook账户登陆</a>
+							<a href="#" class="btn btn-gplus btn-block"><i class="fa fa-google-plus pull-left"></i>使用Google账户登陆</a>
+						</div>
+					</div>          
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="signup-wrapper" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+							<h1>新建账户</h1>
+							<h3>账户类型</h3>
+							<form role="form" id="form-create-account" method="post" action="/users/signup">
+								<div class="radio" id="create-account-user">
+									<label>
+										<input type="radio" id="account-type-user" name="account-type" required checked>普通用户
+									</label>
+								</div>
+								<div class="radio" id="agent-switch" data-agent-state="">
+									<label>
+										<input type="radio" id="account-type-agent" name="account-type" required>房屋经纪
+									</label>
+								</div>
+								<div id="agency" class="disabled">
+									<div class="form-group">
+										<label for="account-agency">选择您的经纪公司:</label>
+										<select name="account-agency" id="account-agency">
+											<option value="">中介公司</option>
+											<option value="1">DWG</option>
+											<option value="2">ERA</option>
+											<option value="3">OrangeTee</option>
+											<option value="4">SLP</option>
+											<option value="5">Huttons</option>
+											<option value="6">PropNex</option>
+											<option value="7">HSR</option>
+										</select>
+									</div><!-- /.form-group -->
+								</div>
+								<hr>
+								<div class="form-group">
+									<label for="form-create-account-full-name">全名:</label>
+									<input type="text" class="form-control" id="form-create-account-full-name" required>
+								</div><!-- /.form-group -->
+								<div class="form-group">
+									<label for="form-create-account-email">邮箱:</label>
+									<input type="email" class="form-control" id="form-create-account-email" required>
+								</div><!-- /.form-group -->
+								<div class="form-group">
+									<label for="form-create-account-password">密码:</label>
+									<input type="password" class="form-control" id="form-create-account-password" required>
+								</div><!-- /.form-group -->
+								<div class="form-group">
+									<label for="form-create-account-confirm-password">重复输入密码:</label>
+									<input type="password" class="form-control" id="form-create-account-confirm-password" required>
+								</div><!-- /.form-group -->
+								<div class="checkbox pull-left">
+									<label>
+										<input type="checkbox" id="account-type-newsletter" name="account-newsletter">接受最新信息推送
+									</label>
+								</div>
+								<div class="form-group clearfix">
+									<button type="submit" class="btn pull-right btn-default" id="account-submit">新建账户</button>
+								</div><!-- /.form-group -->
+							</form>
+							<hr>
+							<div class="center">
+								<figure class="note">当您点击“新建账户”时表示已阅我们的 <a href="terms-conditions.html">条款与申明</a></figure>
+							</div>
+						</div><!-- /.row -->
+					</div><!-- /.container -->
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
