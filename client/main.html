@@ -1,269 +1,54 @@
-
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="HomeBeacon">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
-    <link href="fonts/font-awesome.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/jquery.slider.min.css" type="text/css">
-    <link rel="stylesheet" href="css/bootstrap-select.min.css" type="text/css">
-    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.transitions.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <link rel="stylesheet" href="css/custom.css" type="text/css">
-    <link rel="stylesheet" href="css/fileinput.min.css" type="text/css">
+<head> 
+	<title>家易 | 标题</title>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700' rel='stylesheet' type='text/css'>
+	<link href="/fonts/font-awesome.css" rel="stylesheet">
+	<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="/css/jquery.slider.min.css" rel="stylesheet" >
+  <link href="/css/magnific-popup.css" rel="stylesheet" >
+  <link href="/css/owl.carousel.css" rel="stylesheet" >
+  <link href="/css/owl.transitions.css" rel="stylesheet" >
+	<link href="/css/style.css" rel="stylesheet">
 
 
-    <title>家易 | </title>
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="/js/tmpl.js"></script>
+	<script type="text/javascript" src="/js/jquery.dependClass-0.1.js"></script>
+	<script type="text/javascript" src="/js/draggable-0.1.js"></script>
+	<script type="text/javascript" src="/js/jquery.slider.js"></script>
+	<script type="text/javascript" src="/js/app.js"></script>
+
+	<script type="text/javascript" src="/js/smoothscroll.js"></script>
+	<script type="text/javascript" src="/js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.placeholder.js"></script>
+	<script type="text/javascript" src="/js/icheck.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.vanillabox-0.1.5.min.js"></script>
+	<script type="text/javascript" src="/js/retina-1.1.0.min.js"></script>
+	<script type="text/javascript" src="/js/jshashtable-2.1_src.js"></script>
+	<script type="text/javascript" src="/js/jquery.numberformatter-1.2.3.js"></script>
+
+	<!-- for map to use, need to load following js -->
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="/js/markerwithlabel_packed.js"></script>
+	<script type="text/javascript" src="/js/infobox.js"></script>
+	<script type="text/javascript" src="/js/markerclusterer_packed.js"></script>
+
+	<!-- from add property -->
+	<script type="text/javascript" src="/js/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.magnific-popup.min.js"></script>
+	<script type="text/javascript" src="/js/fileinput.min.js"></script>
 
 </head>
-
-<body >
-<!-- Wrapper -->
-
-
-
-
-
-<!--[if gt IE 8]>
-<script type="text/javascript" src="js/ie.js"></script>
-<![endif]-->
+<body>
+	
 </body>
 
 <template name="layout">
-<div class="wrapper">
-    <section >
-      <header class="navigation">
-        <div class="container">
-            <header class="navbar" id="top" role="banner">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div class="navbar-brand nav" id="brand">
-                        <a href="/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAkCAMAAAApfE1IAAAAXVBMVEUAAAAAsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AoeoAsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP%2BH7m7GAAAAHnRSTlMADoXqqyAWoCvL%2BJA48UcytnCYAwjeWmN8UtQ8wUH5IQVZAAADPklEQVR4Xu1U2bLsJhAD78bGG14ZW%2F%2F%2FmaGXOpmpcyfvqUQvjaEt1C3A%2FLvxP2yWA0X5p6WKlurKfEfTwnWfCb0H4w%2BMgwPBf2dsQMjfE0YA07wA9W8%2BAAUtLV8Ja2Rh8O8J6wbsKXZwv%2Bp1wJBiAf%2BVMKfCesD8YAEOigdNfmISPnMCXwl5KQDvPSh40CH%2FXXDHgwLbPxPu8MYOV8PJaoZ1vxoV4SxX%2FquHtgZ83QhhY6wHaiS0lSlJhZbVf%2FK9gFO1Y%2Fzk20DgVt24mwIKxHCqwArwawqLR3yMfYbK1IDVpsTwTtcB6J45By5TTVDcw7gAV45W2wT4V%2B9A4KQa2twWQN58nlo0hgqNBxTIRFVUiy8okN9QqMUzCK76uxG4r35lGwndXihfKb9aonZLFXZtSwYUz4sWA2Uhs%2BssCujTqQQldGOSqj1hX6TiiV2sRdOJ3XDWlEJomenWgxNa4EpxlF6IWyt0j%2FKEeNyLi7O4Wuy86jFzL7jWTE%2FuLj8MrWwpPzzAYwQHsFMQwsOtJIKSeNsXy63e78oGb4mhIFbtl1lEluY1FLRWdjWsqgVWkkcOjrVIcRGneJIbVfoyTSAxOdD1xuhzUhSi7ZJ77DhIWTei2mDJJ%2BxMK42d6e8Kh6hAjsFMYqLjdRsjmysULaiVVouKuOWMjWwFRpmMq6nR8BCFaWsifKgntRg6iwuZNI0ydz2TwnuwzlHnGnpdB0Qeol1N3iXCLVB1pNryXQwetbrQsggfhPAk9R2ZOuQvOelTZSrHKmbc1uwYTYHnx%2FyeGUZ0Qe%2FdyALFeqidbECgwFijmDsewTRkx3XRwy2Tu9zKxM0CjjSoPL9j2kPCLDyTzNobwCrcjYs6KiB34OTC9Ugz1ptcZWTiw8O%2FlxGlkZhgP9%2FkVd7HQCeDtw8nZGDsBHFLvHdHT%2BekKjOkEAzdc0RIXR0S5sTyRGDrgLupbkSbdoqA6Bo24F6N4sAnHOdlIYVYF1BEz6%2F32kKx0cTG%2BQ6gHX5w5bTENC2PAXK7lCHu8gVBlnTahUYejDNcENTCpwjjlXzvj2OkEmPenizfnm2%2B1Q%2B1JUujZdQe7ccrHK3fFjK8WTa3daP5z%2BIvHfliB0vhN3UAAAAASUVORK5CYII%3D" alt="brand"></a>
-                    </div>
-                </div>
-                <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#" data-toggle="modal" data-target="#login-wrapper">登陆</a></li>
-                    </ul>
-                </nav><!-- /.navbar collapse-->
-                <div class="add-your-property">
-                    <a href="/properties/add" class="btn btn-default"><i class="fa fa-plus"></i><span class="text">发布新置业</span></a>
-                </div>
-            </header><!-- /.navbar -->
-        </div><!-- /.container -->
-      </header>
-
-    </section>
-    <!-- Page Content -->
-
-    <div id="page-content">
-      {{> yield}}
-    </div>
-
-    <!-- end Page Content -->
-    <!-- Page Footer -->
-    <footer id="page-footer">
-        <div class="inner">
-            <section id="footer-main">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-3">
-                            <article>
-                                <h3>关于我们</h3>
-                                <p>Vel fermentum ipsum. Suspendisse quis molestie odio. Interdum et malesuada fames ac ante ipsum
-                                    primis in faucibus. Quisque aliquet a metus in aliquet. Praesent ut turpis posuere, commodo odio
-                                    id, ornare tortor
-                                </p>
-                                <hr>
-                                <a href="#" class="link-arrow">阅读更多</a>
-                            </article>
-                        </div><!-- /.col-sm-3 -->
-                        <div class="col-md-3 col-sm-3">
-                            <article>
-                                <h3>Recent Properties</h3>
-                                <div class="property small">
-                                    <a href="property-detail.html">
-                                        <div class="property-image">
-                                            <img alt="" src="img/properties/property-06.jpg">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <a href="property-detail.html"><h4>2186 Rinehart Road</h4></a>
-                                        <figure>Doral, FL 33178 </figure>
-                                        <div class="tag price">$ 72,000</div>
-                                    </div>
-                                </div><!-- /.property -->
-                                <div class="property small">
-                                    <a href="property-detail.html">
-                                        <div class="property-image">
-                                            <img alt="" src="img/properties/property-09.jpg">
-                                        </div>
-                                    </a>
-                                    <div class="info">
-                                        <a href="property-detail.html"><h4>2479 Murphy Court</h4></a>
-                                        <figure>Minneapolis, MN 55402</figure>
-                                        <div class="tag price">$ 36,000</div>
-                                    </div>
-                                </div><!-- /.property -->
-                            </article>
-                        </div><!-- /.col-sm-3 -->
-                        <div class="col-md-3 col-sm-3">
-                            <article>
-                                <h3>联系我们</h3>
-                                <address>
-                                    <strong>家易</strong><br>
-                                    4877 Spruce Drive<br>
-                                    West Newton, PA 15089
-                                </address>
-                                +1 (734) 123-4567<br>
-                                <a href="#">hello@example.com</a>
-                            </article>
-                        </div><!-- /.col-sm-3 -->
-                        <div class="col-md-3 col-sm-3">
-                            <article>
-                                <h3>Useful Links</h3>
-                                <ul class="list-unstyled list-links">
-                                    <li><a href="#">All Properties</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Login and Register Account</a></li>
-                                    <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Terms and Conditions</a></li>
-                                </ul>
-                            </article>
-                        </div><!-- /.col-sm-3 -->
-                    </div><!-- /.row -->
-                </div><!-- /.container -->
-            </section><!-- /#footer-main -->
-            <section id="footer-copyright">
-                <div class="container">
-                    <span>Copyright © 2014. All Rights Reserved.</span>
-                    <span class="pull-right"><a href="#page-top" class="roll">Go to top</a></span>
-                </div>
-            </section>
-        </div><!-- /.inner -->
-    </footer>
-    <!-- end Page Footer -->
-</div>
-
-<div id="overlay"></div>
-
-<div id="login-wrapper" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-body">
-          <div class="row">
-            <div class="col-sm-6 b-r">
-              <h1 class="m-t-none m-b">登陆</h1>
-              <p>登陆并管理您的账户</p>
-              <form role="form">
-                <div class="form-group">
-                  <label>邮箱</label>
-                  <input type="email" class="form-control" placeholder="输入您的邮箱">
-                </div>
-                <div class="form-group">
-                  <label>密码</label>
-                  <input type="password" class="form-control" placeholder="输入您的密码">
-                </div>
-                <div class="checkbox m-t-lg">
-                  <button type="submit" class="btn btn-sm btn-default pull-right text-uc m-t-n-xs"><strong>登入</strong></button>
-                  <label>
-                    <input type="checkbox"> 记住我
-                  </label>
-                </div>
-              </form>
-            </div>
-            <div class="col-sm-6">
-              <h1>还不是会员 ?</h1>
-              <p>一分钟拥有账号，点击 <a href="#" data-toggle="modal" data-target="#signup-wrapper" class="text-info" >这里</a></p>
-              <p>或者</p>
-              <a href="#" class="btn btn-facebook btn-block m-b-sm"><i class="fa fa-facebook pull-left"></i>使用Facebook账户登陆</a>
-              <a href="#" class="btn btn-twitter btn-block m-b-sm"><i class="fa fa-twitter pull-left"></i>使用Twitter账户登陆</a>
-              <a href="#" class="btn btn-gplus btn-block"><i class="fa fa-google-plus pull-left"></i>使用Google账户登陆</a>
-            </div>
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
-
-<div id="signup-wrapper" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-body">
-          <div class="row">
-            <div class="col-md-12">
-                <h1>新建账户</h1>
-                <h3>账户类型</h3>
-                <form role="form" id="form-create-account" method="post" action="/users/signup">
-                    <div class="radio" id="create-account-user">
-                        <label>
-                            <input type="radio" id="account-type-user" name="account-type" required checked>普通用户
-                        </label>
-                    </div>
-                    <div class="radio" id="agent-switch" data-agent-state="">
-                        <label>
-                            <input type="radio" id="account-type-agent" name="account-type" required>房屋经纪
-                        </label>
-                    </div>
-                    <div id="agency" class="disabled">
-                        <div class="form-group">
-                            <label for="account-agency">选择您的经纪公司:</label>
-                            <select name="account-agency" id="account-agency">
-                                <option value="">中介公司</option>
-                                <option value="1">DWG</option>
-                                <option value="2">ERA</option>
-                                <option value="3">OrangeTee</option>
-                                <option value="4">SLP</option>
-                                <option value="5">Huttons</option>
-                                <option value="6">PropNex</option>
-                                <option value="7">HSR</option>
-                            </select>
-                        </div><!-- /.form-group -->
-                    </div>
-                    <hr>
-                    <div class="form-group">
-                        <label for="form-create-account-full-name">全名:</label>
-                        <input type="text" class="form-control" id="form-create-account-full-name" required>
-                    </div><!-- /.form-group -->
-                    <div class="form-group">
-                        <label for="form-create-account-email">邮箱:</label>
-                        <input type="email" class="form-control" id="form-create-account-email" required>
-                    </div><!-- /.form-group -->
-                    <div class="form-group">
-                        <label for="form-create-account-password">密码:</label>
-                        <input type="password" class="form-control" id="form-create-account-password" required>
-                    </div><!-- /.form-group -->
-                    <div class="form-group">
-                        <label for="form-create-account-confirm-password">重复输入密码:</label>
-                        <input type="password" class="form-control" id="form-create-account-confirm-password" required>
-                    </div><!-- /.form-group -->
-                    <div class="checkbox pull-left">
-                        <label>
-                            <input type="checkbox" id="account-type-newsletter" name="account-newsletter">接受最新信息推送
-                        </label>
-                    </div>
-                    <div class="form-group clearfix">
-                        <button type="submit" class="btn pull-right btn-default" id="account-submit">新建账户</button>
-                    </div><!-- /.form-group -->
-                </form>
-                <hr>
-                <div class="center">
-                    <figure class="note">当您点击“新建账户”时表示已阅我们的 <a href="terms-conditions.html">条款与申明</a></figure>
-                </div>
-            </div><!-- /.row -->
-          </div><!-- /.container -->
-        </div>
-      </div>
-    </div>
-</div>
-
-
-
+	{{> header}}
+	<div class="content">
+		{{> yield}}
+	</div>
+	{{> footer}}
 </template>
