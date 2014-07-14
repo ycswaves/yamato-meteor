@@ -1,5 +1,8 @@
 {
   "packages": {
-    "iron-router": {}
+    "iron-router": {},
+    "bootstrap-3": {},
+    "wait-on-lib": {},
+    "googlemaps": {}
   }
 }

@@ -10,8 +10,10 @@ $.ajaxSetup({
 
 function createHomepageGoogleMap(_latitude,_longitude){
     setMapHeight();
+    console.log('abb');
     if( document.getElementById('map') != null ){
-        $.getScript("assets/js/locations.js", function(){
+
+          console.log('getJS');
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 14,
                 scrollwheel: false,
@@ -80,7 +82,7 @@ function createHomepageGoogleMap(_latitude,_longitude){
                 $('body').removeClass('has-fullscreen-map');
             }, 1000);
             $('#map').removeClass('fade-map');
-        });
+
         // Enable Geo Location on button click
         $('.geo-location').on("click", function() {
             if (navigator.geolocation) {
@@ -90,7 +92,7 @@ function createHomepageGoogleMap(_latitude,_longitude){
                 error('Geo Location is not supported');
             }
         });
-    }
+    }else{console.log('aa')}
 }
 
 // Function which set marker to the user position

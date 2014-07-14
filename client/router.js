@@ -19,9 +19,15 @@ var filters = {
 Router.map(function () {
   this.route('home',{
     path: '/properties',
-    template: 'property-listing',
+    template: 'propertyListing',
+    waitOn: function(){
+      return [
+          //IRLibLoader.load('js/custom.js'),
+          //IRLibLoader.load('js/custom-map.js'),
+          //IRLibLoader.load('js/location.js')
+        ];
+    },
     data: function () {
-
       templateData = {
         properties: [{
           title:'blk486 帕尔马路',
