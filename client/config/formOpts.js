@@ -29,37 +29,6 @@ var districtList = {
   "D28": "Seletar / Yio Chu Kang"
 };
 
-var districtList_o = [
-  "Boat Quay / Raffles Place / Marina",
-  "Chinatown / Tanjong Pagar",
-  "Alexandra / Commonwealth",
-  "Harbourfront / Telok Blangah",
-  "Buona Vista / West Coast / Clementi New Town",
-  "City Hall / Clarke Quay",
-  "Beach Road / Bugis / Rochor",
-  "Farrer Park / Serangoon Rd",
-  "Orchard / River Valley",
-  "Tanglin / Holland",
-  "Newton / Novena",
-  "Balestier / Toa Payoh",
-  "Macpherson / Potong Pasir",
-  "Eunos / Geylang / Paya Lebar",
-  "East Coast / Marine Parade",
-  "Bedok / Upper East Coast",
-  "Changi Airport / Changi Village",
-  "Pasir Ris / Tampines",
-  "Hougang / Punggol / Sengkang",
-  "Ang Mo Kio / Bishan / Thomson",
-  "Clementi Park / Upper Bukit Timah",
-  "Boon Lay / Jurong / Tuas",
-  "Bukit Batok / Bukit Panjang",
-  "Choa Chu Kang / Tengah",
-  "Admiralty / Woodlands",
-  "Mandai / Upper Thomson",
-  "Sembawang / Yishun",
-  "Seletar / Yio Chu Kang"
-];
-
 var mrtList = {
   "NS": {
     "NS1" : "Jurong East",
