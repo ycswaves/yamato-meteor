@@ -7,6 +7,3 @@ standard-app-packages
 autopublish
 insecure
 iron-router
-bootstrap-3
-wait-on-lib
-googlemaps
