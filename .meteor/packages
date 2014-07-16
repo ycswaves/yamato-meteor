@@ -7,6 +7,10 @@ standard-app-packages
 autopublish
 insecure
 iron-router
-bootstrap-3
 wait-on-lib
 googlemaps
+accounts-password
+accounts-base
+accounts-google
+service-configuration
+accounts-facebook
