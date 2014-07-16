@@ -30,11 +30,9 @@
 								<div class="form-group">
 									<select name="district">
 										<option value="">区域</option>
-										<option value="1">Manhattan</option>
-										<option value="2">The Bronx</option>
-										<option value="3">Brooklyn</option>
-										<option value="4">Queens</option>
-										<option value="5">Staten Island</option>
+										{{#each arrayify district}}
+                    <option value="{{key}}">{{key}} - {{value}}</option>
+                    {{/each}}
 									</select>
 								</div><!-- /.form-group -->
 							</div>

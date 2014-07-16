@@ -7,13 +7,8 @@ standard-app-packages
 autopublish
 insecure
 iron-router
-<<<<<<< HEAD
-wait-on-lib
-googlemaps
 accounts-password
 accounts-base
 accounts-google
 service-configuration
 accounts-facebook
-=======
->>>>>>> 440bbe6a042b712fdbaba7fb8096a579facf3cc9
