@@ -14,12 +14,24 @@ var filters = {
 }
 
 Router.map(function () {
-	this.route('landing',{
+	this.route('landing', {
 		path: '/',
 		template: 'landingPage'
 	});
 
-	this.route('home',{
+  this.route('addProperty', {
+    path: '/properties/add',
+    template: 'addProperty',
+    data: function () {
+      templateData = {
+        district: Config.getDistrict()
+      };
+
+      return templateData;
+    }
+  });
+
+	this.route('properties', {
     path: '/properties',
     template: 'propertyListing',
     data: function () {
