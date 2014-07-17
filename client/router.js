@@ -16,7 +16,14 @@ var filters = {
 Router.map(function () {
 	this.route('landing', {
 		path: '/',
-		template: 'landingPage'
+		template: 'landingPage',
+    data: function () {
+      templateData = {
+        district: Config.getDistrict()
+      };
+
+      return templateData;
+    }
 	});
 
   this.route('addProperty', {

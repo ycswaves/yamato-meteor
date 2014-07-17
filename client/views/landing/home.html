@@ -30,11 +30,9 @@
 								<div class="form-group">
 									<select name="district">
 										<option value="">区域</option>
-										<option value="1">Manhattan</option>
-										<option value="2">The Bronx</option>
-										<option value="3">Brooklyn</option>
-										<option value="4">Queens</option>
-										<option value="5">Staten Island</option>
+										{{#each arrayify district}}
+                    <option value="{{key}}">{{key}} - {{value}}</option>
+                    {{/each}}
 									</select>
 								</div><!-- /.form-group -->
 							</div>
@@ -184,7 +182,7 @@
 			<header class="section-title"><h2>极简平台</h2></header>
 			<div class="row">
 				<div class="col-md-4 col-sm-4">
-					<div class="feature-box equal-height">
+					<div class="feature-box equal-height" style="height:160px">
 						<figure class="icon"><i class="fa fa-building-o"></i></figure>
 						<aside class="description">
 							<header><h3>丰富的房源</h3></header>
@@ -193,7 +191,7 @@
 					</div><!-- /.feature-box -->
 				</div><!-- /.col-md-4 -->
 				<div class="col-md-4 col-sm-4">
-					<div class="feature-box equal-height">
+					<div class="feature-box equal-height" style="height:160px">
 						<figure class="icon"><i class="fa fa-search"></i></figure>
 						<aside class="description">
 							<header><h3>极致的搜索</h3></header>
@@ -202,7 +200,7 @@
 					</div><!-- /.feature-box -->
 				</div><!-- /.col-md-4 -->
 				<div class="col-md-4 col-sm-4">
-					<div class="feature-box equal-height">
+					<div class="feature-box equal-height" style="height:160px">
 						<figure class="icon"><i class="fa fa-bullhorn"></i></figure>
 						<aside class="description">
 							<header><h3>推送功能</h3></header>
