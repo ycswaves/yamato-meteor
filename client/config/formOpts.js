@@ -161,4 +161,8 @@ Config.getMRT = function(){
   return mrtList;
 };
 
+Config.getStationsByLine = function(line){
+  return mrtList[line.toUpperCase()];
+};
+
 
