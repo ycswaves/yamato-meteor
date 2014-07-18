@@ -30,8 +30,16 @@ Router.map(function () {
     path: '/properties/add',
     template: 'addProperty',
     data: function () {
+      // var mrtList = Config.getMRT()
+      //   , lines = [];
+      // //Session.set('mrtLine','EW');
+      // for (var line in mrtList){
+      //   lines.push(line);
+      // }
       templateData = {
         district: Config.getDistrict()
+        // mrtLines: lines,
+        // stations: Config.getStationsByLine(Session.get('mrtLine'))
       };
 
       return templateData;
