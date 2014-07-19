@@ -109,7 +109,7 @@
                           <div class="col-md-6 col-sm-6">
                             <div class="form-group" id="mrtLinesDiv">
                               <label for="submit-property-type">地铁线</label>
-                              <select name="type" id="mrtLines">
+                              <select name="mrtLines" id="mrtLines">
                                 {{#each mrtLines}}
                                 <option value="{{.}}">{{.}}</option>
                                 {{/each}}
@@ -120,7 +120,7 @@
                           <div class="col-md-6 col-sm-6">
                             <div class="form-group">
                               <label for="submit-property-type">站名</label>
-                              <select name="type" id="submit-property-type">
+                              <select name="stations" id="stations">
                                 {{#each arrayify stations}}
                                 <option value="{{key}}">{{value}}</option>
                                 {{/each}}

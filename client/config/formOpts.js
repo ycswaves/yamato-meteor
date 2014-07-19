@@ -162,7 +162,6 @@ Config.getMRT = function(){
 };
 
 Config.getStationsByLine = function(line){
-  console.log(line);
   if(line == undefined) line = 'NS';
 
   return mrtList[line.toUpperCase()] || mrtList.NS;

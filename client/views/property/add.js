@@ -2,11 +2,17 @@ Template.addProperty.events({
   'change #mrtLines': function(e, t){
     e.preventDefault();
     console.log('onchange');
-    var mrtLine = t.find('button[data-id="mrtLines"]').title;
+    var mrtLine = t.find('select[name="mrtLines"]').value;
+    console.log(mrtLine);
     Session.set('mrtLine', Config.getStationsByLine(mrtLine));
-    //navDep.changed();
+
+    //$('.selectpicker').selectpicker('render');
   }
 });
+
+Template.addProperty.rendered = function(){
+  console.log('a');
+}
 
 Template.addProperty.helpers({
   district: function(){
@@ -24,8 +30,8 @@ Template.addProperty.helpers({
   },
 
   stations: function(){
-    //navDep.depend();
-    console.log(Session.get('mrtLine'));
+    //console.log(Session.get('mrtLine'));
+    // $('#stations').selectpicker('refresh');
     return Session.get('mrtLine');
   }
 });
