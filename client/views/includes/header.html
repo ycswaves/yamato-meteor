@@ -4,12 +4,16 @@
 			<header class="navbar">
 				<div class="navbar-header">
 					<div class="navbar-brand nav" id="brand">
-						<a href="/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAkCAMAAAApfE1IAAAAXVBMVEUAAAAAsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AoeoAsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP8AsP%2BH7m7GAAAAHnRSTlMADoXqqyAWoCvL%2BJA48UcytnCYAwjeWmN8UtQ8wUH5IQVZAAADPklEQVR4Xu1U2bLsJhAD78bGG14ZW%2F%2F%2FmaGXOpmpcyfvqUQvjaEt1C3A%2FLvxP2yWA0X5p6WKlurKfEfTwnWfCb0H4w%2BMgwPBf2dsQMjfE0YA07wA9W8%2BAAUtLV8Ja2Rh8O8J6wbsKXZwv%2Bp1wJBiAf%2BVMKfCesD8YAEOigdNfmISPnMCXwl5KQDvPSh40CH%2FXXDHgwLbPxPu8MYOV8PJaoZ1vxoV4SxX%2FquHtgZ83QhhY6wHaiS0lSlJhZbVf%2FK9gFO1Y%2Fzk20DgVt24mwIKxHCqwArwawqLR3yMfYbK1IDVpsTwTtcB6J45By5TTVDcw7gAV45W2wT4V%2B9A4KQa2twWQN58nlo0hgqNBxTIRFVUiy8okN9QqMUzCK76uxG4r35lGwndXihfKb9aonZLFXZtSwYUz4sWA2Uhs%2BssCujTqQQldGOSqj1hX6TiiV2sRdOJ3XDWlEJomenWgxNa4EpxlF6IWyt0j%2FKEeNyLi7O4Wuy86jFzL7jWTE%2FuLj8MrWwpPzzAYwQHsFMQwsOtJIKSeNsXy63e78oGb4mhIFbtl1lEluY1FLRWdjWsqgVWkkcOjrVIcRGneJIbVfoyTSAxOdD1xuhzUhSi7ZJ77DhIWTei2mDJJ%2BxMK42d6e8Kh6hAjsFMYqLjdRsjmysULaiVVouKuOWMjWwFRpmMq6nR8BCFaWsifKgntRg6iwuZNI0ydz2TwnuwzlHnGnpdB0Qeol1N3iXCLVB1pNryXQwetbrQsggfhPAk9R2ZOuQvOelTZSrHKmbc1uwYTYHnx%2FyeGUZ0Qe%2FdyALFeqidbECgwFijmDsewTRkx3XRwy2Tu9zKxM0CjjSoPL9j2kPCLDyTzNobwCrcjYs6KiB34OTC9Ugz1ptcZWTiw8O%2FlxGlkZhgP9%2FkVd7HQCeDtw8nZGDsBHFLvHdHT%2BekKjOkEAzdc0RIXR0S5sTyRGDrgLupbkSbdoqA6Bo24F6N4sAnHOdlIYVYF1BEz6%2F32kKx0cTG%2BQ6gHX5w5bTENC2PAXK7lCHu8gVBlnTahUYejDNcENTCpwjjlXzvj2OkEmPenizfnm2%2B1Q%2B1JUujZdQe7ccrHK3fFjK8WTa3daP5z%2BIvHfliB0vhN3UAAAAASUVORK5CYII%3D" alt="brand"></a>
+						<a href="/"><img src="/img/logo.png" height="36px" alt="brand"></a>
 					</div>
 				</div>
 				<nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
 					<ul class="nav navbar-nav">
+						{{#if currentUser}}
+						<li><a href="javascript:;" id="signout">登出</a></li>
+						{{else}}
 						<li><a href="#" data-toggle="modal" data-target="#login-wrapper">登陆</a></li>
+						{{/if}}
 					</ul>
 				</nav><!-- /.navbar collapse-->
 				<div class="add-your-property">

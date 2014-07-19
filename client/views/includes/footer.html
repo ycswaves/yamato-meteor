@@ -80,12 +80,12 @@
 		</div><!-- /.inner -->
 	</footer>
 	<!-- end Page Footer -->
-	{{> loginForm}}
-	{{> signupForm}}
+		{{> loginForm}}
+		{{> signupForm}}
 </template>
 
 <template name="loginForm">
-	<div id="login-wrapper" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div id="login-wrapper" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-body">
@@ -93,14 +93,14 @@
 						<div class="col-sm-6 b-r">
 							<h1 class="m-t-none m-b">登陆</h1>
 							<p>登陆并管理您的账户</p>
-							<form role="form">
+							<form role="form" id="loginForm" method="post">
 								<div class="form-group">
-									<label>邮箱</label>
-									<input type="email" class="form-control" placeholder="输入您的邮箱">
+									<label>用户名</label>
+									<input type="text" class="form-control" name="username" placeholder="输入您的用户名">
 								</div>
 								<div class="form-group">
 									<label>密码</label>
-									<input type="password" class="form-control" placeholder="输入您的密码">
+									<input type="password" class="form-control" name="password" placeholder="输入您的密码">
 								</div>
 								<div class="checkbox m-t-lg">
 									<button type="submit" class="btn btn-sm btn-default pull-right text-uc m-t-n-xs"><strong>登入</strong></button>
@@ -125,7 +125,7 @@
 </template>
 
 <template name="signupForm">
-	<div id="signup-wrapper" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div id="signup-wrapper" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-body">
@@ -133,52 +133,48 @@
 						<div class="col-md-12">
 							<h1>新建账户</h1>
 							<h3>账户类型</h3>
-							<form role="form" id="form-create-account" method="post" action="/users/signup">
+							<form role="form" id="signupForm" method="post">
 								<div class="radio" id="create-account-user">
 									<label>
-										<input type="radio" id="account-type-user" name="account-type" required checked>普通用户
+										<input type="radio" id="account-type-user" name="accountType" value=1 required checked>普通用户
 									</label>
 								</div>
 								<div class="radio" id="agent-switch" data-agent-state="">
 									<label>
-										<input type="radio" id="account-type-agent" name="account-type" required>房屋经纪
+										<input type="radio" id="account-type-agent" name="accountType" value=2 required>房屋经纪
 									</label>
 								</div>
 								<div id="agency" class="disabled">
 									<div class="form-group">
 										<label for="account-agency">选择您的经纪公司:</label>
-										<select name="account-agency" id="account-agency">
+										<select name="accountAgency" id="account-agency">
 											<option value="">中介公司</option>
-											<option value="1">DWG</option>
-											<option value="2">ERA</option>
-											<option value="3">OrangeTee</option>
-											<option value="4">SLP</option>
-											<option value="5">Huttons</option>
-											<option value="6">PropNex</option>
-											<option value="7">HSR</option>
+											{{#each arrayify agency}}
+											<option value="{{key}}">{{value}}</option>
+											{{/each}}
 										</select>
 									</div><!-- /.form-group -->
 								</div>
 								<hr>
 								<div class="form-group">
-									<label for="form-create-account-full-name">全名:</label>
-									<input type="text" class="form-control" id="form-create-account-full-name" required>
+									<label>用户名:</label>
+									<input type="text" class="form-control" name="username" required>
 								</div><!-- /.form-group -->
 								<div class="form-group">
-									<label for="form-create-account-email">邮箱:</label>
-									<input type="email" class="form-control" id="form-create-account-email" required>
+									<label>邮箱:</label>
+									<input type="email" class="form-control" name="email" required>
 								</div><!-- /.form-group -->
 								<div class="form-group">
-									<label for="form-create-account-password">密码:</label>
-									<input type="password" class="form-control" id="form-create-account-password" required>
+									<label>密码:</label>
+									<input type="password" class="form-control" name="password" required>
 								</div><!-- /.form-group -->
 								<div class="form-group">
-									<label for="form-create-account-confirm-password">重复输入密码:</label>
-									<input type="password" class="form-control" id="form-create-account-confirm-password" required>
+									<label>重复输入密码:</label>
+									<input type="password" class="form-control" name="passwordAgain" required>
 								</div><!-- /.form-group -->
 								<div class="checkbox pull-left">
 									<label>
-										<input type="checkbox" id="account-type-newsletter" name="account-newsletter">接受最新信息推送
+										<input type="checkbox" name="isAcceptNewsletter">接受最新信息推送
 									</label>
 								</div>
 								<div class="form-group clearfix">
