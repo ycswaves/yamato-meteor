@@ -2,25 +2,30 @@ Template.addProperty.events({
   'change #mrtLines': function(e, t){
     e.preventDefault();
     console.log('onchange');
-    Session.set('mrtLine', t.find('button[data-id="mrtLines"]').title);
-    Template.addProperty.helpers.stations();
-    return false;
+    var mrtLine = t.find('button[data-id="mrtLines"]').title;
+    Session.set('mrtLine', Config.getStationsByLine(mrtLine));
+    //navDep.changed();
   }
 });
 
-
 Template.addProperty.helpers({
+  district: function(){
+    return Config.getDistrict();
+  },
+
   mrtLines: function(){
     var mrtList = Config.getMRT()
       , lines = [];
-    //Session.set('mrtLine','EW');
     for (var line in mrtList){
       lines.push(line);
     }
+    Session.set('mrtLine', Config.getStationsByLine('EW'));
     return lines;
   },
 
   stations: function(){
-    return Config.getStationsByLine(Session.get('mrtLine'));
+    //navDep.depend();
+    console.log(Session.get('mrtLine'));
+    return Session.get('mrtLine');
   }
 });
