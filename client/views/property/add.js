@@ -1,16 +1,15 @@
 Template.addProperty.events({
   'change #mrtLines': function(e, t){
     e.preventDefault();
-    console.log('onchange');
     var mrtLine = t.find('select[name="mrtLines"]').value;
-    console.log(mrtLine);
     Session.set('mrtLine', Config.getStationsByLine(mrtLine));
-
-    //$('.selectpicker').selectpicker('render');
+    Deps.flush();
+    t.$('#stations').selectpicker('refresh');
   }
 });
 
 Template.addProperty.rendered = function(){
+  this.$('#stations').selectpicker('refresh');
   console.log('a');
 }
 
@@ -25,13 +24,11 @@ Template.addProperty.helpers({
     for (var line in mrtList){
       lines.push(line);
     }
-    Session.set('mrtLine', Config.getStationsByLine('EW'));
+    Session.set('mrtLine', Config.getStationsByLine('NS'));
     return lines;
   },
 
   stations: function(){
-    //console.log(Session.get('mrtLine'));
-    // $('#stations').selectpicker('refresh');
     return Session.get('mrtLine');
   }
 });
