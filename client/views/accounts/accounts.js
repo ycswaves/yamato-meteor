@@ -1,4 +1,89 @@
+// Validators, helpers
+
+// Trim Input
+function trimInput(val) {
+  return val.replace(/^\s*|\s*$/g, "");
+}
+
+// Validations
+function isEmail(val) {
+  if (val.indexOf('@') !== -1) {
+      return true;
+    } else {
+      Session.set('displayMessage', 'Error & Please enter a valid email address.');
+      console.log(3);
+      return false;
+    }
+}
+
+function isValidPassword(val) {
+  if (val.length >= 6) {
+    return true;
+  } else {
+    Session.set('displayMessage', 'Error & Your password should be 6 characters or longer.');
+    return false;
+  }
+}
+
+function isNotEmpty(val) {
+  // if null or empty, return false
+  if (!val || val === ''){
+    Session.set('displayMessage', 'Error & Please fill in all required fields.');
+    return false;
+  }
+  return true;
+}
+
+function isValidType(val) {
+  console.log(val);
+  // if null or empty, return false
+  if (val!=1 && val!=2 ){
+    Session.set('displayMessage', 'Error & Undefined Type.');
+    return false;
+  }
+  return true;
+}
+
+function isSame(val1,val2) {
+  // if not the same the passwords
+  if(val1 !== val2 ){
+    Session.set('displayMessage', 'Error & Your passwords are not the same');
+    return false;
+  }
+  return true;
+}
+
+function isValidName(val){
+  userRegex = /^[-\w\.\$@\*\!]{1,30}$/;
+  if(!val.match(userRegex)){
+    Session.set('displayMessage', 'Error & invalid username');
+    return false;
+  }
+  return true;
+}
+
+//Login action
 Template.loginForm.events({
+  //Normal login
+  'submit #loginForm' : function(e, t) {
+    e.preventDefault();
+    var username = trimInput(t.find('input[name=username]').value.toLowerCase())
+      , password = t.find('input[name=password]').value;
+
+    if (isNotEmpty(username, 'loginError')
+        && isNotEmpty(password, 'loginError'))
+    {
+      Meteor.loginWithPassword(username, password, function(err){
+        if (err && err.error === 403) {
+          Session.set('displayMessage', 'Login Error: username or password is not correct.');
+        } else {
+          
+        }
+      });
+    }
+    return false;
+  },
+  //facebook login
 	'click #facebookLogin' : function(e, t){
     e.preventDefault();
     Meteor.loginWithFacebook(function(err){
@@ -9,19 +94,79 @@ Template.loginForm.events({
       }
     });
   },
+  //google login
   'click #googleLogin' : function(e, t){
     e.preventDefault();
     Meteor.loginWithGoogle(function(err){
       if (err && err.error === 403) {
         Session.set('displayMessage', 'Login Error: username or password is not correct.');
       } else {
-        // console.log(hasGroup(Meteor.userId()));
-        // if (hasGroup(Meteor.userId())){
-        //     Router.go('/dashboard');
-        // } else {
-        //   Router.go('/creategroup');
-        // }
+        
       }
     });
   }
 });
+
+// Create an account and login the user.
+Template.signupForm.events({
+  'submit #signupForm' : function(e, t) {
+    console.log(1);
+    e.preventDefault();
+    var email = trimInput(t.find('input[name=email]').value.toLowerCase())
+      , password = t.find('input[name=password]').value
+      , password2 = t.find('input[name=passwordAgain]').value
+      , username = t.find('input[name=username]').value
+      , accountType = t.find('input[name=accountType]').value
+      , agency = t.find('select[name=accountAgency]').value;
+      console.log(2);
+    if (isNotEmpty(email)
+        && isNotEmpty(password)
+        && isEmail(email)
+        && isValidPassword(password)
+        && isSame(password,password2)
+        && isNotEmpty(username)
+        && isValidName(username)
+        && isValidType(parseInt(accountType)))
+    {
+      Accounts.createUser({
+        username:username, 
+        email:email,
+        password: password,
+        profile:{
+          accountType:accountType,
+          agency:agency
+        }
+      }, function(err){
+        if (err && err.error === 403) {
+          Session.set('displayMessage', '创建账户不成功 &' + err.reason);
+        } else {
+          
+        }
+      });
+    }else{
+
+    }
+    return false;
+  }
+
+});
+
+Template.signupForm.helpers({
+  signupStatus: function(){
+    return Session.get('displayMessage');
+  },
+  agency: function(){
+  	return Config.getAgency();
+  }
+})
+
+Template.header.events({
+  //sign out
+  'click #signout' : function(e, t){
+    e.preventDefault();
+    Meteor.logout(function(){
+
+
+    });
+  }
+})

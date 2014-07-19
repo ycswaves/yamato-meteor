@@ -151,6 +151,16 @@ var mrtList = {
   }
 };
 
+var agencyList = {
+  "DWG"       : "DWG",
+  "ERA"       : "ERA",
+  "OrangeTee" : "OrangeTee",
+  "SLP"       : "SLP",
+  "Huttons"   : "Huttons",
+  "PropNex"   : "PropNex",
+  "HSR"       : "HSR"
+};
+
 Config = {};
 
 Config.getDistrict = function(){
@@ -167,4 +177,7 @@ Config.getStationsByLine = function(line){
   return mrtList[line.toUpperCase()] || mrtList.NS;
 };
 
+Config.getAgency = function(line){
+  return agencyList;
+};
 
