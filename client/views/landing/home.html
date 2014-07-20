@@ -56,11 +56,9 @@
 								<div class="form-group">
 									<select name="form-rent-district">
 										<option value="">任意区域</option>
-										<option value="1">Manhattan</option>
-										<option value="2">The Bronx</option>
-										<option value="3">Brooklyn</option>
-										<option value="4">Queens</option>
-										<option value="5">Staten Island</option>
+										{{#each arrayify district}}
+										<option value="{{key}}">{{key}} - {{value}}</option>
+										{{/each}}
 									</select>
 								</div><!-- /.form-group -->
 							</div>
@@ -93,7 +91,7 @@
 							</div>
 							<div class="col-md-2 col-sm-4">
 								<div class="form-group">
-									<button type="submit" class="btn btn-default">Search Rent</button>
+									<button type="submit" class="btn btn-default">搜索</button>
 								</div><!-- /.form-group -->
 							</div>
 						</div>
@@ -105,7 +103,7 @@
 							<div class="col-md-2 col-sm-4">
 								<div class="form-group">
 									<select name="property-type">
-										<option value="">房屋类型</option>
+										<option value="">任意房间类型</option>
 										<option value="1">组屋</option>
 										<option value="2">公寓</option>
 										<option value="3">排屋</option>
@@ -115,7 +113,7 @@
 							<div class="col-md-2 col-sm-4">
 								<div class="form-group">
 									<select name="district">
-										<option value="">区域</option>
+										<option value="">任意区域</option>
 										{{#each arrayify district}}
 										<option value="{{key}}">{{key}} - {{value}}</option>
 										{{/each}}
@@ -125,9 +123,24 @@
 
 							<div class="col-md-2 col-sm-4">
 								<div class="form-group">
-									<div class="price-range">
-										<input id="sale-price-range" type="text" name="price" value="5000;50000">
-									</div>
+									<select name="form-rent-price">
+										<option value="">任意价格</option>
+										<option value="1">S$200K +</option>
+										<option value="2">S$300K +</option>
+										<option value="3">S$400K +</option>
+										<option value="4">S$500K +</option>
+										<option value="5">S$600K +</option>
+										<option value="6">S$700K +</option>
+										<option value="7">S$800K +</option>
+										<option value="8">S$900K +</option>
+										<option value="9">S$1M +</option>
+										<option value="10">S$1.25M +</option>
+										<option value="11">S$1.5M +</option>
+										<option value="12">S$1.75M +</option>
+										<option value="13">S$2M +</option>
+										<option value="14">S$2.5M +</option>
+										<option value="15">S$3M +</option>
+									</select>
 								</div>
 							</div>
 							<div class="col-md-2 col-sm-4">
@@ -175,7 +188,7 @@
 				<div>
 					<img src="/img/h1.png" height="120px;">
 				</div>
-				<h3>搜房从未如此简单</h3>
+				<h3>家居从未如此简单</h3>
 			</div>
 		</div>
 	</section><!-- /#banner -->
