@@ -2,10 +2,10 @@
   <div class="page-gradient">
   <!-- Breadcrumb -->
     <div class="container">
-        <ol class="breadcrumb">
-            <li><a href="#">首页</a></li>
-            <li class="active">发布新置业</li>
-        </ol>
+      <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li class="active">发布新置业</li>
+      </ol>
     </div>
     <!-- end Breadcrumb -->
     <div class="container">
@@ -36,118 +36,132 @@
                   </div>
                   <div class="form-group">
                     <label for="submit-description">描述</label>
-                    <textarea class="form-control" id="submit-description" rows="8" name="submit-description" required></textarea>
+                    <textarea class="form-control" id="submit-description" rows="3" name="description" required></textarea>
                   </div><!-- /.form-group -->
                 </section><!-- /#basic-information -->
 
                 <section>
                   <div class="row">
                     <div class="block clearfix">
-                      <div class="col-md-6 col-sm-6">
+                      <div class="col-md-12 col-sm-12">
                         <section id="summary">
                           <header><h2>概览</h2></header>
                           <div class="form-group">
-                            <label for="submit-location">区域</label>
-                            <select name="type" id="submit-location">
+                            <label for="submit-district">区域</label>
+                            <select name="type" id="submit-district" name="submit-district">
                               {{#each arrayify district}}
                               <option value="{{key}}">{{key}} - {{value}}</option>
                               {{/each}}
                             </select>
                           </div>
                           <div class="row">
-                            <div class="col-md-6 col-sm-6">
+                            <div class="col-md-4 col-sm-4">
+                              <label for="submit-status">交易类型</label>
+                              <div class="form-group form-inline" style="padding-top:10px">
+                                <div class="radio" style="margin-right:30px">
+                                  <label>
+                                    <input type="radio" id="transaction-type-rent" name="transaction-type" required checked>出租
+                                  </label>
+                                </div>
+                                <div class="radio" >
+                                  <label>
+                                    <input type="radio" id="transaction-type-sale" name="transaction-type" required>出售
+                                  </label>
+                                </div>
+                              </div><!-- /.form-group -->
+                            </div><!-- /.col-md-4 -->
+
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
                                 <label for="submit-property-type">房屋类型</label>
-                                <select name="type" id="submit-property-type">
+                                <select name="property-type" id="submit-property-type">
                                   <option value="1">组屋</option>
                                   <option value="2">公寓</option>
                                   <option value="3">排屋</option>
                                 </select>
                               </div><!-- /.form-group -->
-                            </div><!-- /.col-md-6 -->
-                            <div class="col-md-6 col-sm-6">
-                              <label for="submit-status">交易类型</label>
+                            </div><!-- /.col-md-4 -->
+
+                            <div class="col-md-4 col-sm-4">
+                              <label for="submit-status">有无中介费</label>
                               <div class="form-group form-inline" style="padding-top:10px">
                                 <div class="radio" style="margin-right:30px">
                                   <label>
-                                    <input type="radio" id="account-type-user" name="account-type" required checked>出租
+                                    <input type="radio" id="has-agent-true" name="has-agent" required checked>有
                                   </label>
                                 </div>
                                 <div class="radio" data-agent-state="">
                                   <label>
-                                    <input type="radio" id="account-type-agent" name="account-type" required>出售
+                                    <input type="radio" id="has-agent-false" name="has-agent" required>无
                                   </label>
                                 </div>
                               </div><!-- /.form-group -->
-                            </div><!-- /.col-md-6 -->
+                            </div><!-- /.col-md-4 -->
                           </div><!-- /.row -->
                           <div class="row">
-                            <div class="col-md-6 col-sm-6">
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
                                 <label for="submit-Beds">房间数</label>
-                                <input type="text" class="form-control" id="submit-Beds" name="Beds" pattern="\d*" required>
+                                <select name="property-bedroom" id="property-bedroom">
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="3">4</option>
+                                  <option value="3">5</option>
+                                  <option value=">5"> > 5 </option>
+                                </select>
                               </div><!-- /.form-group -->
-                            </div><!-- /.col-md-6 -->
-                            <div class="col-md-6 col-sm-6">
-                              <div class="form-group">
-                                <label for="submit-Baths">卫生间</label>
-                                <input type="text" class="form-control" id="submit-Baths" name="Baths" pattern="\d*" required>
-                              </div><!-- /.form-group -->
-                            </div><!-- /.col-md-6 -->
-                          </div><!-- /.row -->
+                            </div><!-- /.col-md-4 -->
 
-                          <div class="row">
-                            <div class="col-md-6 col-sm-6">
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
                                 <label for="submit-area">面积</label>
                                 <div class="input-group">
-                                  <input type="text" class="form-control" id="submit-area" name="area" pattern="\d*" required>
+                                  <input type="text" class="form-control" id="submit-area" name="property-area" pattern="\d*" required>
                                   <span class="input-group-addon">m<sup>2</sup></span>
                                 </div>
                               </div><!-- /.form-group -->
-                            </div><!-- /.col-md-6 -->
-                            <div class="col-md-6 col-sm-6">
+                            </div><!-- /.col-md-4 -->
+
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
-                                <label for="submit-garages">车位</label>
-                                <input type="text" class="form-control" id="submit-garages" name="garages" pattern="\d*" required>
+                                <label for="property-bathroom">卫生间</label>
+                                <select name="property-bathroom" id="property-bathroom">
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value=">3"> > 3 </option>
+                                </select>
                               </div><!-- /.form-group -->
-                            </div><!-- /.col-md-6 -->
+                            </div><!-- /.col-md-4 -->
                           </div><!-- /.row -->
 
                           <div class="row">
-                            <div class="col-md-6 col-sm-6">
+                            <div class="col-md-4 col-sm-4">
                               <div class="form-group" id="mrtLinesDiv">
-                                <label for="submit-property-type">地铁线</label>
+                                <label for="submit-property-type">最近地铁线</label>
                                 <select name="mrtLines" id="mrtLines">
                                   {{#each arrayify mrtLines}}
                                   <option value="{{key}}">{{value.niceName}}</option>
                                   {{/each}}
                                 </select>
                               </div><!-- /.form-group -->
-                            </div><!-- /.col-md-6 -->
+                            </div><!-- /.col-md-4 -->
 
                             <div class="col-md-6 col-sm-6">
                               <div class="form-group">
                                 <label for="submit-property-type">站名</label>
                                 <select name="stations" id="stations">
                                   {{#each arrayify stations}}
-                                  <option value="{{key}}">{{value}} ({{key}})</option>
+                                  <option value="{{key}}">{{key}} - {{value}}</option>
                                   {{/each}}
                                 </select>
                               </div><!-- /.form-group -->
-                            </div><!-- /.col-md-6 -->
+                            </div><!-- /.col-md-4 -->
                           </div><!-- /.row -->
                         </section><!-- /#summary -->
-                      </div><!-- /.col-md-6 -->
-                      <div class="col-md-6 col-sm-6">
-                        <section id="place-on-map">
-                          <header class="section-title">
-                            <h2>地图上的位置</h2>
-                            <span class="link-arrow geo-location">获取我的当前位置</span>
-                          </header>
-                          <div id="submit-map"></div>
-                        </section><!-- /#place-on-map -->
-                      </div><!-- /.col-md-6 -->
+                      </div><!-- /.col-md-12 -->
+
                     </div><!-- /.block -->
                   </div><!-- /.row -->
                 </section>
@@ -186,7 +200,7 @@
                 <hr>
               </section>
             </div><!-- /.col-md-9 -->
-            <div class="col-md-3 col-sm-3">
+            <div class="col-md-4 col-sm-4">
               <aside class="submit-step">
                 <figure class="step-number">1</figure>
                 <div class="description">
@@ -195,7 +209,7 @@
                   </p>
                 </div>
               </aside><!-- /.submit-step -->
-            </div><!-- /.col-md-3 -->
+            </div><!-- /.col-md-4 -->
           </div>
         </div><!-- /.row -->
         <div class="row">
@@ -208,7 +222,7 @@
                 <figure class="note block">By clicking the “Proceed to Payment” or “Submit” button you agree with our <a href="terms-conditions.html">Terms and conditions</a></figure>
               </div>
             </div>
-            <div class="col-md-3 col-sm-3">
+            <div class="col-md-4 col-sm-4">
               <aside class="submit-step">
                 <figure class="step-number">2</figure>
                 <div class="description">
@@ -217,7 +231,7 @@
                   </p>
                 </div>
               </aside><!-- /.submit-step -->
-            </div><!-- /.col-md-3 -->
+            </div><!-- /.col-md-4 -->
           </div>
         </div>
       </form><!-- /#form-submit -->
