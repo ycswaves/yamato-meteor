@@ -75,9 +75,10 @@ Template.loginForm.events({
     {
       Meteor.loginWithPassword(username, password, function(err){
         if (err && err.error === 403) {
-          Session.set('displayMessage', 'Login Error: username or password is not correct.');
+          // Session.set('displayMessage', '用户名或密码不正确');
+          FlashMessages.sendError("用户名或密码不正确");
         } else {
-          
+          t.$('#loginModal').modal('hide');
         }
       });
     }
