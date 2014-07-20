@@ -19,13 +19,8 @@ Template.addProperty.helpers({
   },
 
   mrtLines: function(){
-    var mrtList = Config.getMRT()
-      , lines = [];
-    for (var line in mrtList){
-      lines.push(line);
-    }
     ReactiveDS.set('mrtLine', Config.getStationsByLine('NS'));
-    return lines;
+    return Config.getMRT();
   },
 
   stations: function(){
