@@ -16,17 +16,26 @@ var filters = {
 Router.map(function () {
 	this.route('landing', {
 		path: '/',
-		template: 'landingPage'
+		template: 'landingPage',
+    action: function () {
+     this.render();
+    }
 	});
 
   this.route('addProperty', {
     path: '/properties/add',
-    template: 'addProperty'
+    template: 'addProperty',
+    action: function () {
+     this.render();
+    }
   });
 
 	this.route('properties', {
     path: '/properties',
-    template: 'propertyListing'
+    template: 'propertyListing',
+    action: function () {
+     this.render();
+    }
   });
 
   // matches all urls but doesn't get called until all previous routes have been tested

@@ -1,195 +1,203 @@
-Template.layout.rendered = function() {
-    if(!this._rendered) {
-        this._rendered = true;
+Template.landingPage.rendered = function() {
+    render();
+}
 
-        $('.tool-tip').tooltip();
+Template.propertyListing.rendered = function() {
+    render();
+}
 
-        var select = $('select');
-        if (select.length > 0 ){
-            select.selectpicker();
+Template.addProperty.rendered = function() {
+    render();
+}
+
+function render(){
+    $('.tool-tip').tooltip();
+
+    var select = $('select');
+    if (select.length > 0 ){
+        select.selectpicker();
+    }
+
+    var bootstrapSelect = $('.bootstrap-select');
+    var dropDownMenu = $('.dropdown-menu');
+
+    bootstrapSelect.on('shown.bs.dropdown', function () {
+        dropDownMenu.removeClass('animation-fade-out');
+        dropDownMenu.addClass('animation-fade-in');
+    });
+
+    bootstrapSelect.on('hide.bs.dropdown', function () {
+        dropDownMenu.removeClass('animation-fade-in');
+        dropDownMenu.addClass('animation-fade-out');
+    });
+
+    bootstrapSelect.on('hidden.bs.dropdown', function () {
+        var _this = $(this);
+        $(_this).addClass('open');
+        setTimeout(function() {
+            $(_this).removeClass('open');
+        }, 100);
+    });
+
+    select.change(function() {
+        if ($(this).val() != '') {
+            $('.form-search .bootstrap-select.open').addClass('selected-option-check');
+        }else {
+            $('.form-search  .bootstrap-select.open').removeClass('selected-option-check');
         }
+    });
 
-        var bootstrapSelect = $('.bootstrap-select');
-        var dropDownMenu = $('.dropdown-menu');
-
-        bootstrapSelect.on('shown.bs.dropdown', function () {
-            dropDownMenu.removeClass('animation-fade-out');
-            dropDownMenu.addClass('animation-fade-in');
-        });
-
-        bootstrapSelect.on('hide.bs.dropdown', function () {
-            dropDownMenu.removeClass('animation-fade-in');
-            dropDownMenu.addClass('animation-fade-out');
-        });
-
-        bootstrapSelect.on('hidden.bs.dropdown', function () {
-            var _this = $(this);
-            $(_this).addClass('open');
-            setTimeout(function() {
-                $(_this).removeClass('open');
-            }, 100);
-        });
-
-        select.change(function() {
-            if ($(this).val() != '') {
-                $('.form-search .bootstrap-select.open').addClass('selected-option-check');
-            }else {
-                $('.form-search  .bootstrap-select.open').removeClass('selected-option-check');
-            }
-        });
-
-        var priceSlider = $("#sale-price-range");
-        if(priceSlider.length > 0) {
-            priceSlider.slider({
-                from: 2000,
-                to: 50000,
-                step: 1000,
-                round: 1,
-                format: { format: '$ ###,###', locale: 'en' }
-            });
-        }
-
-        var priceSlider = $("#price-input");
-        if(priceSlider.length > 0) {
-            priceSlider.slider({
-                from: 1000,
-                to: 299000,
-                step: 500,
-                round: 1,
-                format: { format: '$ ###,###', locale: 'en' }
-            });
-        }
-
-        //  Agent State
-
-        $('#agent-switch').on('ifClicked', function(event) {
-            agentState();
-        });
-
-        $('#create-account-user').on('ifClicked', function(event) {
-            $('#agent-switch').data('agent-state', '');
-            agentState();
-        });
-
-        //  iCheck
-
-        if ($('.checkbox').length > 0) {
-            $('input').iCheck();
-        }
-
-        if ($('.radio').length > 0) {
-            $('input').iCheck();
-        }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // On RESIZE
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        $(window).on('resize', function(){
-            setNavigationPosition();
-            setCarouselWidth();
-            equalHeight('.equal-height');
-
-
-        });
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // On LOAD
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        $(window).load(function(){
-
-        //  Show Search Box on Map
-
-            $('.search-box.map').addClass('show-search-box');
-
-        //  Show All button
-
-            showAllButton();
-
-        //  Draw thumbnails in the footer
-
-            drawFooterThumbnails();
-
-        //  Show counter after appear
-
-            var $number = $('.number');
-            if ($number.length > 0 ) {
-                $number.waypoint(function() {
-                    initCounter();
-                }, { offset: '100%' });
-            }
-
-            agentState();
-
-        //  Owl Carousel
-
-            // Disable click when dragging
-            function disableClick(){
-                $('.owl-carousel .property').css('pointer-events', 'none');
-            }
-            // Enable click after dragging
-            function enableClick(){
-                $('.owl-carousel .property').css('pointer-events', 'auto');
-            }
-
-            if ($('.owl-carousel').length > 0) {
-                if ($('.carousel-full-width').length > 0) {
-                    setCarouselWidth();
-                }
-                $(".featured-properties-carousel").owlCarousel({
-                    items: 5,
-                    itemsDesktop: [1700,4],
-                    responsiveBaseWidth: ".featured-properties-carousel",
-                    pagination: false,
-                    startDragging: disableClick,
-                    beforeMove: enableClick
-                });
-                $(".testimonials-carousel").owlCarousel({
-                    items: 1,
-                    responsiveBaseWidth: ".testimonial",
-                    pagination: true
-                });
-                $(".property-carousel").owlCarousel({
-                    items: 1,
-                    responsiveBaseWidth: ".property-slide",
-                    pagination: false,
-                    autoHeight : true,
-                    navigation: true,
-                    navigationText: ["",""],
-                    startDragging: disableClick,
-                    beforeMove: enableClick
-                });
-                $(".homepage-slider").owlCarousel({
-                    autoPlay: 10000,
-                    navigation: true,
-                    mouseDrag: false,
-                    items: 1,
-                    responsiveBaseWidth: ".slide",
-                    pagination: false,
-                    transitionStyle : 'fade',
-                    navigationText: ["",""],
-                    afterInit: sliderLoaded,
-                    afterAction: animateDescription,
-                    startDragging: animateDescription
-                });
-            }
-            function sliderLoaded(){
-                $('#slider').removeClass('loading');
-                document.getElementById("loading-icon").remove();
-            }
-            function animateDescription(){
-                var $description = $(".slide .overlay .info");
-                $description.addClass('animate-description-out');
-                $description.removeClass('animate-description-in');
-                setTimeout(function() {
-                    $description.addClass('animate-description-in');
-                }, 400);
-            }
-
-
+    var priceSlider = $("#sale-price-range");
+    if(priceSlider.length > 0) {
+        priceSlider.slider({
+            from: 2000,
+            to: 50000,
+            step: 1000,
+            round: 1,
+            format: { format: '$ ###,###', locale: 'en' }
         });
     }
+
+    var priceSlider = $("#price-input");
+    if(priceSlider.length > 0) {
+        priceSlider.slider({
+            from: 1000,
+            to: 299000,
+            step: 500,
+            round: 1,
+            format: { format: '$ ###,###', locale: 'en' }
+        });
+    }
+
+    //  Agent State
+
+    $('#agent-switch').on('ifClicked', function(event) {
+        agentState();
+    });
+
+    $('#create-account-user').on('ifClicked', function(event) {
+        $('#agent-switch').data('agent-state', '');
+        agentState();
+    });
+
+    //  iCheck
+
+    if ($('.checkbox').length > 0) {
+        $('input').iCheck();
+    }
+
+    if ($('.radio').length > 0) {
+        $('input').iCheck();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // On RESIZE
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    $(window).on('resize', function(){
+        setNavigationPosition();
+        setCarouselWidth();
+        equalHeight('.equal-height');
+
+
+    });
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // On LOAD
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    $(window).load(function(){
+
+    //  Show Search Box on Map
+
+        $('.search-box.map').addClass('show-search-box');
+
+    //  Show All button
+
+        showAllButton();
+
+    //  Draw thumbnails in the footer
+
+        drawFooterThumbnails();
+
+    //  Show counter after appear
+
+        var $number = $('.number');
+        if ($number.length > 0 ) {
+            $number.waypoint(function() {
+                initCounter();
+            }, { offset: '100%' });
+        }
+
+        agentState();
+
+    //  Owl Carousel
+
+        // Disable click when dragging
+        function disableClick(){
+            $('.owl-carousel .property').css('pointer-events', 'none');
+        }
+        // Enable click after dragging
+        function enableClick(){
+            $('.owl-carousel .property').css('pointer-events', 'auto');
+        }
+
+        if ($('.owl-carousel').length > 0) {
+            if ($('.carousel-full-width').length > 0) {
+                setCarouselWidth();
+            }
+            $(".featured-properties-carousel").owlCarousel({
+                items: 5,
+                itemsDesktop: [1700,4],
+                responsiveBaseWidth: ".featured-properties-carousel",
+                pagination: false,
+                startDragging: disableClick,
+                beforeMove: enableClick
+            });
+            $(".testimonials-carousel").owlCarousel({
+                items: 1,
+                responsiveBaseWidth: ".testimonial",
+                pagination: true
+            });
+            $(".property-carousel").owlCarousel({
+                items: 1,
+                responsiveBaseWidth: ".property-slide",
+                pagination: false,
+                autoHeight : true,
+                navigation: true,
+                navigationText: ["",""],
+                startDragging: disableClick,
+                beforeMove: enableClick
+            });
+            $(".homepage-slider").owlCarousel({
+                autoPlay: 10000,
+                navigation: true,
+                mouseDrag: false,
+                items: 1,
+                responsiveBaseWidth: ".slide",
+                pagination: false,
+                transitionStyle : 'fade',
+                navigationText: ["",""],
+                afterInit: sliderLoaded,
+                afterAction: animateDescription,
+                startDragging: animateDescription
+            });
+        }
+        function sliderLoaded(){
+            $('#slider').removeClass('loading');
+            document.getElementById("loading-icon").remove();
+        }
+        function animateDescription(){
+            var $description = $(".slide .overlay .info");
+            $description.addClass('animate-description-out');
+            $description.removeClass('animate-description-in');
+            setTimeout(function() {
+                $description.addClass('animate-description-in');
+            }, 400);
+        }
+
+
+    });
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

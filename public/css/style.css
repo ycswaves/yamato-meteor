@@ -1490,7 +1490,9 @@ ul.list-links li a:hover {
 	padding: 40px 0;
 }
 
-
+.pointer{
+	cursor: pointer;
+}
 /****
   B
   ****/

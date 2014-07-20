@@ -110,7 +110,6 @@ Template.loginForm.events({
 // Create an account and login the user.
 Template.signupForm.events({
   'submit #signupForm' : function(e, t) {
-    console.log(1);
     e.preventDefault();
     var email = trimInput(t.find('input[name=email]').value.toLowerCase())
       , password = t.find('input[name=password]').value
@@ -118,7 +117,6 @@ Template.signupForm.events({
       , username = t.find('input[name=username]').value
       , accountType = t.find('input[name=accountType]').value
       , agency = t.find('select[name=accountAgency]').value;
-      console.log(2);
     if (isNotEmpty(email)
         && isNotEmpty(password)
         && isEmail(email)
