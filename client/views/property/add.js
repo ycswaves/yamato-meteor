@@ -2,7 +2,7 @@ Template.addProperty.events({
   'change #mrtLines': function(e, t){
     e.preventDefault();
     var mrtLine = t.find('select[name="mrtLines"]').value;
-    Session.set('mrtLine', Config.getStationsByLine(mrtLine));
+    ReactiveDS.set('mrtLine', Config.getStationsByLine(mrtLine));
     Deps.flush();
     t.$('#stations').selectpicker('refresh');
   }
@@ -24,11 +24,11 @@ Template.addProperty.helpers({
     for (var line in mrtList){
       lines.push(line);
     }
-    Session.set('mrtLine', Config.getStationsByLine('NS'));
+    ReactiveDS.set('mrtLine', Config.getStationsByLine('NS'));
     return lines;
   },
 
   stations: function(){
-    return Session.get('mrtLine');
+    return ReactiveDS.get('mrtLine');
   }
 });

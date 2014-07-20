@@ -91,7 +91,7 @@ Template.loginForm.events({
       if (err && err.error === 403) {
         Session.set('displayMessage', 'Login Error: email or password is not correct.');
       } else {
-        
+
       }
     });
   },
@@ -102,7 +102,7 @@ Template.loginForm.events({
       if (err && err.error === 403) {
         Session.set('displayMessage', 'Login Error: username or password is not correct.');
       } else {
-        
+
       }
     });
   }
@@ -128,7 +128,7 @@ Template.signupForm.events({
         && isValidType(parseInt(accountType)))
     {
       Accounts.createUser({
-        username:username, 
+        username:username,
         email:email,
         password: password,
         profile:{
@@ -139,7 +139,7 @@ Template.signupForm.events({
         if (err && err.error === 403) {
           Session.set('displayMessage', '创建账户不成功 &' + err.reason);
         } else {
-          
+
         }
       });
     }else{
