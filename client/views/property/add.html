@@ -48,7 +48,7 @@
                           <header><h2>概览</h2></header>
                           <div class="form-group">
                             <label for="submit-district">区域</label>
-                            <select name="type" id="submit-district" name="submit-district">
+                            <select id="submit-district" name="submit-district">
                               {{#each arrayify district}}
                               <option value="{{key}}">{{key}} - {{value}}</option>
                               {{/each}}
@@ -170,7 +170,7 @@
                   <header><h2>图片集</h2></header>
                   <div class="center">
                     <div class="form-group">
-                      <input id="file-upload" type="file" class="file" multiple="true" data-show-upload="false" data-show-caption="false" data-show-remove="false" accept="image/jpeg,image/png" data-browse-class="btn btn-default" data-browse-label="Browse Images">
+                      {{> dropzone url='http://somewebsite.com/upload' id='dropzoneDiv'}}
                       <figure class="note"><strong>提示:</strong> 可以一次选择多个文件!</figure>
                     </div>
                   </div>

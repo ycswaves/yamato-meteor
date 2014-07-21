@@ -3,6 +3,7 @@
     "iron-router": {},
     "collection2": {},
     "flash-messages": {},
-    "pnotify": {}
+    "pnotify": {},
+    "Dropzonejs": {}
   }
 }
