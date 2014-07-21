@@ -1,0 +1,69 @@
+<template name="signupForm">
+	<div id="signupModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+							<h1>新建账户</h1>
+							{{> flashMessages}}
+							<h3>账户类型</h3>
+							<form role="form" id="signupForm" method="post">
+								<div class="radio" id="create-account-user">
+									<label>
+										<input type="radio" id="account-type-user" name="accountType" value=1 required checked>普通用户
+									</label>
+								</div>
+								<div class="radio" id="agent-switch">
+									<label>
+										<input type="radio" id="account-type-agent" name="accountType" value=2 required>房屋经纪
+									</label>
+								</div>
+								<div id="agency" class="disabled">
+									<div class="form-group">
+										<label for="account-agency">选择您的经纪公司:</label>
+										<select name="accountAgency" id="account-agency">
+											<option value="">中介公司</option>
+											{{#each arrayify agency}}
+											<option value="{{key}}">{{value}}</option>
+											{{/each}}
+										</select>
+									</div><!-- /.form-group -->
+								</div>
+								<hr>
+								<div class="form-group">
+									<label>用户名:</label>
+									<input type="text" class="form-control" name="username" required>
+								</div><!-- /.form-group -->
+								<div class="form-group">
+									<label>邮箱:</label>
+									<input type="email" class="form-control" name="email" required>
+								</div><!-- /.form-group -->
+								<div class="form-group">
+									<label>密码:</label>
+									<input type="password" class="form-control" name="password" required>
+								</div><!-- /.form-group -->
+								<div class="form-group">
+									<label>重复输入密码:</label>
+									<input type="password" class="form-control" name="passwordAgain" required>
+								</div><!-- /.form-group -->
+								<div class="checkbox pull-left">
+									<label>
+										<input type="checkbox" name="isAcceptNewsletter">接受最新信息推送
+									</label>
+								</div>
+								<div class="form-group clearfix">
+									<button type="submit" class="btn pull-right btn-default" id="account-submit">新建账户</button>
+								</div><!-- /.form-group -->
+							</form>
+							<hr>
+							<div class="center">
+								<figure class="note">当您点击“新建账户”时表示已阅我们的 <a href="terms-conditions.html">条款与申明</a></figure>
+							</div>
+						</div><!-- /.row -->
+					</div><!-- /.container -->
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
