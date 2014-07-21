@@ -22,6 +22,14 @@ Router.map(function () {
     }
 	});
 
+  this.route('profile', {
+    path: '/profile',
+    template: 'profilePage',
+    action: function () {
+     this.render();
+    }
+  });
+
   this.route('addProperty', {
     path: '/properties/add',
     template: 'addProperty',

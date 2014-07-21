@@ -10,6 +10,10 @@ Template.addProperty.rendered = function() {
     render();
 }
 
+Template.profilePage.rendered = function() {
+    render();
+}
+
 function render(){
     $('.tool-tip').tooltip();
 

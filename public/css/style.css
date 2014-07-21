@@ -603,7 +603,7 @@ fieldset[disabled] .btn-gplus.active {
 	border-color: #335397;
 }
 
-.background-color-pinterest {
+.background-color-google {
 	color: #fff;
 	background-color: #C92228 ;
 	border-color: #C92228 ;
@@ -1761,6 +1761,66 @@ ul.list-links li a:hover {
   		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   		opacity: 0;
   	}
+  }
+
+  .account-profile {
+  	position: relative;
+  }
+  .account-profile h3 {
+  	margin-top: 0;
+  	margin-bottom: 30px;
+  }
+  .account-profile img {
+  	width: 100%;
+  	margin-bottom: 30px;
+  }
+  .account-profile form {
+  	position: relative;
+  }
+  .account-profile section {
+  	margin-bottom: 0px;
+  }
+  .account-profile section#agency {
+  	-moz-transition: 0.4s;
+  	-o-transition: 0.4s;
+  	-webkit-transition: 0.4s;
+  	transition: 0.4s;
+  }
+  .account-profile section#contact label, .account-profile section#agency label {
+  	display: block;
+  	line-height: 38px;
+  }
+  .account-profile section#social .input-group {
+  	width: 100%;
+  }
+  .account-profile section#social .input-group .input-group-addon {
+  	width: 40px;
+  }
+  .account-profile section#social .input-group .input-group-addon i {
+  	color: #fff;
+  }
+  .account-profile .contact-fields {
+  	display: table;
+  	width: 100%;
+  }
+  .account-profile .contact-fields dt {
+  	clear: both;
+  }
+  .account-profile .contact-fields dd {
+  	float: right;
+  	margin-bottom: 5px;
+  	width: 65%;
+  }
+  .account-profile .switch {
+  	position: absolute;
+  	top: 0;
+  	right: 0;
+  }
+  .account-profile .switch label {
+  	line-height: 0 !important;
+  }
+  .account-profile .switch .icheckbox {
+  	margin-right: 0;
   }
 /****
   C
