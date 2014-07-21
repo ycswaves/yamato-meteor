@@ -72,6 +72,7 @@ function render(){
     //  Agent State
 
     $('#agent-switch').on('ifClicked', function(event) {
+        $('#agent-switch').data('agent-state', true);
         agentState();
     });
 
@@ -248,9 +249,7 @@ function agentState(){
         $agentSwitch.iCheck('check');
         $agency.removeClass('disabled');
         $agency.addClass('enabled');
-        $agentSwitch.data('agent-state', '');
     } else {
-        $agentSwitch.data('agent-state', true);
         $agency.removeClass('enabled');
         $agency.addClass('disabled');
     }

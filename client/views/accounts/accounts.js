@@ -11,7 +11,6 @@ function isEmail(val) {
       return true;
     } else {
       Session.set('displayMessage', 'Error & Please enter a valid email address.');
-      console.log(3);
       return false;
     }
 }
@@ -76,9 +75,11 @@ Template.loginForm.events({
       Meteor.loginWithPassword(username, password, function(err){
         if (err && err.error === 403) {
           // Session.set('displayMessage', '用户名或密码不正确');
+          FlashMessages.clear();
           FlashMessages.sendError("用户名或密码不正确");
         } else {
           t.$('#loginModal').modal('hide');
+          Notification.sendSuccess('登陆成功','欢迎回来');
         }
       });
     }
@@ -151,9 +152,6 @@ Template.signupForm.events({
 });
 
 Template.signupForm.helpers({
-  signupStatus: function(){
-    return Session.get('displayMessage');
-  },
   agency: function(){
   	return Config.getAgency();
   }

@@ -1,5 +1,5 @@
 FlashMessages.configure({
 	autoHide: true,
-	hideDelay: 2000,
+	hideDelay: 3000,
 	autoScroll: true
 });
