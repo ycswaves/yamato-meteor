@@ -4,6 +4,7 @@
     "collection2": {},
     "flash-messages": {},
     "pnotify": {},
-    "Dropzonejs": {}
+    "Dropzonejs": {},
+    "collectionFS": {}
   }
 }
