@@ -555,6 +555,14 @@ fieldset[disabled] .btn-gplus.active {
 	color: #1396e2;
 }
 
+.text-success{
+	color: #92cf5c;
+}
+
+.text-danger{
+	color: #fb6b5b;
+}
+
 .text-white{
 	color: #FFF;
 }
@@ -663,7 +671,7 @@ dl dt {
 
 dl dd {
 	margin-bottom: 8px;
-	text-align: right;
+	text-align: left;
 }
 
 dl dd .rating {

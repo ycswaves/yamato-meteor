@@ -12,6 +12,19 @@ Template.addProperty.rendered = function() {
 
 Template.profilePage.rendered = function() {
     render();
+    var isAgent=false;
+    if($(this).find('div').hasClass('checked')){
+        isAgent = true;
+    }
+    $('body').on('ifClicked','#agency-switch',function(event) {
+        if(isAgent){
+            $('#agency').addClass('disabled');
+            isAgent = false;
+        }else{
+            $('#agency').removeClass('disabled');
+            isAgent = true;
+        }
+    });
 }
 
 function render(){
