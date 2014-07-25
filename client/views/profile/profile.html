@@ -35,18 +35,18 @@
 									<img alt="" class="image radius" src="{{loggedInUser.profile.avatar}}">
 								</div>
 								<div class="col-md-9 col-sm-9">
-									<form role="form" id="form-account-profile" method="post" action="">
+									<form role="form" id="accountProfile" method="post" action="">
 										<div class="checkbox switch" id="agency-switch">
 											<label>
 												我是房屋经纪
 												{{#if isAgent}}
-												<input type="checkbox" checked="checked">
+												<input id="agentCheck" type="checkbox" checked="checked">
 												{{else}}
-												<input type="checkbox">
+												<input id="agentCheck" type="checkbox">
 												{{/if}}
 											</label>
 										</div>
-										<section id="agency">
+										<section id="agencySelection">
 											<h3>我的中介机构</h3>
 											<div class="row">
 												<div class="col-md-4 col-sm-4">
@@ -54,7 +54,7 @@
 												</div>
 												<div class="col-md-8 col-sm-8">
 													<div class="form-group">
-														<select name="account-agency" id="account-agency">
+														<select name="accountAgency" id="account-agency">
 															<option value="">中介机构</option>
 															{{#each arrayify agency}}
 															<option value="{{key}}">{{value}}</option>
@@ -85,7 +85,7 @@
 												</div><!-- /.form-group --></dd>
 												<dt><label for="form-account-phone">电话:</label></dt>
 												<dd><div class="form-group">
-													<input type="text" class="form-control" id="form-account-phone" name="phone" value="{{loggedInUser.profile.phone}}">
+													<input type="text" class="form-control" id="form-account-phone" name="phone" required value="{{loggedInUser.profile.phone}}">
 												</div><!-- /.form-group --></dd>
 												<dt><label for="form-account-qq">QQ:</label></dt>
 												<dd><div class="form-group">
@@ -100,28 +100,7 @@
 										<section id="about-me">
 											<h3>关于我</h3>
 											<div class="form-group">
-												<textarea class="form-control" id="form-contact-agent-message" rows="5" name="form-contact-agent-message">{{loggedInUser.profile.about}}</textarea>
-											</div><!-- /.form-group -->
-										</section>
-										<section id="social">
-											<h3>我的社交网络账户</h3>
-											<div class="form-group">
-												<div class="input-group">
-												<span class="input-group-addon background-color-twitter"><i class="fa fa-twitter"></i></span>
-													<input type="text" class="form-control" id="account-social-twitter" name="account-social-twitter">
-												</div>
-											</div><!-- /.form-group -->
-											<div class="form-group">
-												<div class="input-group">
-													<span class="input-group-addon background-color-facebook"><i class="fa fa-facebook"></i></span>
-													<input type="text" class="form-control" id="account-social-facebook" name="account-social-facebook" >
-												</div>
-											</div><!-- /.form-group -->
-											<div class="form-group">
-												<div class="input-group">
-													<span class="input-group-addon background-color-google"><i class="fa fa-google-plus"></i></span>
-													<input type="text" class="form-control" id="account-social-google" name="account-social-google">
-												</div>
+												<textarea class="form-control" id="form-contact-agent-message" rows="5" name="about">{{loggedInUser.profile.about}}</textarea>
 											</div><!-- /.form-group -->
 											<div class="form-group clearfix">
 												<button type="submit" class="btn pull-right btn-default" id="account-submit">保存变更</button>

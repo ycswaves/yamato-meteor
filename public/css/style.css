@@ -1788,13 +1788,13 @@ ul.list-links li a:hover {
   .account-profile section {
   	margin-bottom: 0px;
   }
-  .account-profile section#agency {
+  .account-profile section#agency, .account-profile section#agencySelection {
   	-moz-transition: 0.4s;
   	-o-transition: 0.4s;
   	-webkit-transition: 0.4s;
   	transition: 0.4s;
   }
-  .account-profile section#contact label, .account-profile section#agency label {
+  .account-profile section#contact label, .account-profile section#agency label,.account-profile section#agencySelection label {
   	display: block;
   	line-height: 38px;
   }

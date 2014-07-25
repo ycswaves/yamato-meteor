@@ -12,16 +12,21 @@ Template.addProperty.rendered = function() {
 
 Template.profilePage.rendered = function() {
     render();
-    var isAgent=false;
-    if($(this).find('div').hasClass('checked')){
-        isAgent = true;
+    if($('#agentCheck').is(':checked')){
+        var isAgent = true;
+        $('#agencySelection').removeClass('disabled');
+    }else{
+        var isAgent = false;
+        $('#agencySelection').addClass('disabled');
     }
+
     $('body').on('ifClicked','#agency-switch',function(event) {
+        console.log(11);
         if(isAgent){
-            $('#agency').addClass('disabled');
+            $('#agencySelection').addClass('disabled');
             isAgent = false;
         }else{
-            $('#agency').removeClass('disabled');
+            $('#agencySelection').removeClass('disabled');
             isAgent = true;
         }
     });

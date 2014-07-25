@@ -7,8 +7,7 @@ Router.configure({
 var filters = {
 	isLoggedIn: function() {
 		if (!(Meteor.loggingIn() || Meteor.user())) {
-			this.redirect('home');
-			this.stop();
+			this.go('landing'); //not working
 		}
 	}
 }
@@ -25,6 +24,7 @@ Router.map(function () {
   this.route('profile', {
     path: '/profile',
     template: 'profilePage',
+    onBeforeAction: filters.isLoggedIn(),
     action: function () {
      this.render();
     }
