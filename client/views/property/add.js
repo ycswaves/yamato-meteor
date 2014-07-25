@@ -5,6 +5,23 @@ Template.addProperty.events({
     ReactiveDS.set('mrtLine', Config.getStationsByLine(mrtLine));
     Deps.flush();
     t.$('#stations').selectpicker('refresh');
+  },
+
+  'submit #propertyForm': function(e, t){
+    e.preventDefault();
+    var title = t.find('input[name="title"]')
+      , price = t.find('input[name="price"]')
+      , descr = t.find('input[name="description"]')
+      , district = t.find('select[name="district"]')
+      // deal type
+      , pType = t.find('select[name="property-type"]')
+      , hasAgent = t.find('input[name="has-agent"]')
+      , bedroom = t.find('select[name="bedroom"]')
+      , area = t.find('select[name="property-area"]')
+      , bathroom = t.find('select[name="bathroom"]')
+      //, mrtLine = t.find('select[name="mrtlines"]').value
+      ;
+
   }
 });
 
@@ -18,7 +35,7 @@ Template.addProperty.helpers({
     return Config.getDistrict();
   },
 
-  mrtLines: function(){
+  mrtlines: function(){
     ReactiveDS.set('mrtLine', Config.getStationsByLine('NS'));
     return Config.getMRT();
   },
