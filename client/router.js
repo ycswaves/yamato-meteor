@@ -7,7 +7,7 @@ Router.configure({
 var filters = {
 	isLoggedIn: function() {
 		if (!(Meteor.loggingIn() || Meteor.user())) {
-			this.go('landing'); //not working
+			Router.go('landing'); //not working
 		}
 	}
 }
