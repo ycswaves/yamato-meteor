@@ -6,7 +6,11 @@ Template.profilePage.helpers({
     return Meteor.user();
   },
   isAgent:function(){
-  	return null;
+  	if(Meteor.user().profile.userType==1){
+	  	return null;
+	  }else{
+	  	return true;
+	  }
   }
 })
 
