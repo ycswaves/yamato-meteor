@@ -2,8 +2,11 @@ Template.profilePage.helpers({
   agency: function(){
   	return Config.getAgency();
   },
+  loggedInUser: function(){
+    return Meteor.user();
+  },
   isAgent:function(){
-  	// if(userData.profile.userType==1){
+  	// if(Meteor.user().profile.userType==1){
 	  // 	return null;
 	  // }else{
 	  	return true;
