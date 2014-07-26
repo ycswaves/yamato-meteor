@@ -10,6 +10,28 @@ Template.addProperty.rendered = function() {
     render();
 }
 
+Template.profilePage.rendered = function() {
+    render();
+    if($('#agentCheck').is(':checked')){
+        var isAgent = true;
+        $('#agencySelection').removeClass('disabled');
+    }else{
+        var isAgent = false;
+        $('#agencySelection').addClass('disabled');
+    }
+
+    $('body').on('ifClicked','#agency-switch',function(event) {
+        console.log(11);
+        if(isAgent){
+            $('#agencySelection').addClass('disabled');
+            isAgent = false;
+        }else{
+            $('#agencySelection').removeClass('disabled');
+            isAgent = true;
+        }
+    });
+}
+
 function render(){
     $('.tool-tip').tooltip();
 

@@ -1,0 +1,119 @@
+<template name="profilePage">
+	<div class="page-gradient">
+		<div class="container">
+			<ol class="breadcrumb">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">账户</a></li>
+				<li class="active">个人简介</li>
+			</ol>
+		</div>
+		<!-- end Breadcrumb -->
+
+		<div class="container">
+			<div class="row">
+				<!-- sidebar -->
+				<div class="col-md-3 col-sm-2">
+					<section id="sidebar">
+						<header><h3>账户</h3></header>
+						<aside>
+							<ul class="sidebar-navigation">
+								<li class="active radius"><a href="profile.html"><i class="fa fa-user"></i><span>个人简介</span></a></li>
+								<li><a href="my-properties.html"><i class="fa fa-home"></i><span>我的房屋</span></a></li>
+								<li><a href="bookmarked.html"><i class="fa fa-heart"></i><span>特别关注</span></a></li>
+							</ul>
+						</aside>
+					</section><!-- /#sidebar -->
+				</div><!-- /.col-md-3 -->
+				<!-- end Sidebar -->
+				<!-- My Properties -->
+				<div class="col-md-9 col-sm-10">
+					<section id="profile">
+						<header><h1>个人简介</h1></header>
+						<div class="account-profile">
+							<div class="row">
+								<div class="col-md-3 col-sm-3">
+									<img alt="" class="image radius" src="{{loggedInUser.profile.avatar}}">
+								</div>
+								<div class="col-md-9 col-sm-9">
+									<form role="form" id="accountProfile" method="post" action="">
+										<div class="checkbox switch" id="agency-switch">
+											<label>
+												我是房屋经纪
+												{{#if isAgent}}
+												<input id="agentCheck" type="checkbox" checked="checked">
+												{{else}}
+												<input id="agentCheck" type="checkbox">
+												{{/if}}
+											</label>
+										</div>
+										<section id="agencySelection">
+											<h3>我的中介机构</h3>
+											<div class="row">
+												<div class="col-md-4 col-sm-4">
+													<label for="account-agency">选择您的中介机构:</label>
+												</div>
+												<div class="col-md-8 col-sm-8">
+													<div class="form-group">
+														<select name="accountAgency" id="account-agency">
+															<option value="">中介机构</option>
+															{{#each arrayify agency}}
+															<option value="{{key}}">{{value}}</option>
+															{{/each}}
+														</select>
+													</div><!-- /.form-group -->
+												</div>
+											</div>
+										</section>
+										<section id="contact">
+											<h3>联络方式</h3>
+											<dl class="contact-fields">
+												{{#each loggedInUser.emails}}
+													<dt><label for="form-account-email">邮箱:</label></dt>
+													<dd>
+														<label>{{address}}
+														{{#if verified}}
+														<i class="fa fa-check-circle text-success"></i>
+														{{else}}
+														<span class="text-danger">[未验证]</span>
+														{{/if}}
+														</label>
+													</dd>
+												{{/each}}
+												<dt><label for="form-account-name">名字:</label></dt>
+												<dd><div class="form-group">
+													<input type="text" class="form-control" id="form-account-name" name="name" required value="{{loggedInUser.profile.name}}">
+												</div><!-- /.form-group --></dd>
+												<dt><label for="form-account-phone">电话:</label></dt>
+												<dd><div class="form-group">
+													<input type="text" class="form-control" id="form-account-phone" name="phone" required value="{{loggedInUser.profile.phone}}">
+												</div><!-- /.form-group --></dd>
+												<dt><label for="form-account-qq">QQ:</label></dt>
+												<dd><div class="form-group">
+													<input type="text" class="form-control" id="form-account-qq" name="qq" value="{{loggedInUser.profile.qq}}">
+												</div><!-- /.form-group --></dd>
+												<dt><label for="form-account-wechat">微信:</label></dt>
+												<dd><div class="form-group">
+													<input type="text" class="form-control" id="form-account-wechat" name="wechat" value="{{loggedInUser.profile.wechat}}">
+												</div><!-- /.form-group --></dd>
+											</dl>
+										</section>
+										<section id="about-me">
+											<h3>关于我</h3>
+											<div class="form-group">
+												<textarea class="form-control" id="form-contact-agent-message" rows="5" name="about">{{loggedInUser.profile.about}}</textarea>
+											</div><!-- /.form-group -->
+											<div class="form-group clearfix">
+												<button type="submit" class="btn pull-right btn-default" id="account-submit">保存变更</button>
+											</div><!-- /.form-group -->
+										</section>
+									</form><!-- /#form-contact -->
+								</div><!-- /.col-md-9 -->
+							</div><!-- /.row -->
+						</div><!-- /.account-profile -->
+					</section><!-- /#profile -->
+				</div><!-- /.col-md-9 -->
+				<!-- end My Properties -->
+			</div><!-- /.row -->
+		</div><!-- /.container -->
+	</div>
+</template>
