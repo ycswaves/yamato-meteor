@@ -47,8 +47,8 @@
                         <section id="summary">
                           <header><h2>概览</h2></header>
                           <div class="form-group">
-                            <label for="submit-district">区域</label>
-                            <select id="submit-district" name="submit-district">
+                            <label for="district">区域</label>
+                            <select id="district" name="district">
                               {{#each arrayify district}}
                               <option value="{{key}}">{{key}} - {{value}}</option>
                               {{/each}}
@@ -73,8 +73,8 @@
 
                             <div class="col-md-4 col-sm-4">
                               <div class="form-group">
-                                <label for="submit-property-type">房屋类型</label>
-                                <select name="property-type" id="submit-property-type">
+                                <label for="property-type">房屋类型</label>
+                                <select name="property-type" id="property-type">
                                   <option value="1">组屋</option>
                                   <option value="2">公寓</option>
                                   <option value="3">排屋</option>
@@ -87,12 +87,12 @@
                               <div class="form-group form-inline" style="padding-top:10px">
                                 <div class="radio" style="margin-right:30px">
                                   <label>
-                                    <input type="radio" id="has-agent-true" name="has-agent" required checked>有
+                                    <input type="radio" id="has-agent-true" value="1" name="has-agent" required>有
                                   </label>
                                 </div>
                                 <div class="radio" data-agent-state="">
                                   <label>
-                                    <input type="radio" id="has-agent-false" name="has-agent" required>无
+                                    <input type="radio" id="has-agent-false" value="0" name="has-agent" required checked>无
                                   </label>
                                 </div>
                               </div><!-- /.form-group -->
@@ -101,8 +101,8 @@
                           <div class="row">
                             <div class="col-md-4 col-sm-4">
                               <div class="form-group">
-                                <label for="submit-Beds">房间数</label>
-                                <select name="property-bedroom" id="property-bedroom">
+                                <label for="bedroom">房间数</label>
+                                <select name="bedroom">
                                   <option value="1">1</option>
                                   <option value="2">2</option>
                                   <option value="3">3</option>
@@ -115,9 +115,9 @@
 
                             <div class="col-md-4 col-sm-4">
                               <div class="form-group">
-                                <label for="submit-area">面积</label>
+                                <label for="area">面积</label>
                                 <div class="input-group">
-                                  <input type="text" class="form-control" id="submit-area" name="property-area" pattern="\d*" required>
+                                  <input type="text" class="form-control" name="property-area" pattern="\d*" required>
                                   <span class="input-group-addon">m<sup>2</sup></span>
                                 </div>
                               </div><!-- /.form-group -->
@@ -125,8 +125,8 @@
 
                             <div class="col-md-4 col-sm-4">
                               <div class="form-group">
-                                <label for="property-bathroom">卫生间</label>
-                                <select name="property-bathroom" id="property-bathroom">
+                                <label for="bathroom">卫生间</label>
+                                <select name="bathroom">
                                   <option value="1">1</option>
                                   <option value="2">2</option>
                                   <option value="3">3</option>
@@ -139,9 +139,9 @@
                           <div class="row">
                             <div class="col-md-4 col-sm-4">
                               <div class="form-group" id="mrtLinesDiv">
-                                <label for="submit-property-type">最近地铁线</label>
-                                <select name="mrtLines" id="mrtLines">
-                                  {{#each arrayify mrtLines}}
+                                <label for="mrtlines">最近地铁线</label>
+                                <select name="mrtlines" id="mrtlines">
+                                  {{#each arrayify mrtlines}}
                                   <option value="{{key}}">{{value.niceName}}</option>
                                   {{/each}}
                                 </select>
