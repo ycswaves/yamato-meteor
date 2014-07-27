@@ -7,6 +7,10 @@ Template.propertyListing.rendered = function() {
 }
 
 Template.addProperty.rendered = function() {
+    $('.datepicker').pickadate({
+      format: 'yyyy/mm/dd'
+    });
+    $('.picker__holder').css('min-width', '274px');
     render();
 }
 

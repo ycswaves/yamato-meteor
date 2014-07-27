@@ -1,34 +1,33 @@
 Template.addProperty.events({
   'change #mrtLines': function(e, t){
     e.preventDefault();
-    var mrtLine = t.find('select[name="mrtLines"]').value;
-    ReactiveDS.set('mrtLine', Config.getStationsByLine(mrtLine));
+    var mrtLine = t.find('select[name="mrtlines"]').value;
+    ReactiveDS.set('mrtline', Config.getStationsByLine(mrtLine));
     Deps.flush();
     t.$('#stations').selectpicker('refresh');
   },
 
   'submit #propertyForm': function(e, t){
     e.preventDefault();
-    var title = t.find('input[name="title"]')
-      , price = t.find('input[name="price"]')
-      , descr = t.find('input[name="description"]')
-      , district = t.find('select[name="district"]')
+    var title = t.find('input[name="title"]').value
+      , price = t.find('input[name="price"]').value
+      , descr = t.find('input[name="description"]').value
+      , district = t.find('select[name="district"]').value
       // deal type
-      , pType = t.find('select[name="property-type"]')
-      , hasAgent = t.find('input[name="has-agent"]')
-      , bedroom = t.find('select[name="bedroom"]')
-      , area = t.find('select[name="property-area"]')
-      , bathroom = t.find('select[name="bathroom"]')
-      //, mrtLine = t.find('select[name="mrtlines"]').value
+      , pType = t.find('select[name="property-type"]').value
+      , hasAgent = t.find('input[name="has-agent"]').value
+      , bedroom = t.find('select[name="bedroom"]').value
+      , area = t.find('select[name="property-area"]').value
+      , bathroom = t.find('select[name="bathroom"]').value
+      , nearestMRT = t.find('select[name="stations"]').value
+      // photo gallerty
+
       ;
 
   }
 });
 
-Template.addProperty.rendered = function(){
-  this.$('#stations').selectpicker('refresh');
-  console.log('a');
-}
+
 
 Template.addProperty.helpers({
   district: function(){
@@ -36,11 +35,11 @@ Template.addProperty.helpers({
   },
 
   mrtlines: function(){
-    ReactiveDS.set('mrtLine', Config.getStationsByLine('NS'));
+    ReactiveDS.set('mrtline', Config.getStationsByLine('NS'));
     return Config.getMRT();
   },
 
   stations: function(){
-    return ReactiveDS.get('mrtLine');
+    return ReactiveDS.get('mrtline');
   }
 });

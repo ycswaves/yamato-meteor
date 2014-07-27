@@ -5,6 +5,7 @@
     "flash-messages": {},
     "pnotify": {},
     "Dropzonejs": {},
-    "collectionFS": {}
+    "collectionFS": {},
+    "pickadate": {}
   }
 }
