@@ -79,7 +79,7 @@ Template.loginForm.events({
           FlashMessages.sendError("用户名或密码不正确");
         } else {
           t.$('#loginModal').modal('hide');
-          Notification.sendSuccess('登陆成功','欢迎回来');
+          NotificationMessages.sendSuccess('登陆成功','欢迎回来');
         }
       });
     }
