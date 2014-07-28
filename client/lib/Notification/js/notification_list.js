@@ -1,18 +1,18 @@
-// Template.notificationMessage.rendered = function () {
-//   var message = this.data;
-//   Meteor.defer(function() {
-//     notificationMessages.update(message._id, {$set: {seen: true}});
-//   });
-//   if (message.options && message.options.autoHide) {
-//     $alert = $(this.find('.alert'));
-//     Meteor.setTimeout(function() {
-//         $alert.fadeOut(400, function() {
-//           notificationMessages.remove({_id: message._id});
-//         });    
-//       }, 
-//       message.options.hideDelay);
-//   }
-// };
+Template.notificationMessage.rendered = function () {
+  var message = this.data;
+  Meteor.defer(function() {
+    notificationMessages.update(message._id, {$set: {seen: true}});
+  });
+  if (message.options && message.options.autoHide) {
+    $message = $(this.find('.message'));
+    Meteor.setTimeout(function() {
+        $message.fadeOut(400, function() {
+          notificationMessages.remove({_id: message._id});
+        });    
+      }, 
+      message.options.hideDelay);
+  }
+};
 
 Template.notificationMessages.helpers({
    notifications : function () {
