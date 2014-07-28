@@ -5,11 +5,11 @@ Template.profilePage.helpers({
   loggedInUser: function(){
     return Meteor.user();
   },
-  isAgent:function(){
-  	if(Meteor.user().profile.userType==1){
-	  	return null;
+  ifAgent:function(){
+  	if(Meteor.user() && Meteor.user().profile.userType==1){
+	  	return '';
 	  }else{
-	  	return true;
+	  	return 'checked';
 	  }
   }
 })
@@ -30,7 +30,17 @@ Template.profilePage.events({
       , wechat = t.find('input[name=wechat]').value
       , about = t.find('textarea[name=about]').value;
 
-    Meteor.users.update({_id:Meteor.userId()}, {$set:{"profile.name":name}});
+    Meteor.users.update({_id:Meteor.userId()}, {$set:{
+    	"profile.name":name,
+    	"profile.phone":phone,
+    	"profile.qq":qq,
+    	"profile.wechat":wechat,
+    	"profile.about":about
+    }},function(err){
+    	if (!err) {
+      	NotificationMessages.sendSuccess('账户','用户资料更新成功');
+      }
+    });
     return false;
   }
 })

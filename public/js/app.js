@@ -21,7 +21,6 @@ Template.profilePage.rendered = function() {
     }
 
     $('body').on('ifClicked','#agency-switch',function(event) {
-        console.log(11);
         if(isAgent){
             $('#agencySelection').addClass('disabled');
             isAgent = false;

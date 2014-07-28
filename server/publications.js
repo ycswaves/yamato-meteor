@@ -1,3 +1,3 @@
 Meteor.publish('userData', function () {
-    return Meteor.user();
+    return Meteor.users.find();
 });

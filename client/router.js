@@ -23,6 +23,9 @@ Router.map(function () {
 
   this.route('profile', {
     path: '/profile',
+    waitOn: function () {
+      return Meteor.subscribe('userData');
+    },
     template: 'profilePage',
     onBeforeAction: filters.isLoggedIn(),
     action: function () {
