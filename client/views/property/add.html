@@ -20,7 +20,7 @@
                   <div class="row">
                     <div class="col-md-8">
                       <div class="form-group">
-                        <label for="submit-title">标题</label>
+                        <label for="submit-title">地址</label>
                         <input type="text" class="form-control" id="submit-title" name="title" required>
                       </div><!-- /.form-group -->
                     </div>
@@ -59,9 +59,9 @@
                               <div class="form-group">
                                 <label for="property-type">房屋类型</label>
                                 <select name="property-type" id="property-type">
-                                  <option value="1">组屋</option>
-                                  <option value="2">公寓</option>
-                                  <option value="3">排屋</option>
+                                  {{#each arrayify ptypes}}
+                                  <option value="{{key}}">{{value}}</option>
+                                  {{/each}}
                                 </select>
                               </div><!-- /.form-group -->
                             </div><!-- /.col-md-4 -->
@@ -71,12 +71,12 @@
                               <div class="form-group form-inline" style="padding-top:10px">
                                 <div class="radio" style="margin-right:30px">
                                   <label>
-                                    <input type="radio" id="has-agent-true" value="1" name="has-agent" required>有
+                                    <input type="radio" id="has-agent-true" value="1" name="has-agent-fee" required>有
                                   </label>
                                 </div>
                                 <div class="radio" data-agent-state="">
                                   <label>
-                                    <input type="radio" id="has-agent-false" value="0" name="has-agent" required checked>无
+                                    <input type="radio" id="has-agent-false" value="0" name="has-agent-fee" required checked>无
                                   </label>
                                 </div>
                               </div><!-- /.form-group -->
@@ -161,7 +161,7 @@
                 </section>
 
                 <section class="block" id="gallery">
-                  <header><h2>图片集</h2></header>
+                  <header><h2>图片上传</h2></header>
                   <div class="center">
                     <div class="form-group">
                       {{> dropzone url='http://somewebsite.com/upload' id='dropzoneDiv'}}
@@ -174,20 +174,9 @@
                   <section>
                     <header><h2>房屋特色</h2></header>
                     <ul class="submit-features">
-                      <li><div class="checkbox"><label><input type="checkbox">精装修</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">无房东</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">空调</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">洗衣机</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">烘干机</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">冰箱</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">网络</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">微波炉</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">可煮</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">游泳池</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">网球场</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">有线电视</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">阳台</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">停车场</label></div></li>
+                      {{#each arrayify facilities}}
+                        <li><div class="checkbox"><label><input type="checkbox" value="{{key}}" class="property-facility">{{value}}</label></div></li>
+                      {{/each}}
                     </ul>
                   </section>
                 </section>
@@ -199,7 +188,7 @@
                 <figure class="step-number">1</figure>
                 <div class="description">
                   <h4>输入你的房产信息</h4>
-                  <p>请尽可能准确地描述你的房产, 以便我们帮你找到合适的人选
+                  <p>请尽可能准确地描述你的房产, 以便其他用户查找
                   </p>
                 </div>
               </aside><!-- /.submit-step -->

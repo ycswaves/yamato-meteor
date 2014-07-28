@@ -1,5 +1,5 @@
 Template.addProperty.events({
-  'change #mrtLines': function(e, t){
+  'change #mrtlines': function(e, t){
     e.preventDefault();
     var mrtLine = t.find('select[name="mrtlines"]').value;
     ReactiveDS.set('mrtline', Config.getStationsByLine(mrtLine));
@@ -9,20 +9,49 @@ Template.addProperty.events({
 
   'submit #propertyForm': function(e, t){
     e.preventDefault();
+
+    /*********************************************
+        Retrieve form data
+    *********************************************/
     var title = t.find('input[name="title"]').value
       , price = t.find('input[name="price"]').value
-      , descr = t.find('input[name="description"]').value
+      , descr = t.find('textarea[name="description"]').value
       , district = t.find('select[name="district"]').value
       // deal type
       , pType = t.find('select[name="property-type"]').value
-      , hasAgent = t.find('input[name="has-agent"]').value
+      , hasAgentFee = t.find('input[name="has-agent-fee"]').value
+      , moveInDate = t.find('input[name="move-in-date"]').value
       , bedroom = t.find('select[name="bedroom"]').value
-      , area = t.find('select[name="property-area"]').value
+      , area = t.find('input[name="property-area"]').value
       , bathroom = t.find('select[name="bathroom"]').value
       , nearestMRT = t.find('select[name="stations"]').value
       // photo gallerty
+      , facilities = t.findAll('input:checkbox.property-facility').reduce(function (pre, current) {
+          if(current.checked){
+            pre.push(current.value);
+          }
+          return pre;
+        }, []);
 
-      ;
+    /*********************************************
+        Map form data to schema
+    *********************************************/
+    var formObj = {
+      title: title,
+      author: 'anonymous',
+      price: price,
+      description: descr,
+      district: district,
+      propertyType: pType,
+      hasAgentFee: hasAgentFee,
+      moveInDate: moveInDate,
+      area: area,
+      bathroom: bathroom,
+      mrt: nearestMRT,
+      facilities: facilities
+    };
+
+    console.log(formObj);
 
   }
 });
@@ -41,5 +70,13 @@ Template.addProperty.helpers({
 
   stations: function(){
     return ReactiveDS.get('mrtline');
+  },
+
+  facilities: function(){
+    return Config.getFacilities();
+  },
+
+  ptypes: function(){
+    return Config.getPropertyTypes();
   }
 });
