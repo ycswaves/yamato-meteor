@@ -39,11 +39,7 @@
 										<div class="checkbox switch" id="agency-switch">
 											<label>
 												我是房屋经纪
-												{{#if isAgent}}
-												<input id="agentCheck" type="checkbox" checked="checked">
-												{{else}}
-												<input id="agentCheck" type="checkbox">
-												{{/if}}
+												<input id="agentCheck" type="checkbox" {{ifAgent}}>
 											</label>
 										</div>
 										<section id="agencySelection">

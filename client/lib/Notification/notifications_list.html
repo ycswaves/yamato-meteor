@@ -1,0 +1,36 @@
+<template name="notificationMessages">
+  {{#if notifications}}
+  <div class="notification-box">
+    <div style="width:350px">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+        <button type="button" class="close">&times;</button>
+          通知助手
+        </div>
+        <div class="panel-body" style="overflow:hidden">
+          <ul class="notification">
+            {{#each notifications}}
+            {{> notificationMessage}}
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+</template>
+
+<template name="notificationMessage">
+  <li class="left clearfix"><span class="notification-img pull-left">
+    <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" class="img-rounded">
+  </span>
+  <div class="notification-body clearfix">
+    <div class="header">
+      <strong class="primary-font">{{title}}</strong>
+    </div>
+    <p>
+      {{{message}}}
+    </p>
+  </div>
+</li>
+</template>
