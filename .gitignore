@@ -43,3 +43,4 @@ packages/
 # sensative files    #
 ######################
 *.lock
+awsS3Config.js

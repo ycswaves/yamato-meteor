@@ -164,7 +164,11 @@
                   <header><h2>图片上传</h2></header>
                   <div class="center">
                     <div class="form-group">
-                      {{> dropzone url='http://somewebsite.com/upload' id='dropzoneDiv'}}
+                      <form action="/file-upload" class="dropzone" id="upload">
+                        <div class="fallback">
+                          <input name="file" type="file" multiple />
+                        </div>
+                      </form>
                       <figure class="note"><strong>提示:</strong> 可以一次选择多个文件!</figure>
                     </div>
                   </div>

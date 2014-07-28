@@ -1,3 +1,32 @@
+Template.addProperty.rendered = function() {
+    $('.datepicker').pickadate({
+      format: 'yyyy/mm/dd'
+    });
+    $('.picker__holder').css('min-width', '274px');
+
+    //Dropzone.autoDiscover = false;
+    //dictResponseError = 'Error uploading file!';
+    $("#upload").dropzone({
+      addRemoveLinks : true,
+      maxFilesize: 7,
+      accept: function(file, done) {
+        FS.Utility.eachFile(event, function(file) {
+          console.log(file);
+          //Images.insert(file);
+          // Meteor.call('uploadImageToS3', file, function(err, msg){
+          //   if(err)
+          //     console.log(err);
+          //   else
+          //     console.log('uploaded!');
+          // });
+        });
+        done();
+      }
+    });
+
+    render();
+}
+
 Template.addProperty.events({
   'change #mrtlines': function(e, t){
     e.preventDefault();
