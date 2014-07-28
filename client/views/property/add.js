@@ -1,34 +1,91 @@
+Template.addProperty.rendered = function() {
+    $('.datepicker').pickadate({
+      format: 'yyyy/mm/dd'
+    });
+    $('.picker__holder').css('min-width', '274px');
+
+    //Dropzone.autoDiscover = false;
+    //dictResponseError = 'Error uploading file!';
+    $("#upload").dropzone({
+      addRemoveLinks : true,
+      maxFilesize: 7,
+      accept: function(file, done) {
+        FS.Utility.eachFile(event, function(file) {
+          console.log(file);
+          //Images.insert(file);
+          // Meteor.call('uploadImageToS3', file, function(err, msg){
+          //   if(err)
+          //     console.log(err);
+          //   else
+          //     console.log('uploaded!');
+          // });
+        });
+        done();
+      }
+    });
+
+    render();
+}
+
 Template.addProperty.events({
-  'change #mrtLines': function(e, t){
+  'change #mrtlines': function(e, t){
     e.preventDefault();
-    var mrtLine = t.find('select[name="mrtLines"]').value;
-    ReactiveDS.set('mrtLine', Config.getStationsByLine(mrtLine));
+    var mrtLine = t.find('select[name="mrtlines"]').value;
+    ReactiveDS.set('mrtline', Config.getStationsByLine(mrtLine));
     Deps.flush();
     t.$('#stations').selectpicker('refresh');
   },
 
   'submit #propertyForm': function(e, t){
     e.preventDefault();
-    var title = t.find('input[name="title"]')
-      , price = t.find('input[name="price"]')
-      , descr = t.find('input[name="description"]')
-      , district = t.find('select[name="district"]')
+
+    /*********************************************
+        Retrieve form data
+    *********************************************/
+    var title = t.find('input[name="title"]').value
+      , price = t.find('input[name="price"]').value
+      , descr = t.find('textarea[name="description"]').value
+      , district = t.find('select[name="district"]').value
       // deal type
-      , pType = t.find('select[name="property-type"]')
-      , hasAgent = t.find('input[name="has-agent"]')
-      , bedroom = t.find('select[name="bedroom"]')
-      , area = t.find('select[name="property-area"]')
-      , bathroom = t.find('select[name="bathroom"]')
-      //, mrtLine = t.find('select[name="mrtlines"]').value
-      ;
+      , pType = t.find('select[name="property-type"]').value
+      , hasAgentFee = t.find('input[name="has-agent-fee"]').value
+      , moveInDate = t.find('input[name="move-in-date"]').value
+      , bedroom = t.find('select[name="bedroom"]').value
+      , area = t.find('input[name="property-area"]').value
+      , bathroom = t.find('select[name="bathroom"]').value
+      , nearestMRT = t.find('select[name="stations"]').value
+      // photo gallerty
+      , facilities = t.findAll('input:checkbox.property-facility').reduce(function (pre, current) {
+          if(current.checked){
+            pre.push(current.value);
+          }
+          return pre;
+        }, []);
+
+    /*********************************************
+        Map form data to schema
+    *********************************************/
+    var formObj = {
+      title: title,
+      author: 'anonymous',
+      price: price,
+      description: descr,
+      district: district,
+      propertyType: pType,
+      hasAgentFee: hasAgentFee,
+      moveInDate: moveInDate,
+      area: area,
+      bathroom: bathroom,
+      mrt: nearestMRT,
+      facilities: facilities
+    };
+
+    console.log(formObj);
 
   }
 });
 
-Template.addProperty.rendered = function(){
-  this.$('#stations').selectpicker('refresh');
-  console.log('a');
-}
+
 
 Template.addProperty.helpers({
   district: function(){
@@ -36,11 +93,19 @@ Template.addProperty.helpers({
   },
 
   mrtlines: function(){
-    ReactiveDS.set('mrtLine', Config.getStationsByLine('NS'));
+    ReactiveDS.set('mrtline', Config.getStationsByLine('NS'));
     return Config.getMRT();
   },
 
   stations: function(){
-    return ReactiveDS.get('mrtLine');
+    return ReactiveDS.get('mrtline');
+  },
+
+  facilities: function(){
+    return Config.getFacilities();
+  },
+
+  ptypes: function(){
+    return Config.getPropertyTypes();
   }
 });

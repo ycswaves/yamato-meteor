@@ -4,6 +4,8 @@
     "collection2": {},
     "flash-messages": {},
     "Dropzonejs": {},
-    "collectionFS": {}
+    "collectionFS": {},
+    "pickadate": {},
+    "cfs-s3": {}
   }
 }

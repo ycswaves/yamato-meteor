@@ -37,7 +37,7 @@ Router.map(function () {
     path: '/properties/add',
     template: 'addProperty',
     action: function () {
-     this.render();
+      this.render();
     }
   });
 

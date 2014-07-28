@@ -32,6 +32,16 @@ Schemas.Property = new SimpleSchema({
     label: "Property types",
     allowedValues: ['HDB', 'Condominium', 'Landed'],
   },
+  hasAgentFee: {
+    type: Number,
+    label: "Agent fees applied or not",
+    allowedValues: [0, 1]
+  },
+  moveInDate: {
+    type: Date,
+    label: "Earliest date to move in",
+    optional: true
+  },
   bedroom: {
     type: Number,
     label: "Number of bedrooms",
@@ -41,11 +51,6 @@ Schemas.Property = new SimpleSchema({
     type: Number,
     label: "Number of bathrooms",
     min: 1
-  },
-  moveInDate: {
-    type: Date,
-    label: "Earliest date to move in",
-    optional: true
   },
   area: {
     type: Number,

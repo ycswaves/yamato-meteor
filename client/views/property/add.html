@@ -20,7 +20,7 @@
                   <div class="row">
                     <div class="col-md-8">
                       <div class="form-group">
-                        <label for="submit-title">标题</label>
+                        <label for="submit-title">地址</label>
                         <input type="text" class="form-control" id="submit-title" name="title" required>
                       </div><!-- /.form-group -->
                     </div>
@@ -47,8 +47,8 @@
                         <section id="summary">
                           <header><h2>概览</h2></header>
                           <div class="form-group">
-                            <label for="submit-district">区域</label>
-                            <select id="submit-district" name="submit-district">
+                            <label for="district">区域</label>
+                            <select id="district" name="district">
                               {{#each arrayify district}}
                               <option value="{{key}}">{{key}} - {{value}}</option>
                               {{/each}}
@@ -56,28 +56,12 @@
                           </div>
                           <div class="row">
                             <div class="col-md-4 col-sm-4">
-                              <label for="submit-status">交易类型</label>
-                              <div class="form-group form-inline" style="padding-top:10px">
-                                <div class="radio" style="margin-right:30px">
-                                  <label>
-                                    <input type="radio" id="transaction-type-rent" name="transaction-type" required checked>出租
-                                  </label>
-                                </div>
-                                <div class="radio" >
-                                  <label>
-                                    <input type="radio" id="transaction-type-sale" name="transaction-type" required>出售
-                                  </label>
-                                </div>
-                              </div><!-- /.form-group -->
-                            </div><!-- /.col-md-4 -->
-
-                            <div class="col-md-4 col-sm-4">
                               <div class="form-group">
-                                <label for="submit-property-type">房屋类型</label>
-                                <select name="property-type" id="submit-property-type">
-                                  <option value="1">组屋</option>
-                                  <option value="2">公寓</option>
-                                  <option value="3">排屋</option>
+                                <label for="property-type">房屋类型</label>
+                                <select name="property-type" id="property-type">
+                                  {{#each arrayify ptypes}}
+                                  <option value="{{key}}">{{value}}</option>
+                                  {{/each}}
                                 </select>
                               </div><!-- /.form-group -->
                             </div><!-- /.col-md-4 -->
@@ -87,22 +71,32 @@
                               <div class="form-group form-inline" style="padding-top:10px">
                                 <div class="radio" style="margin-right:30px">
                                   <label>
-                                    <input type="radio" id="has-agent-true" name="has-agent" required checked>有
+                                    <input type="radio" id="has-agent-true" value="1" name="has-agent-fee" required>有
                                   </label>
                                 </div>
                                 <div class="radio" data-agent-state="">
                                   <label>
-                                    <input type="radio" id="has-agent-false" name="has-agent" required>无
+                                    <input type="radio" id="has-agent-false" value="0" name="has-agent-fee" required checked>无
                                   </label>
                                 </div>
                               </div><!-- /.form-group -->
                             </div><!-- /.col-md-4 -->
+
+                            <div class="col-md-4 col-sm-4">
+                              <div class="form-group">
+                                <label for="move-in-date">入住时间</label>
+                                <div class="input-group">
+                                  <input type="text" class="form-control datepicker" id="move-in-date" name="move-in-date" required>
+                                </div>
+                              </div><!-- /.form-group -->
+                            </div><!-- /.col-md-4 -->
+
                           </div><!-- /.row -->
                           <div class="row">
                             <div class="col-md-4 col-sm-4">
                               <div class="form-group">
-                                <label for="submit-Beds">房间数</label>
-                                <select name="property-bedroom" id="property-bedroom">
+                                <label for="bedroom">房间数</label>
+                                <select name="bedroom">
                                   <option value="1">1</option>
                                   <option value="2">2</option>
                                   <option value="3">3</option>
@@ -115,9 +109,9 @@
 
                             <div class="col-md-4 col-sm-4">
                               <div class="form-group">
-                                <label for="submit-area">面积</label>
+                                <label for="area">面积</label>
                                 <div class="input-group">
-                                  <input type="text" class="form-control" id="submit-area" name="property-area" pattern="\d*" required>
+                                  <input type="text" class="form-control" name="property-area" pattern="\d*" required>
                                   <span class="input-group-addon">m<sup>2</sup></span>
                                 </div>
                               </div><!-- /.form-group -->
@@ -125,8 +119,8 @@
 
                             <div class="col-md-4 col-sm-4">
                               <div class="form-group">
-                                <label for="property-bathroom">卫生间</label>
-                                <select name="property-bathroom" id="property-bathroom">
+                                <label for="bathroom">卫生间</label>
+                                <select name="bathroom">
                                   <option value="1">1</option>
                                   <option value="2">2</option>
                                   <option value="3">3</option>
@@ -139,9 +133,9 @@
                           <div class="row">
                             <div class="col-md-4 col-sm-4">
                               <div class="form-group" id="mrtLinesDiv">
-                                <label for="submit-property-type">最近地铁线</label>
-                                <select name="mrtLines" id="mrtLines">
-                                  {{#each arrayify mrtLines}}
+                                <label for="mrtlines">最近地铁线</label>
+                                <select name="mrtlines" id="mrtlines">
+                                  {{#each arrayify mrtlines}}
                                   <option value="{{key}}">{{value.niceName}}</option>
                                   {{/each}}
                                 </select>
@@ -167,10 +161,14 @@
                 </section>
 
                 <section class="block" id="gallery">
-                  <header><h2>图片集</h2></header>
+                  <header><h2>图片上传</h2></header>
                   <div class="center">
                     <div class="form-group">
-                      {{> dropzone url='http://somewebsite.com/upload' id='dropzoneDiv'}}
+                      <form action="/file-upload" class="dropzone" id="upload">
+                        <div class="fallback">
+                          <input name="file" type="file" multiple />
+                        </div>
+                      </form>
                       <figure class="note"><strong>提示:</strong> 可以一次选择多个文件!</figure>
                     </div>
                   </div>
@@ -180,20 +178,9 @@
                   <section>
                     <header><h2>房屋特色</h2></header>
                     <ul class="submit-features">
-                      <li><div class="checkbox"><label><input type="checkbox">精装修</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">无房东</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">空调</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">洗衣机</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">烘干机</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">冰箱</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">网络</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">微波炉</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">可煮</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">游泳池</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">网球场</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">有线电视</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">阳台</label></div></li>
-                      <li><div class="checkbox"><label><input type="checkbox">停车场</label></div></li>
+                      {{#each arrayify facilities}}
+                        <li><div class="checkbox"><label><input type="checkbox" value="{{key}}" class="property-facility">{{value}}</label></div></li>
+                      {{/each}}
                     </ul>
                   </section>
                 </section>
@@ -205,7 +192,7 @@
                 <figure class="step-number">1</figure>
                 <div class="description">
                   <h4>输入你的房产信息</h4>
-                  <p>请尽可能准确地描述你的房产, 以便我们帮你找到合适的人选
+                  <p>请尽可能准确地描述你的房产, 以便其他用户查找
                   </p>
                 </div>
               </aside><!-- /.submit-step -->

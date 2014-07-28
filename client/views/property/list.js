@@ -1,3 +1,7 @@
+Template.propertyListing.rendered = function() {
+    render();
+}
+
 Template.propertyListing.helpers({
   properties: function(){
     var properties = [{

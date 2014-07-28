@@ -29,6 +29,29 @@ var districtList = {
   "D28": "Seletar / Yio Chu Kang"
 };
 
+var propertyFacilities = {
+  "furnished": "精装修",
+  "noLandlord": "无房东",
+  "aircon": "空调",
+  "washer": "洗衣机",
+  "dryer": "烘干机",
+  "fridge": "冰箱",
+  "internet": "网络",
+  "microwave": "微波炉",
+  "allowCooking": "可煮",
+  "swimmingPool": "游泳池",
+  "tennisCourt": "网球场",
+  "cableTV": "有线电视",
+  "balcony": "阳台",
+  "parkingSlot": "停车场"
+};
+
+var propertyTypes = {
+  "HDB": "组屋",
+  "Condo": "公寓",
+  "landed": "别墅"
+};
+
 var mrtList = {
   "NS": {
     "niceName": "NS - 南北线",
@@ -97,7 +120,7 @@ var mrtList = {
   },
 
   "NE": {
-    "niceName": "NS - 东南线",
+    "niceName": "NE - 东北线",
     "stations": {
       "NE1" : "HarbourFront",
       "NE3" : "Outram Park",
@@ -191,6 +214,14 @@ Config.getStationsByLine = function(line){
   if(line == undefined) line = 'NS';
   return mrtList[line.toUpperCase()].stations || mrtList.NS.stations;
 };
+
+Config.getFacilities = function(){
+  return propertyFacilities;
+};
+
+Config.getPropertyTypes = function(){
+  return propertyTypes;
+}
 
 Config.getAgency = function(line){
   return agencyList;
