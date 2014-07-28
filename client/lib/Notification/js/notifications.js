@@ -8,21 +8,21 @@ notificationMessages = new Meteor.Collection(null);
 
 NotificationMessages = {
   // Deprecated, use sendWarning instead. sendWarning is more consistent with Boostrap classes.
-  sendAlert: function(message, options) {
-    sendNotification(message, '', options);
+  sendAlert: function(title, message, options) {
+    sendNotification(title, message, '', options);
     console.log('Deprecated, use sendWarning instead of sendAlert');
   },
-  sendWarning: function(message, options) {
-    sendNotification(message, 'alert-warning', options);
+  sendWarning: function(title, message, options) {
+    sendNotification(title, message, 'alert-warning', options);
   },
-  sendError: function(message, options) {
-    sendNotification(message, 'alert-error alert-danger', options);
+  sendError: function(title, message, options) {
+    sendNotification(title, message, 'alert-error alert-danger', options);
   },
-  sendSuccess: function(message, options) {
-    sendNotification(message, 'alert-success', options);
+  sendSuccess: function(title, message, options) {
+    sendNotification(title, message, 'alert-success', options);
   },
-  sendInfo: function(message, options) {
-    sendNotification(message, 'alert-info', options);
+  sendInfo: function(title, message, options) {
+    sendNotification(title, message, 'alert-info', options);
   },
   clear: function() {
     notificationMessages.remove({seen: true});
@@ -38,9 +38,9 @@ NotificationMessages = {
   }
 }
 
-sendNotification = function(message, style, options) {
+sendNotification = function(title, message, style, options) {
   options = options || {};
   options.autoHide = options.autoHide === undefined ? NotificationMessages.options.autoHide : options.autoHide;
   options.hideDelay = options.hideDelay || NotificationMessages.options.hideDelay;
-  notificationMessages.insert({ message: message, style: style, seen: false, options: options});  
+  notificationMessages.insert({ title: title, message: message, style: style, seen: false, options: options});  
 }
