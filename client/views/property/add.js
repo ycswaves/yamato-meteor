@@ -13,12 +13,12 @@ Template.addProperty.rendered = function() {
         FS.Utility.eachFile(event, function(file) {
           console.log(file);
           //Images.insert(file);
-          // Meteor.call('uploadImageToS3', file, function(err, msg){
-          //   if(err)
-          //     console.log(err);
-          //   else
-          //     console.log('uploaded!');
-          // });
+          Meteor.call('uploadImageToS3', file, function(err, msg){
+            if(err)
+              console.log(err);
+            else
+              console.log('uploaded!');
+          });
         });
         done();
       }
