@@ -1,28 +1,3 @@
-Template.landingPage.rendered = function() {
-    render();
-}
-
-Template.profilePage.rendered = function() {
-    render();
-    if($('#agentCheck').is(':checked')){
-        var isAgent = true;
-        $('#agencySelection').removeClass('disabled');
-    }else{
-        var isAgent = false;
-        $('#agencySelection').addClass('disabled');
-    }
-
-    $('body').on('ifClicked','#agency-switch',function(event) {
-        if(isAgent){
-            $('#agencySelection').addClass('disabled');
-            isAgent = false;
-        }else{
-            $('#agencySelection').removeClass('disabled');
-            isAgent = true;
-        }
-    });
-}
-
 render = function(){
     $('.tool-tip').tooltip();
 
