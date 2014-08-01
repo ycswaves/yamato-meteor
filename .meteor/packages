@@ -18,3 +18,4 @@ collectionFS
 pickadate
 cfs-s3
 cfs-ejson-file
+cfs-filesystem
