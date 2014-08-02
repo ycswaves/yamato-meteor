@@ -59,6 +59,16 @@
 													</div><!-- /.form-group -->
 												</div>
 											</div>
+											<div class="row">
+												<div class="col-md-4 col-sm-4">
+													<label for="account-agency">房屋经纪注册号:</label>
+												</div>
+												<div class="col-md-8 col-sm-8">
+													<div class="form-group">
+														<input type="text" class="form-control" id="form-account-name" name="name" required value="{{loggedInUser.profile.name}}">
+													</div>
+												</div>
+											</div>
 										</section>
 										<section id="contact">
 											<h3>联络方式</h3>
@@ -77,11 +87,11 @@
 												{{/each}}
 												<dt><label for="form-account-name">名字:</label></dt>
 												<dd><div class="form-group">
-													<input type="text" class="form-control" id="form-account-name" name="name" required value="{{loggedInUser.profile.name}}">
+													<input type="text" class="form-control" id="form-account-name" name="name" value="{{loggedInUser.profile.name}}">
 												</div><!-- /.form-group --></dd>
 												<dt><label for="form-account-phone">电话:</label></dt>
 												<dd><div class="form-group">
-													<input type="text" class="form-control" id="form-account-phone" name="phone" required value="{{loggedInUser.profile.phone}}">
+													<input type="text" class="form-control" id="form-account-phone" name="phone" value="{{loggedInUser.profile.phone}}">
 												</div><!-- /.form-group --></dd>
 												<dt><label for="form-account-qq">QQ:</label></dt>
 												<dd><div class="form-group">

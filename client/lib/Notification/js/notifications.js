@@ -33,7 +33,7 @@ NotificationMessages = {
   },
   options: {
     autoHide: true,
-    hideDelay: 5000,
+    hideDelay: 3000,
     autoScroll: true
   }
 }
