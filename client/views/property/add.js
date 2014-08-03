@@ -1,3 +1,8 @@
+//Images_local = new Meteor.Collection('images_local', {connection: null});
+
+// cannot store img in local connection, to be investigated
+
+
 Template.addProperty.rendered = function() {
     $('.datepicker').pickadate({
       format: 'yyyy/mm/dd'
