@@ -1,7 +1,4 @@
-//Images_local = new Meteor.Collection('images_local', {connection: null});
-
-// cannot store img in local connection, to be investigated
-
+var imgTemp = []; //to hold the to be uploaded images temporarily
 
 Template.addProperty.rendered = function() {
     $('.datepicker').pickadate({
@@ -15,9 +12,8 @@ Template.addProperty.rendered = function() {
       addRemoveLinks : true,
       maxFilesize: 7,
       accept: function(file, done) {
-
-          Images.insert(file);
-
+          imgTemp.push(file);
+          //Images.insert(file);
        }
     });
 
@@ -78,7 +74,10 @@ Template.addProperty.events({
     };
 
     console.log(formObj);
-
+    imgTemp.forEach(function(file){
+      var id = Images.insert(file);
+      console.log(id);
+    });
   }
 });
 
