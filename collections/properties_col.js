@@ -79,3 +79,5 @@ Schemas.Property = new SimpleSchema({
     type: Date
   }
 });
+
+Properties.attachSchema(Schemas.Property);

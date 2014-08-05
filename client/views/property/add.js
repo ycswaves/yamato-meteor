@@ -73,10 +73,15 @@ Template.addProperty.events({
       facilities: facilities
     };
 
-    console.log(formObj);
+    //console.log(formObj);
     imgTemp.forEach(function(file){
       var id = Images.insert(file);
       console.log(id);
+    });
+
+    Properties.insert(formObj, function(err, res) {
+      console.log(err);
+      console.log(res);
     });
   }
 });
