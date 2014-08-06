@@ -6,31 +6,9 @@
 					<div class="row">
 						<div class="col-md-12">
 							<h1>新建账户</h1>
+							<p>已经有账号了? 点击 <a href="#" data-toggle="modal" data-target="#loginModal" class="text-info" onclick="$('#signupModal').modal('hide')">这里</a> 登陆</p>
 							{{> flashMessages}}
-							<h3>账户类型</h3>
 							<form role="form" id="signupForm" method="post">
-								<div class="radio" id="create-account-user">
-									<label>
-										<input type="radio" id="account-type-user" name="accountType" value=1 required checked>普通用户
-									</label>
-								</div>
-								<div class="radio" id="agent-switch">
-									<label>
-										<input type="radio" id="account-type-agent" name="accountType" value=2 required>房屋经纪
-									</label>
-								</div>
-								<div id="agency" class="disabled">
-									<div class="form-group">
-										<label for="account-agency">选择您的经纪公司:</label>
-										<select name="accountAgency" id="account-agency">
-											<option value="">中介公司</option>
-											{{#each arrayify agency}}
-											<option value="{{key}}">{{value}}</option>
-											{{/each}}
-										</select>
-									</div><!-- /.form-group -->
-								</div>
-								<hr>
 								<div class="form-group">
 									<label>用户名:</label>
 									<input type="text" class="form-control" name="username" required>

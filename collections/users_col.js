@@ -3,17 +3,34 @@ Schema = {};
 Schema.UserProfile = new SimpleSchema({
     name: {
         type: String,
+        label: "Full name",
         regEx: /^[a-zA-Z-]{2,25}$/,
         optional: true
     },
     phone: {
         type: String,
+        label: "Phone number",
         regEx: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/,
         optional: true
     },
-    organization : {
+    qq: {
+        type: Number,
+        label: "QQ number",
+        optional: true
+    },
+    wechat: {
         type: String,
-        regEx: /^[a-z0-9A-z .]{3,30}$/,
+        label: "Wechat number, can be number or string",
+        optional: true
+    },
+    about: {
+        type: String,
+        label: "About me",
+        optional: true
+    },
+    agency : {
+        type: String,
+        label: "Agency name, should be in the agency list",
         optional: true
     }
 });
@@ -49,9 +66,41 @@ Schema.User = new SimpleSchema({
         optional: true,
         blackbox: true
     },
+    createdAt: {
+      type: Date,
+      autoValue: function() {
+        if (this.isInsert) {
+          return new Date;
+        } else if (this.isUpsert) {
+          return {$setOnInsert: new Date};
+        } else {
+          this.unset();
+        }
+      },
+      denyUpdate: true
+    },
+    updatedAt: {
+      type: Date,
+      autoValue: function() {
+        if (this.isUpdate) {
+          return new Date();
+        }
+      },
+      denyInsert: true,
+      optional: true
+    },
     roles: {
-        type: String,
-        allowedValues: ['Normal', 'Agent', 'Admin']
+      type: String,
+      defaultValue: 'Normal',
+      allowedValues: ['Normal', 'Agent', 'Admin']
+    },
+    isActive: {
+      type: Boolean,
+      defaultValue: true
+    },
+    isAcceptNewsletter: {
+      type: Boolean,
+      defaultValue: false
     }
 });
 

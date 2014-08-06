@@ -20,18 +20,8 @@ Template.profilePage.rendered = function() {
 }
 
 Template.profilePage.helpers({
-  agency: function(){
-  	return Config.getAgency();
-  },
   loggedInUser: function(){
     return Meteor.user();
-  },
-  ifAgent:function(){
-  	if(Meteor.user() && Meteor.user().profile.userType==1){
-	  	return '';
-	  }else{
-	  	return 'checked';
-	  }
   }
 })
 

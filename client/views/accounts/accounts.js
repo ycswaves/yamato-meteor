@@ -116,31 +116,25 @@ Template.signupForm.events({
     var email = trimInput(t.find('input[name=email]').value.toLowerCase())
       , password = t.find('input[name=password]').value
       , password2 = t.find('input[name=passwordAgain]').value
-      , username = t.find('input[name=username]').value
-      , accountType = t.find('input[name=accountType]').value
-      , agency = t.find('select[name=accountAgency]').value;
+      , username = t.find('input[name=username]').value;
     if (isNotEmpty(email)
         && isNotEmpty(password)
         && isEmail(email)
         && isValidPassword(password)
         && isSame(password,password2)
         && isNotEmpty(username)
-        && isValidName(username)
-        && isValidType(parseInt(accountType)))
+        && isValidName(username))
     {
       Accounts.createUser({
         username:username,
         email:email,
-        password: password,
-        profile:{
-          accountType:accountType,
-          agency:agency
-        }
+        password: password
       }, function(err){
         if (err && err.error === 403) {
           Session.set('displayMessage', '创建账户不成功 &' + err.reason);
         } else {
-
+          t.$('#signupModal').modal('hide');
+          NotificationMessages.sendSuccess('注册成功','欢迎您的加入');
         }
       });
     }else{
