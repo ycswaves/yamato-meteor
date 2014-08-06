@@ -31,8 +31,67 @@
 						<header><h1>个人简介</h1></header>
 						<div class="account-profile">
 							<div class="row">
+                <!-- Submit-->
+                <div class="col-md-12 col-sm-12">
+                    <section id="submit" class="submit">
+                        <section id="select-package">
+                            <div class="table-responsive submit-pricing">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>用户权限:</th>
+                                        <th class="title">免费</th>
+                                        <th class="title">银质</th>
+                                        <th class="title">金质</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="prices">
+                                        <td></td>
+                                        <td>$0</td>
+                                        <td>$20</td>
+                                        <td>$40</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Property Submit Limit</td>
+                                        <td>1</td>
+                                        <td>20</td>
+                                        <td>Unlimited</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Agent Profiles</td>
+                                        <td>1</td>
+                                        <td>10</td>
+                                        <td>Unlimited</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Agency Profiles</td>
+                                        <td class="not-available"><i class="fa fa-times"></i></td>
+                                        <td>5</td>
+                                        <td>Unlimited</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Featured Properties</td>
+                                        <td class="not-available"><i class="fa fa-times"></i></td>
+                                        <td class="available"><i class="fa fa-check"></i></td>
+                                        <td class="available"><i class="fa fa-check"></i></td>
+                                    </tr>
+                                    <tr class="buttons">
+                                        <td></td>
+                                        <td class="package-selected" data-package="free"><button type="button" class="btn btn-default small">Select</button></td>
+                                        <td data-package="silver"><button type="button" class="btn btn-default small">Select</button></td>
+                                        <td data-package="gold"><button type="button" class="btn btn-default small">Select</button></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- /.submit-pricing -->
+                        </section><!-- /#select-package -->
+                    </section><!-- /#submit -->
+                </div><!-- /.col-md-9 -->
+            	</div><!-- /.row -->
+							<div class="row">
 								<div class="col-md-3 col-sm-3">
-									<img alt="" class="image radius" src="{{loggedInUser.profile.avatar}}">
+									<img alt="" class="image radius" src="/img/agent-01.jpg">
 								</div>
 								<div class="col-md-9 col-sm-9">
 									<form role="form" id="accountProfile" method="post" action="">
@@ -42,34 +101,6 @@
 												<input id="agentCheck" type="checkbox" {{ifAgent}}>
 											</label>
 										</div>
-										<section id="agencySelection">
-											<h3>我的中介机构</h3>
-											<div class="row">
-												<div class="col-md-4 col-sm-4">
-													<label for="account-agency">选择您的中介机构:</label>
-												</div>
-												<div class="col-md-8 col-sm-8">
-													<div class="form-group">
-														<select name="accountAgency" id="account-agency">
-															<option value="">中介机构</option>
-															{{#each arrayify agency}}
-															<option value="{{key}}">{{value}}</option>
-															{{/each}}
-														</select>
-													</div><!-- /.form-group -->
-												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-4 col-sm-4">
-													<label for="account-agency">房屋经纪注册号:</label>
-												</div>
-												<div class="col-md-8 col-sm-8">
-													<div class="form-group">
-														<input type="text" class="form-control" id="form-account-name" name="name" required value="{{loggedInUser.profile.name}}">
-													</div>
-												</div>
-											</div>
-										</section>
 										<section id="contact">
 											<h3>联络方式</h3>
 											<dl class="contact-fields">

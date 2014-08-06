@@ -24,7 +24,6 @@ Template.notificationMessages.helpers({
     $.each(messages, function(index, value) {
       value.group = value.message instanceof Array;
     });
-    console.log(messages);
     return messages;
   }
 });

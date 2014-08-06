@@ -57,18 +57,6 @@ render = function(){
         });
     }
 
-    //  Agent State
-
-    $('#agent-switch').on('ifClicked', function(event) {
-        $('#agent-switch').data('agent-state', true);
-        agentState();
-    });
-
-    $('#create-account-user').on('ifClicked', function(event) {
-        $('#agent-switch').data('agent-state', '');
-        agentState();
-    });
-
     //  iCheck
 
     if ($('.checkbox').length > 0) {
@@ -117,8 +105,6 @@ render = function(){
                 initCounter();
             }, { offset: '100%' });
         }
-
-        agentState();
 
     //  Owl Carousel
 
@@ -224,23 +210,6 @@ var setNavigationPosition = function(){
             }
         }
     });
-}
-
-// Agent state - Fired when user change the state if he is agent or doesn't
-
-var agentState = function(){
-    var _originalHeight = $('#agency .form-group').height();
-    var $agentSwitch = $('#agent-switch');
-    var $agency = $('#agency');
-
-    if ($agentSwitch.data('agent-state') == true) {
-        $agentSwitch.iCheck('check');
-        $agency.removeClass('disabled');
-        $agency.addClass('enabled');
-    } else {
-        $agency.removeClass('enabled');
-        $agency.addClass('disabled');
-    }
 }
 
 var initCounter = function(){
