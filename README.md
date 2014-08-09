@@ -20,10 +20,12 @@ Common files:
   - `Config` is a global variable defined here, use the defined 'get' functions to get options.
 - `config/reactiveDS.js` (may consider another folder other than 'config')
   - `ReactiveDS` is a Session-like object. Example: 
-  ```
+  
+  ```JavaScript
     ReactiveDS.set('mrtline', Config.getStationsByLine(mrtLine));
     ReactiveDS.get('mrtline');
   ```
+  
 - `helpers/handlebarHelpers.js`
   - handlerbar syntax extension, e.g `{{#arrayify}}`, for iterate a Object's properties. (Lastest Handlerbar.js support `@key`, but not in Meteor.js yet)
 
@@ -34,7 +36,8 @@ Reminder:
 
 - Every new collection added should has a `subscribe` call in `client/subscriptions.js` and `publish` call in `server/publications.js`. 
   - Also remember to set permissions for the collection like below:
-  ```
+  
+  ```JavaScript
   Images.allow({
     insert: function(userId) {
       return true;
@@ -50,5 +53,6 @@ Reminder:
     }
   });
   ```
+  
   - Actions like `insert`, `update`, `edit` will need Meteor.call() because these actions involving DB modification, thus can only be done on server-side
 
