@@ -623,6 +623,11 @@ fieldset[disabled] .btn-gplus.active {
 	border-color: #00aced ;
 }
 
+.background-color-white {
+	color: #000;
+	background-color: #fff;
+}
+
 /* Block quote */
 blockquote {
 	border: none;
@@ -1492,6 +1497,13 @@ ul.list-links li a:hover {
 .selected-option-check .selectpicker .filter-option:before {
 	filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
 	opacity: 1;
+}
+
+#form-secondhand::-webkit-input-placeholder,
+#form-secondhand:-moz-placeholder,
+#form-secondhand:-ms-input-placeholder
+{
+  color:    #000;
 }
 
 .text-banner {
