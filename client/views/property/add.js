@@ -1,7 +1,4 @@
-//Images_local = new Meteor.Collection('images_local', {connection: null});
-
-// cannot store img in local connection, to be investigated
-
+var imgTemp = []; //to hold the to be uploaded images temporarily
 
 Template.addProperty.rendered = function() {
     $('.datepicker').pickadate({
@@ -15,9 +12,8 @@ Template.addProperty.rendered = function() {
       addRemoveLinks : true,
       maxFilesize: 7,
       accept: function(file, done) {
-
-          Images.insert(file);
-
+          imgTemp.push(file);
+          //Images.insert(file);
        }
     });
 
@@ -35,11 +31,12 @@ Template.addProperty.events({
 
   'submit #propertyForm': function(e, t){
     e.preventDefault();
+    t.$('span.help-block').remove(); //clear all error msg
 
     /*********************************************
         Retrieve form data
     *********************************************/
-    var title = t.find('input[name="title"]').value
+    var address = t.find('input[name="address"]').value
       , price = t.find('input[name="price"]').value
       , descr = t.find('textarea[name="description"]').value
       , district = t.find('select[name="district"]').value
@@ -63,7 +60,7 @@ Template.addProperty.events({
         Map form data to schema
     *********************************************/
     var formObj = {
-      title: title,
+      address: address,
       author: 'anonymous',
       price: price,
       description: descr,
@@ -77,8 +74,41 @@ Template.addProperty.events({
       facilities: facilities
     };
 
-    console.log(formObj);
+    /*********************************************
+        Map div id to schema, so as to attach
+        error message in correspondant form-group
+    *********************************************/
+    var formErrDivID = {
+      address: '#address-form-group',
+      //author: '',
+      price: '#price-form-group',
+      description: '#descr-form-group',
+      //district: 'district-form-group',
+      //propertyType: pType,
+      //hasAgentFee: hasAgentFee,
+      moveInDate: '#movein-form-group',
+      area: '#area-form-group'
+      //bathroom: bathroom,
+      //mrt: nearestMRT,
+      //facilities: facilities
+    };
 
+    //console.log(formObj);
+    imgTemp.forEach(function(file){
+      var id = Images.insert(file);
+      console.log(id);
+    });
+
+    Properties.insert(formObj, function(err, res) {
+      if(err){
+        console.log(err);
+        var targetDiv = formErrDivID[err.invalidKeys[0].name];
+        t.$(targetDiv).append('<span style="color: red" class="help-block"><i class="fa fa-exclamation-triangle"></i> '+err.message+'</span>');
+        t.$(targetDiv).find('input').focus();
+      }
+
+      console.log(res);
+    });
   }
 });
 

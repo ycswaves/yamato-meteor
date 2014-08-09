@@ -19,13 +19,13 @@
                   <header><h2>基本信息</h2></header>
                   <div class="row">
                     <div class="col-md-8">
-                      <div class="form-group">
+                      <div class="form-group" id="address-form-group">
                         <label for="submit-title">地址</label>
-                        <input type="text" class="form-control" id="submit-title" name="title" required>
+                        <input type="text" class="form-control" id="submit-title" name="address" required>
                       </div><!-- /.form-group -->
                     </div>
                     <div class="col-md-4">
-                      <div class="form-group">
+                      <div class="form-group" id="price-form-group">
                         <label for="submit-price">价格</label>
                         <div class="input-group">
                           <span class="input-group-addon">$</span>
@@ -34,7 +34,7 @@
                       </div><!-- /.form-group -->
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group" id="descr-form-group">
                     <label for="submit-description">描述</label>
                     <textarea class="form-control" id="submit-description" rows="3" name="description" required></textarea>
                   </div><!-- /.form-group -->
@@ -46,7 +46,7 @@
                       <div class="col-md-12 col-sm-12">
                         <section id="summary">
                           <header><h2>概览</h2></header>
-                          <div class="form-group">
+                          <div class="form-group" id="district-form-group">
                             <label for="district">区域</label>
                             <select id="district" name="district">
                               {{#each arrayify district}}
@@ -56,7 +56,7 @@
                           </div>
                           <div class="row">
                             <div class="col-md-4 col-sm-4">
-                              <div class="form-group">
+                              <div class="form-group" id="ptype-form-group">
                                 <label for="property-type">房屋类型</label>
                                 <select name="property-type" id="property-type">
                                   {{#each arrayify ptypes}}
@@ -68,7 +68,7 @@
 
                             <div class="col-md-4 col-sm-4">
                               <label for="submit-status">有无中介费</label>
-                              <div class="form-group form-inline" style="padding-top:10px">
+                              <div class="form-group form-inline" id="hasAgent-form-group" style="padding-top:10px">
                                 <div class="radio" style="margin-right:30px">
                                   <label>
                                     <input type="radio" id="has-agent-true" value="1" name="has-agent-fee" required>有
@@ -83,7 +83,7 @@
                             </div><!-- /.col-md-4 -->
 
                             <div class="col-md-4 col-sm-4">
-                              <div class="form-group">
+                              <div class="form-group" id="movein-form-group">
                                 <label for="move-in-date">入住时间</label>
                                 <div class="input-group">
                                   <input type="text" class="form-control datepicker" id="move-in-date" name="move-in-date" required>
@@ -94,7 +94,7 @@
                           </div><!-- /.row -->
                           <div class="row">
                             <div class="col-md-4 col-sm-4">
-                              <div class="form-group">
+                              <div class="form-group" id="bedroom-form-group">
                                 <label for="bedroom">房间数</label>
                                 <select name="bedroom">
                                   <option value="1">1</option>
@@ -108,7 +108,7 @@
                             </div><!-- /.col-md-4 -->
 
                             <div class="col-md-4 col-sm-4">
-                              <div class="form-group">
+                              <div class="form-group" id="area-form-group">
                                 <label for="area">面积</label>
                                 <div class="input-group">
                                   <input type="text" class="form-control" name="property-area" pattern="\d*" required>
@@ -118,7 +118,7 @@
                             </div><!-- /.col-md-4 -->
 
                             <div class="col-md-4 col-sm-4">
-                              <div class="form-group">
+                              <div class="form-group" id="bathroom-form-group">
                                 <label for="bathroom">卫生间</label>
                                 <select name="bathroom">
                                   <option value="1">1</option>
