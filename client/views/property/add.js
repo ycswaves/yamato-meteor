@@ -54,7 +54,15 @@ Template.addProperty.events({
             pre.push(current.value);
           }
           return pre;
-        }, []);
+        }, [])
+
+      , contactInfo = {
+          name: t.find('input[name=contact-person]').value,
+          phone: t.find('input[name=contact-number]').value,
+          qq: t.find('input[name=contact-qq]').value,
+          wechat: t.find('input[name=contact-wechat]').value,
+          email: t.find('input[name=contact-email]').value
+        };
 
     /*********************************************
         Map form data to schema
@@ -68,10 +76,12 @@ Template.addProperty.events({
       propertyType: pType,
       hasAgentFee: hasAgentFee,
       moveInDate: moveInDate,
+      bedroom: bedroom,
       area: area,
       bathroom: bathroom,
       mrt: nearestMRT,
-      facilities: facilities
+      facilities: facilities,
+      contact: contactInfo
     };
 
     /*********************************************
@@ -79,18 +89,23 @@ Template.addProperty.events({
         error message in correspondant form-group
     *********************************************/
     var formErrDivID = {
-      address: '#address-form-group',
-      //author: '',
-      price: '#price-form-group',
-      description: '#descr-form-group',
-      //district: 'district-form-group',
-      //propertyType: pType,
-      //hasAgentFee: hasAgentFee,
-      moveInDate: '#movein-form-group',
-      area: '#area-form-group'
+      "address": "#address-form-group",
+      //author: "",
+      "price": "#price-form-group",
+      "description": "#descr-form-group",
+      //"district": "district-form-group",
+      //"propertyType": pType,
+      //"hasAgentFee": hasAgentFee,
+      "moveInDate": "#movein-form-group",
+      "area": "#area-form-group",
       //bathroom: bathroom,
       //mrt: nearestMRT,
       //facilities: facilities
+      "contact.name": "#contact-person-form-group",
+      "contact.phone": "#contact-number-form-group"
+        //qq: '#',
+        //wechat: '#',
+        //email: '#'
     };
 
     //console.log(formObj);
@@ -103,6 +118,7 @@ Template.addProperty.events({
       if(err){
         console.log(err);
         var targetDiv = formErrDivID[err.invalidKeys[0].name];
+        console.log(targetDiv);
         t.$(targetDiv).append('<span style="color: red" class="help-block"><i class="fa fa-exclamation-triangle"></i> '+err.message+'</span>');
         t.$(targetDiv).find('input').focus();
       }

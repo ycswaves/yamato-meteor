@@ -2,6 +2,34 @@ Properties = new Meteor.Collection("properties");
 
 var Schemas = {};
 
+Schemas.ContactInfo = new SimpleSchema({ //should be consistant with Schema.UserProfile
+  name: {
+    type: String,
+    label: "联系人"
+  },
+  phone: {
+    type: String,
+    label: "联系电话",
+    regEx: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/,
+  },
+  qq: {
+    type: Number,
+    label: "QQ号",
+    optional: true
+  },
+  wechat: {
+    type: String,
+    label: "微信ID或号码",
+    optional: true
+  },
+  email: {
+    type: String,
+    label: "Email",
+    regEx: SimpleSchema.RegEx.Email,
+    optional: true
+  },
+});
+
 Schemas.Property = new SimpleSchema({
   address: {
     type: String,
@@ -61,7 +89,7 @@ Schemas.Property = new SimpleSchema({
     label: "最近地铁站"
   },
   contact: {
-    type: Object,
+    type: Schemas.ContactInfo,
     label: "联系方式"
   },
   photos: {
@@ -74,10 +102,27 @@ Schemas.Property = new SimpleSchema({
     label: "Property facilities"
   },
   createdAt: {
-    type: Date
+    type: Date,
+    autoValue: function() {
+        if (this.isInsert) {
+          return new Date;
+        } else if (this.isUpsert) {
+          return {$setOnInsert: new Date};
+        } else {
+          this.unset();
+        }
+      },
+      denyUpdate: true
   },
   updatedAt: {
-    type: Date
+    type: Date,
+    autoValue: function() {
+        if (this.isUpdate) {
+          return new Date();
+        }
+      },
+      denyInsert: true,
+      optional: true
   }
 });
 

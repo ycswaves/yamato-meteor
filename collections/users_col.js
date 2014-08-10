@@ -10,7 +10,7 @@ Schema.UserProfile = new SimpleSchema({
     phone: {
         type: String,
         label: "Phone number",
-        regEx: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/,
+        regEx: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/, //TODO: US format, need to update
         optional: true
     },
     qq: {

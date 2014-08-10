@@ -12,20 +12,20 @@
 
 ===========================================================
 Common files:
-- `collections/validateionMessage.js` 
+- `collections/validateionMessage.js`
   - stores all error messages (non-chinese error message is currently not used in UI).
   - new error messages should be added to this file **ONLY**.
 - `config/formOpts.js`
   - stores all the form options for `<selection>`, can be used in both 'Search' and 'Add property'to guarantee consistancy.
   - `Config` is a global variable defined here, use the defined 'get' functions to get options.
 - `config/reactiveDS.js` (may consider another folder other than 'config')
-  - `ReactiveDS` is a Session-like object. Example: 
-  
+  - `ReactiveDS` is a Session-like object. Example:
+
   ```JavaScript
     ReactiveDS.set('mrtline', Config.getStationsByLine(mrtLine));
     ReactiveDS.get('mrtline');
   ```
-  
+
 - `helpers/handlebarHelpers.js`
   - handlerbar syntax extension, e.g `{{#arrayify}}`, for iterate a Object's properties. (Lastest Handlerbar.js support `@key`, but not in Meteor.js yet)
 
@@ -34,9 +34,11 @@ Reminder:
 
 - Form error message placement is tightly coupled with `<div class="form-control">` using `id` attribute, and is mapped at the client-side JS file by `var formErrDivID` object. This is because SimpleSchema validation failure will return attribute name of the field with error, so that's the only clue to refer back to where the error occurs. So **Any changes to the div id in `<template name="addProperty">` requires updates on `var formErrDivID` too**
 
-- Every new collection added should has a `subscribe` call in `client/subscriptions.js` and `publish` call in `server/publications.js`. 
+- Contact info in 'add property' form directly uses similar schema like `Schema.UserProfile` in `users_col.js`. **Any updates on `Schema.UserProfile` requires updates on
+
+- Every new collection added should has a `subscribe` call in `client/subscriptions.js` and `publish` call in `server/publications.js`.
   - Also remember to set permissions for the collection like below:
-  
+
   ```JavaScript
   Images.allow({
     insert: function(userId) {
@@ -53,6 +55,6 @@ Reminder:
     }
   });
   ```
-  
+
   - Actions like `insert`, `update`, `edit` will need Meteor.call() because these actions involving DB modification, thus can only be done on server-side
 
