@@ -5,12 +5,15 @@ Router.configure({
 });
 
 var filters = {
-	isLoggedIn: function() {
-		if (!(Meteor.loggingIn() || Meteor.user())) {
-			Router.go('landing'); //not working
+	isLoggedIn: function(pause) {
+		if (!(Meteor.user() || Meteor.loggingIn())) {
+			Router.go('landing');
+      pause();
 		}
 	}
-}
+};
+
+Router.onBeforeAction(filters.isLoggedIn, {except: ['landing']});
 
 Router.map(function () {
 	this.route('landing', {
@@ -27,7 +30,7 @@ Router.map(function () {
       return Meteor.subscribe('userData');
     },
     template: 'profilePage',
-    onBeforeAction: filters.isLoggedIn(),
+    //onBeforeAction: filters.isLoggedIn(),
     action: function () {
      this.render();
     }
