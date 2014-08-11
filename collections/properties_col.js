@@ -58,7 +58,7 @@ Schemas.Property = new SimpleSchema({
   propertyType: {
     type: String,
     label: "房屋类型",
-    allowedValues: ['HDB', 'Condominium', 'Landed'],
+    allowedValues: ['HDB', 'Condo', 'Landed'],
   },
   hasAgentFee: {
     type: Number,
@@ -94,7 +94,7 @@ Schemas.Property = new SimpleSchema({
   },
   photos: {
     type: [String],
-    label: "urls of uploaded photos", // to be revised later
+    label: "IDs of uploaded photos", // to be revised later
     optional: true
   },
   facilities: {

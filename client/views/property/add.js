@@ -12,11 +12,10 @@ Template.addProperty.rendered = function() {
       addRemoveLinks : true,
       maxFilesize: 7,
       accept: function(file, done) {
-          imgTemp.push(file);
-          //Images.insert(file);
-       }
+        //todo: process file
+        imgTemp.push(file);
+      }
     });
-
     render();
 }
 
@@ -64,12 +63,17 @@ Template.addProperty.events({
           email: t.find('input[name=contact-email]').value
         };
 
+      var imageIDs = [];
+      imgTemp.forEach(function(file){
+        imageIDs.push(Images.insert(file)); // Images.insert will return ID of inserted image
+      });
+
     /*********************************************
         Map form data to schema
     *********************************************/
     var formObj = {
       address: address,
-      author: 'anonymous',
+      author: Meteor.userId(),
       price: price,
       description: descr,
       district: district,
@@ -80,8 +84,9 @@ Template.addProperty.events({
       area: area,
       bathroom: bathroom,
       mrt: nearestMRT,
-      facilities: facilities,
-      contact: contactInfo
+      contact: contactInfo,
+      photos: imageIDs,
+      facilities: facilities
     };
 
     /*********************************************
@@ -108,17 +113,10 @@ Template.addProperty.events({
         //email: '#'
     };
 
-    //console.log(formObj);
-    imgTemp.forEach(function(file){
-      var id = Images.insert(file);
-      console.log(id);
-    });
-
     Properties.insert(formObj, function(err, res) {
       if(err){
         console.log(err);
         var targetDiv = formErrDivID[err.invalidKeys[0].name];
-        console.log(targetDiv);
         t.$(targetDiv).append('<span style="color: red" class="help-block"><i class="fa fa-exclamation-triangle"></i> '+err.message+'</span>');
         t.$(targetDiv).find('input').focus();
       }
