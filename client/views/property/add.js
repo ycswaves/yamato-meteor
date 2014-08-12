@@ -65,9 +65,9 @@ Template.addProperty.events({
 
       var imageIDs = [];
       imgTemp.forEach(function(file){
-        var ret = Images.insert(file);
-        console.log(ret);
-        imageIDs.push(ret); // Images.insert will return ID of inserted image
+        // Images.insert will return file object of inserted image
+        var file = Images.insert(file);
+        imageIDs.push(file._id); 
       });
 
     /*********************************************
@@ -81,7 +81,7 @@ Template.addProperty.events({
       district: district,
       propertyType: pType,
       hasAgentFee: hasAgentFee,
-      moveInDate: moveInDate,
+      moveInDate: new Date(moveInDate),
       bedroom: bedroom,
       area: area,
       bathroom: bathroom,
