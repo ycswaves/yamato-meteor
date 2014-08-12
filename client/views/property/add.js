@@ -65,7 +65,9 @@ Template.addProperty.events({
 
       var imageIDs = [];
       imgTemp.forEach(function(file){
-        imageIDs.push(Images.insert(file)); // Images.insert will return ID of inserted image
+        var ret = Images.insert(file);
+        console.log(ret);
+        imageIDs.push(ret); // Images.insert will return ID of inserted image
       });
 
     /*********************************************
