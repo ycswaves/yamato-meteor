@@ -41,7 +41,7 @@ Template.addProperty.events({
       , district = t.find('select[name="district"]').value || null
       // deal type
       , pType = t.find('select[name="property-type"]').value || null
-      , hasAgentFee = t.find('input[name="has-agent-fee"]').value || null
+      , hasAgentFee = t.find('input:checked[name="has-agent-fee"]').value || null
       , moveInDate = t.find('input[name="move-in-date"]').value || null
       , bedroom = t.find('select[name="bedroom"]').value || null
       , area = t.find('input[name="property-area"]').value || null
@@ -81,7 +81,7 @@ Template.addProperty.events({
       district: district,
       propertyType: pType,
       hasAgentFee: (hasAgentFee != null)? parseInt(hasAgentFee, 10) : null,
-      moveInDate: new Date(moveInDate),
+      moveInDate: (moveInDate != null)? new Date(moveInDate) : new Date(),
       bedroom: (bedroom != null)? parseInt(bedroom, 10) : null,
       area: (area != null)? parseInt(area, 10) : null,
       bathroom: (bathroom != null)? parseInt(bathroom, 10) : null,
@@ -126,18 +126,15 @@ Template.addProperty.events({
           t.$(targetDiv).find('input').focus();
         }
       });
-      
     }
-    // Properties.insert(formObj, function(err, res) {
-    //   if(err){
-    //     console.log(err);
-    //     var targetDiv = formErrDivID[err.invalidKeys[0].name];
-    //     t.$(targetDiv).append('<span style="color: red" class="help-block"><i class="fa fa-exclamation-triangle"></i> '+err.message+'</span>');
-    //     t.$(targetDiv).find('input').focus();
-    //   }
-
-    //   console.log(res);
-    // });
+    else{
+      Meteor.call('addProperty', formObj, function(err, id){
+        if(err){
+          return; //todo: show norification?
+        }
+        console.log('go to property/'+id)
+      });
+    }
   }
 });
 
