@@ -10,7 +10,7 @@ Schemas.ContactInfo = new SimpleSchema({ //should be consistant with Schema.User
   phone: {
     type: String,
     label: "联系电话",
-    regEx: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/,
+    regEx: /\d{8}/,
   },
   qq: {
     type: Number,
@@ -112,7 +112,8 @@ Schemas.Property = new SimpleSchema({
           this.unset();
         }
       },
-      denyUpdate: true
+    denyUpdate: true,
+    optional: true
   },
   updatedAt: {
     type: Date,
@@ -121,8 +122,8 @@ Schemas.Property = new SimpleSchema({
           return new Date();
         }
       },
-      denyInsert: true,
-      optional: true
+    denyInsert: true,
+    optional: true
   }
 });
 

@@ -35,18 +35,18 @@ Template.addProperty.events({
     /*********************************************
         Retrieve form data
     *********************************************/
-    var address = t.find('input[name="address"]').value
-      , price = t.find('input[name="price"]').value
-      , descr = t.find('textarea[name="description"]').value
-      , district = t.find('select[name="district"]').value
+    var address = t.find('input[name="address"]').value || null
+      , price = t.find('input[name="price"]').value || null
+      , descr = t.find('textarea[name="description"]').value || null
+      , district = t.find('select[name="district"]').value || null
       // deal type
-      , pType = t.find('select[name="property-type"]').value
-      , hasAgentFee = t.find('input[name="has-agent-fee"]').value
-      , moveInDate = t.find('input[name="move-in-date"]').value
-      , bedroom = t.find('select[name="bedroom"]').value
-      , area = t.find('input[name="property-area"]').value
-      , bathroom = t.find('select[name="bathroom"]').value
-      , nearestMRT = t.find('select[name="stations"]').value
+      , pType = t.find('select[name="property-type"]').value || null
+      , hasAgentFee = t.find('input[name="has-agent-fee"]').value || null
+      , moveInDate = t.find('input[name="move-in-date"]').value || null
+      , bedroom = t.find('select[name="bedroom"]').value || null
+      , area = t.find('input[name="property-area"]').value || null
+      , bathroom = t.find('select[name="bathroom"]').value || null
+      , nearestMRT = t.find('select[name="stations"]').value || null
       // photo gallerty
       , facilities = t.findAll('input:checkbox.property-facility').reduce(function (pre, current) {
           if(current.checked){
@@ -54,13 +54,13 @@ Template.addProperty.events({
           }
           return pre;
         }, [])
-
+      , qq = t.find('input[name=contact-qq]').value  || null
       , contactInfo = {
-          name: t.find('input[name=contact-person]').value,
-          phone: t.find('input[name=contact-number]').value,
-          qq: t.find('input[name=contact-qq]').value,
-          wechat: t.find('input[name=contact-wechat]').value,
-          email: t.find('input[name=contact-email]').value
+          name: t.find('input[name=contact-person]').value || null,
+          phone: t.find('input[name=contact-number]').value || null,
+          qq: (qq != null)? parseInt(qq, 10) : null,
+          wechat: t.find('input[name=contact-wechat]').value || null,
+          email: t.find('input[name=contact-email]').value || null
         };
 
       var imageIDs = [];
@@ -76,15 +76,15 @@ Template.addProperty.events({
     var formObj = {
       address: address,
       author: Meteor.userId(),
-      price: price,
+      price: (price != null)? parseInt(price, 10) : null,
       description: descr,
       district: district,
       propertyType: pType,
-      hasAgentFee: hasAgentFee,
+      hasAgentFee: (hasAgentFee != null)? parseInt(hasAgentFee, 10) : null,
       moveInDate: new Date(moveInDate),
-      bedroom: bedroom,
-      area: area,
-      bathroom: bathroom,
+      bedroom: (bedroom != null)? parseInt(bedroom, 10) : null,
+      area: (area != null)? parseInt(area, 10) : null,
+      bathroom: (bathroom != null)? parseInt(bathroom, 10) : null,
       mrt: nearestMRT,
       contact: contactInfo,
       photos: imageIDs,
@@ -114,17 +114,30 @@ Template.addProperty.events({
         //wechat: '#',
         //email: '#'
     };
+    var context = Properties.simpleSchema().namedContext('propertyForm');
+    context.validate(formObj);
+    if(!context.isValid()){
+      var isFocused = false;
+      context.invalidKeys().forEach(function(e){
+        var errMsg = context.keyErrorMessage(e.name)
+          , targetDiv = formErrDivID[e.name];
+        t.$(targetDiv).append('<span style="color: red" class="help-block"><i class="fa fa-exclamation-triangle"></i> '+errMsg+'</span>');
+        if(!isFocused){
+          t.$(targetDiv).find('input').focus();
+        }
+      });
+      
+    }
+    // Properties.insert(formObj, function(err, res) {
+    //   if(err){
+    //     console.log(err);
+    //     var targetDiv = formErrDivID[err.invalidKeys[0].name];
+    //     t.$(targetDiv).append('<span style="color: red" class="help-block"><i class="fa fa-exclamation-triangle"></i> '+err.message+'</span>');
+    //     t.$(targetDiv).find('input').focus();
+    //   }
 
-    Properties.insert(formObj, function(err, res) {
-      if(err){
-        console.log(err);
-        var targetDiv = formErrDivID[err.invalidKeys[0].name];
-        t.$(targetDiv).append('<span style="color: red" class="help-block"><i class="fa fa-exclamation-triangle"></i> '+err.message+'</span>');
-        t.$(targetDiv).find('input').focus();
-      }
-
-      console.log(res);
-    });
+    //   console.log(res);
+    // });
   }
 });
 
