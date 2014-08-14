@@ -6,6 +6,11 @@
     "Dropzonejs": {},
     "collectionFS": {},
     "pickadate": {},
-    "cfs-s3": {}
+    "cfs-s3": {},
+    "velocity-quick-start": {},
+    "jasmine-unit": {},
+    "mocha-web-velocity": {},
+    "jasmine": {},
+    "velocity-html-reporter": {}
   }
 }
