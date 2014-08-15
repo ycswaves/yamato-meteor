@@ -20,9 +20,8 @@ cfs-s3
 cfs-ejson-file
 cfs-filesystem
 cfs-gridfs
-velocity-quick-start
-
 jasmine-unit
-mocha-web-velocity
 jasmine
+mocha-web-velocity
 velocity-html-reporter
+spin

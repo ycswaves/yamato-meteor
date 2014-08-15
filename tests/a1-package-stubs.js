@@ -199,7 +199,8 @@ FS = {
             "VelocityAggregateReports": function emptyFn () {},
             "VelocityLogs": function emptyFn () {},
             "userData": function emptyFn () {},
-            "images": function emptyFn () {}
+            "images": function emptyFn () {},
+            "properties": function emptyFn () {}
           },
           "universal_publish_handlers": {
             "0": function emptyFn () {}
@@ -441,7 +442,8 @@ FS = {
           "VelocityAggregateReports": function emptyFn () {},
           "VelocityLogs": function emptyFn () {},
           "userData": function emptyFn () {},
-          "images": function emptyFn () {}
+          "images": function emptyFn () {},
+          "properties": function emptyFn () {}
         },
         "universal_publish_handlers": {
           "0": function emptyFn () {}

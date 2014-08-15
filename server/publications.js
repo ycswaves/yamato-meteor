@@ -6,3 +6,8 @@ Meteor.publish('userData', function () {
 Meteor.publish("images", function() {
   return Images.find();
 });
+
+Meteor.publish("properties", function() {
+  // TODO: limit to 5 first
+  return Properties.find({}, {sort: {createdAt: -1}, limit: 5});
+});

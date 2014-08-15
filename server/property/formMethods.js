@@ -7,6 +7,7 @@ Meteor.methods({
   	var propertyId = Properties.insert(formObj, function(err, res) {
       if(err){
         console.log(err); // need to log to see if any attack or form validation not cover enough
+        return false;
       }
     });
 
