@@ -12,11 +12,10 @@ Template.addProperty.rendered = function() {
       addRemoveLinks : true,
       maxFilesize: 7,
       accept: function(file, done) {
-          imgTemp.push(file);
-          //Images.insert(file);
-       }
+        //todo: process file
+        imgTemp.push(file);
+      }
     });
-
     render();
 }
 
@@ -36,41 +35,59 @@ Template.addProperty.events({
     /*********************************************
         Retrieve form data
     *********************************************/
-    var address = t.find('input[name="address"]').value
-      , price = t.find('input[name="price"]').value
-      , descr = t.find('textarea[name="description"]').value
-      , district = t.find('select[name="district"]').value
+    var address = t.find('input[name="address"]').value || null
+      , price = t.find('input[name="price"]').value || null
+      , descr = t.find('textarea[name="description"]').value || null
+      , district = t.find('select[name="district"]').value || null
       // deal type
-      , pType = t.find('select[name="property-type"]').value
-      , hasAgentFee = t.find('input[name="has-agent-fee"]').value
-      , moveInDate = t.find('input[name="move-in-date"]').value
-      , bedroom = t.find('select[name="bedroom"]').value
-      , area = t.find('input[name="property-area"]').value
-      , bathroom = t.find('select[name="bathroom"]').value
-      , nearestMRT = t.find('select[name="stations"]').value
+      , pType = t.find('select[name="property-type"]').value || null
+      , hasAgentFee = t.find('input:checked[name="has-agent-fee"]').value || null
+      , moveInDate = t.find('input[name="move-in-date"]').value || null
+      , bedroom = t.find('select[name="bedroom"]').value || null
+      , area = t.find('input[name="property-area"]').value || null
+      , bathroom = t.find('select[name="bathroom"]').value || null
+      , nearestMRT = t.find('select[name="stations"]').value || null
       // photo gallerty
       , facilities = t.findAll('input:checkbox.property-facility').reduce(function (pre, current) {
           if(current.checked){
             pre.push(current.value);
           }
           return pre;
-        }, []);
+        }, [])
+      , qq = t.find('input[name=contact-qq]').value  || null
+      , contactInfo = {
+          name: t.find('input[name=contact-person]').value || null,
+          phone: t.find('input[name=contact-number]').value || null,
+          qq: (qq != null)? parseInt(qq, 10) : null,
+          wechat: t.find('input[name=contact-wechat]').value || null,
+          email: t.find('input[name=contact-email]').value || null
+        };
+
+      var imageIDs = [];
+      imgTemp.forEach(function(file){
+        // Images.insert will return file object of inserted image
+        var file = Images.insert(file);
+        imageIDs.push(file._id); 
+      });
 
     /*********************************************
         Map form data to schema
     *********************************************/
     var formObj = {
       address: address,
-      author: 'anonymous',
-      price: price,
+      author: Meteor.userId(),
+      price: (price != null)? parseInt(price, 10) : null,
       description: descr,
       district: district,
       propertyType: pType,
-      hasAgentFee: hasAgentFee,
-      moveInDate: moveInDate,
-      area: area,
-      bathroom: bathroom,
+      hasAgentFee: (hasAgentFee != null)? parseInt(hasAgentFee, 10) : null,
+      moveInDate: (moveInDate != null)? new Date(moveInDate) : new Date(),
+      bedroom: (bedroom != null)? parseInt(bedroom, 10) : null,
+      area: (area != null)? parseInt(area, 10) : null,
+      bathroom: (bathroom != null)? parseInt(bathroom, 10) : null,
       mrt: nearestMRT,
+      contact: contactInfo,
+      photos: imageIDs,
       facilities: facilities
     };
 
@@ -79,36 +96,45 @@ Template.addProperty.events({
         error message in correspondant form-group
     *********************************************/
     var formErrDivID = {
-      address: '#address-form-group',
-      //author: '',
-      price: '#price-form-group',
-      description: '#descr-form-group',
-      //district: 'district-form-group',
-      //propertyType: pType,
-      //hasAgentFee: hasAgentFee,
-      moveInDate: '#movein-form-group',
-      area: '#area-form-group'
+      "address": "#address-form-group",
+      //author: "",
+      "price": "#price-form-group",
+      "description": "#descr-form-group",
+      //"district": "district-form-group",
+      //"propertyType": pType,
+      //"hasAgentFee": hasAgentFee,
+      "moveInDate": "#movein-form-group",
+      "area": "#area-form-group",
       //bathroom: bathroom,
       //mrt: nearestMRT,
       //facilities: facilities
+      "contact.name": "#contact-person-form-group",
+      "contact.phone": "#contact-number-form-group"
+        //qq: '#',
+        //wechat: '#',
+        //email: '#'
     };
-
-    //console.log(formObj);
-    imgTemp.forEach(function(file){
-      var id = Images.insert(file);
-      console.log(id);
-    });
-
-    Properties.insert(formObj, function(err, res) {
-      if(err){
-        console.log(err);
-        var targetDiv = formErrDivID[err.invalidKeys[0].name];
-        t.$(targetDiv).append('<span style="color: red" class="help-block"><i class="fa fa-exclamation-triangle"></i> '+err.message+'</span>');
-        t.$(targetDiv).find('input').focus();
-      }
-
-      console.log(res);
-    });
+    var context = Properties.simpleSchema().namedContext('propertyForm');
+    context.validate(formObj);
+    if(!context.isValid()){
+      var isFocused = false;
+      context.invalidKeys().forEach(function(e){
+        var errMsg = context.keyErrorMessage(e.name)
+          , targetDiv = formErrDivID[e.name];
+        t.$(targetDiv).append('<span style="color: red" class="help-block"><i class="fa fa-exclamation-triangle"></i> '+errMsg+'</span>');
+        if(!isFocused){
+          t.$(targetDiv).find('input').focus();
+        }
+      });
+    }
+    else{
+      Meteor.call('addProperty', formObj, function(err, id){
+        if(err){
+          return; //todo: show norification?
+        }
+        console.log('go to property/'+id)
+      });
+    }
   }
 });
 

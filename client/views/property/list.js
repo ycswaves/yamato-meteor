@@ -3,6 +3,11 @@ Template.propertyListing.rendered = function() {
 }
 
 Template.propertyListing.helpers({
+  // properties: function(){
+  //   // same as publication
+  //   return Properties.find({}, {sort: {createdAt: -1}, limit: 5});
+  // },
+
   properties: function(){
     var properties = [{
           title:'blk486 帕尔马路',

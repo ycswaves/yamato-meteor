@@ -19,8 +19,8 @@ SimpleSchema.messages({
   expectedObject: "[label] must be an object",
   expectedConstructor: "[label] must be a [type]",
   regEx: [
-    {msg: "[label] failed regular expression validation"},
-    {exp: SimpleSchema.RegEx.Email, msg: "[label]不是有效的email"}, //"[label] must be a valid e-mail address"},
+    {msg: "不是有效的[label]"},
+    {exp: SimpleSchema.RegEx.Email, msg: "不是有效的[label]"}, //"[label] must be a valid e-mail address"},
     {exp: SimpleSchema.RegEx.WeakEmail, msg: "[label] must be a valid e-mail address"},
     {exp: SimpleSchema.RegEx.Domain, msg: "[label] must be a valid domain"},
     {exp: SimpleSchema.RegEx.WeakDomain, msg: "[label] must be a valid domain"},
