@@ -55,7 +55,7 @@
                   <div class="tag price" style="position:absolute;top:0px">$ {{price}}</div>
                 </div>
                 <div class="col-md-5">
-                  <header><a href="property-detail.html"><h3>{{title}}</h3></a></header>
+                  <header><a href="property-detail.html"><h3>{{address}}</h3></a></header>
                 </div >
                 <div class="col-md-4" style="border-left: 0px solid #eee; color:#aaa">
                   <dl style="margin:20px 10px">
@@ -75,9 +75,20 @@
                 <div class="col-md-4" >
                   <dl style="margin:20px 10px">
                     <dt><figure class="fa fa-building"></figure> 房屋类型:</dt>
-                      <dd>{{apartmentType}}</dd>
+                      <dd>{{propertyType}}</dd>
                     <dt><figure class="fa fa-home"></figure> 房间:</dt>
-                      <dd>{{roomType}}</dd>
+                      <dd>roomType</dd>
+                    <dt><figure class="fa fa-cab"></figure> 近地铁:</dt>
+                      <dd>{{mrt}}</dd>
+                  </dl>
+                </div>
+
+                <div class="col-md-4" >
+                  <dl style="margin:20px 10px">
+                    <dt><figure class="fa fa-building"></figure> 有无中介:</dt>
+                      <dd>{{hasAgentFee}}</dd>
+                    <dt><figure class="fa fa-home"></figure> 入住时间:</dt>
+                      <dd>{{moveInDate}}</dd>
                     <dt><figure class="fa fa-cab"></figure> 近地铁:</dt>
                       <dd>{{mrt}}</dd>
                   </dl>
@@ -86,20 +97,9 @@
                 <div class="col-md-4" >
                   <dl style="margin:20px 10px">
                     <dt><figure class="fa fa-building"></figure> 房屋类型:</dt>
-                      <dd>{{apartmentType}}</dd>
+                      <dd>{{propertyType}}</dd>
                     <dt><figure class="fa fa-home"></figure> 房间:</dt>
-                      <dd>{{roomType}}</dd>
-                    <dt><figure class="fa fa-cab"></figure> 近地铁:</dt>
-                      <dd>{{mrt}}</dd>
-                  </dl>
-                </div>
-
-                <div class="col-md-4" >
-                  <dl style="margin:20px 10px">
-                    <dt><figure class="fa fa-building"></figure> 房屋类型:</dt>
-                      <dd>{{apartmentType}}</dd>
-                    <dt><figure class="fa fa-home"></figure> 房间:</dt>
-                      <dd>{{roomType}}</dd>
+                      <dd>roomType</dd>
                     <dt><figure class="fa fa-cab"></figure> 近地铁:</dt>
                       <dd>{{mrt}}</dd>
                   </dl>
