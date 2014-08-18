@@ -17,7 +17,7 @@
 					<header><h3>账户</h3></header>
 					<aside>
 						<ul class="sidebar-navigation">
-							<li><a href="profile.html"><i class="fa fa-user"></i><span>个人简介</span></a></li>
+							<li><a href="{{pathFor 'profile'}}"><i class="fa fa-user"></i><span>个人简介</span></a></li>
 							<li><a href="my-properties.html"><i class="fa fa-home"></i><span>我的房屋</span></a></li>
 							<li><a href="bookmarked.html"><i class="fa fa-heart"></i><span>反向推送</span></a></li>
 							<li class="active radius"><a href="{{pathFor 'inbox'}}"><i class="fa fa-inbox"></i><span>收件箱</span></a></li>
@@ -92,33 +92,6 @@
 								</div><!-- /.col-md-1 -->
 								<div class="col-md-11">
 									<div class="wrapper">
-										<header><h3>Integer tortor turpis, mollis eget vulputat</h3></header>
-										<a href="assets/img/properties/property-detail-01.jpg" class="image-popup">
-											<img src="assets/img/properties/property-detail-01.jpg">
-										</a>
-										<p>Praesent non risus vel magna consectetur auctor. Pellentesque ut euismod
-											lorem, at ultricies urna. Ut placerat nec est sed porttitor. Cras tempor,
-											ligula eu pulvinar adipiscing.
-										</p>
-										<div class="social">
-											<a href="#" class="fa fa-twitter btn btn-grey-dark"></a>
-											<a href="#" class="fa fa-facebook btn btn-grey-dark"></a>
-											<a href="#" class="fa fa-linkedin btn btn-grey-dark"></a>
-										</div>
-									</div>
-								</div><!-- /.col-md-11 -->
-							</div><!-- /.row -->
-						</article><!-- /.timeline-item -->
-						<article class="timeline-item">
-							<div class="row">
-								<div class="col-md-1">
-									<div class="circle">
-										<figure class="dot"></figure>
-										<div class="date">01/03/2014</div>
-									</div>
-								</div><!-- /.col-md-1 -->
-								<div class="col-md-11">
-									<div class="wrapper">
 										<header><h3>Aliquam id nunc luctus, malesuada</h3></header>
 										<p>Sed dignissim quis nisi at vehicula. Curabitur diam nisi, faucibus quis neque
 											id, lacinia facilisis velit. Donec at neque vitae ligula ornare placerat.
@@ -166,6 +139,15 @@
 								</div><!-- /.col-md-11 -->
 							</div><!-- /.row -->
 						</article><!-- /.timeline-item -->
+						<div class="center">
+              <ul class="pagination">
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+              </ul><!-- /.pagination-->
+            </div><!-- /.center-->
 					</section>
 				</section><!-- /#profile -->
 			</div><!-- /.col-md-9 -->
