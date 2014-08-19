@@ -52,6 +52,14 @@ Router.map(function () {
     }
   });
 
+  this.route('inbox', {
+    path: '/inbox',
+    template: 'inboxPage',
+    action: function () {
+      this.render();
+    }
+  });
+
   // matches all urls but doesn't get called until all previous routes have been tested
   // so in this case for invalid url
   this.route('notFound', {path: '*'});

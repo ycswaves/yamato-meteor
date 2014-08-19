@@ -32,9 +32,9 @@ NotificationMessages = {
     _.extend(this.options, options);
   },
   options: {
-    autoHide: true,
-    hideDelay: 3000,
-    autoScroll: true
+    // autoHide: true,
+    // hideDelay: 3000,
+    // autoScroll: true
   }
 }
 

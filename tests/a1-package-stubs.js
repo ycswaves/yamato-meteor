@@ -259,6 +259,9 @@ FS = {
             "/cfs.images.filerecord/insert": function emptyFn () {},
             "/cfs.images.filerecord/update": function emptyFn () {},
             "/cfs.images.filerecord/remove": function emptyFn () {},
+            "/messages/insert": function emptyFn () {},
+            "/messages/update": function emptyFn () {},
+            "/messages/remove": function emptyFn () {},
             "/properties/insert": function emptyFn () {},
             "/properties/update": function emptyFn () {},
             "/properties/remove": function emptyFn () {}
@@ -502,6 +505,9 @@ FS = {
           "/cfs.images.filerecord/insert": function emptyFn () {},
           "/cfs.images.filerecord/update": function emptyFn () {},
           "/cfs.images.filerecord/remove": function emptyFn () {},
+          "/messages/insert": function emptyFn () {},
+          "/messages/update": function emptyFn () {},
+          "/messages/remove": function emptyFn () {},
           "/properties/insert": function emptyFn () {},
           "/properties/update": function emptyFn () {},
           "/properties/remove": function emptyFn () {}
@@ -607,45 +613,7 @@ FS = {
       "attachSchema": function emptyFn () {},
       "simpleSchema": function emptyFn () {}
     },
-    "Storage": {
-      "mongoUrl": "mongodb://127.0.0.1:3001/meteor",
-      "mongoOptions": {
-        "db": {},
-        "server": {}
-      },
-      "name": "_tempstore",
-      "typeName": "storage.gridfs",
-      "adapter": {
-        "fileKey": function emptyFn () {},
-        "createReadStreamForFileKey": function emptyFn () {},
-        "createReadStream": function emptyFn () {},
-        "createWriteStreamForFileKey": function emptyFn () {},
-        "createWriteStream": function emptyFn () {},
-        "remove": function emptyFn () {}
-      },
-      "_removeAsync": function emptyFn () {},
-      "remove": function emptyFn () {},
-      "_transform": {
-        "storage": {
-          "fileKey": function emptyFn () {},
-          "createReadStreamForFileKey": function emptyFn () {},
-          "createReadStream": function emptyFn () {},
-          "createWriteStreamForFileKey": function emptyFn () {},
-          "createWriteStream": function emptyFn () {},
-          "remove": function emptyFn () {}
-        },
-        "createWriteStream": function emptyFn () {},
-        "createReadStream": function emptyFn () {}
-      },
-      "setMaxListeners": function emptyFn () {},
-      "emit": function emptyFn () {},
-      "addListener": function emptyFn () {},
-      "on": function emptyFn () {},
-      "once": function emptyFn () {},
-      "removeListener": function emptyFn () {},
-      "removeAllListeners": function emptyFn () {},
-      "listeners": function emptyFn () {}
-    },
+    "Storage": null,
     "exists": function emptyFn () {},
     "listParts": function emptyFn () {},
     "removeFile": function emptyFn () {},

@@ -4,6 +4,6 @@ Template.landingPage.rendered = function() {
 
 Template.landingPage.helpers({
   district: function(){
-    return Config.getDistrict();
+  	return Config.getDistrict();
   }
-});
+})
