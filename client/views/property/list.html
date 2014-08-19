@@ -59,14 +59,14 @@
                 </div >
                 <div class="col-md-4" style="border-left: 0px solid #eee; color:#aaa">
                   <dl style="margin:20px 10px">
-                    <dt>联系人:</dt>
-                      <dd>Mr. Chang</dd>
-                    <dt>手机:</dt>
-                      <dd>9123 1234</dd>
-                    <dt>Wechat</dt>
-                      <dd>604812333</dd>
-                    <dt>Email</dt>
-                      <dd>example@example.com</dd>
+                    <dt>联系人: </dt>
+                      <dd>{{contact.name}}</dd>
+                    <dt>手机: </dt>
+                      <dd>{{contact.phone}}</dd>
+                    <dt>Wechat: </dt>
+                      <dd>{{contact.wechat}}</dd>
+                    <dt>Email: </dt>
+                      <dd>{{contact.email}}</dd>
                   </dl>
                 </div>
               </div>
@@ -74,12 +74,12 @@
               <div class="row">
                 <div class="col-md-4" >
                   <dl style="margin:20px 10px">
-                    <dt><figure class="fa fa-building"></figure> 房屋类型:</dt>
-                      <dd>{{propertyType}}</dd>
-                    <dt><figure class="fa fa-home"></figure> 房间:</dt>
+                    <dt><figure class="fa fa-building"></figure> 房屋类型: </dt>
+                      <dd>{{transPtype propertyType}}</dd>
+                    <dt><figure class="fa fa-home"></figure> 房间: </dt>
                       <dd>roomType</dd>
-                    <dt><figure class="fa fa-cab"></figure> 近地铁:</dt>
-                      <dd>{{mrt}}</dd>
+                    <dt><figure class="fa fa-cab"></figure> 近地铁: </dt>
+                      <dd>{{mrt}} {{transMRT mrt}}</dd>
                   </dl>
                 </div>
 
@@ -88,7 +88,7 @@
                     <dt><figure class="fa fa-building"></figure> 有无中介:</dt>
                       <dd>{{hasAgentFee}}</dd>
                     <dt><figure class="fa fa-home"></figure> 入住时间:</dt>
-                      <dd>{{moveInDate}}</dd>
+                      <dd>{{transDatetime moveInDate}}</dd>
                     <dt><figure class="fa fa-cab"></figure> 近地铁:</dt>
                       <dd>{{mrt}}</dd>
                   </dl>

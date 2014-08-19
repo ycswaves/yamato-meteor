@@ -5,7 +5,6 @@
 
 standard-app-packages
 insecure
-iron-router
 accounts-password
 accounts-base
 accounts-google
@@ -25,3 +24,4 @@ jasmine
 mocha-web-velocity
 velocity-html-reporter
 spin
+iron-router

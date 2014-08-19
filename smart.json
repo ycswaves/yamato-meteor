@@ -1,6 +1,5 @@
 {
   "packages": {
-    "iron-router": {},
     "collection2": {},
     "flash-messages": {},
     "Dropzonejs": {},
@@ -11,6 +10,10 @@
     "jasmine": {},
     "mocha-web-velocity": {},
     "velocity-html-reporter": {},
-    "spin": {}
+    "spin": {},
+    "moment": {},
+    "iron-router": {
+      "version": "0.8.2"
+    }
   }
 }
