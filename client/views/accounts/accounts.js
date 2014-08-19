@@ -156,7 +156,7 @@ Template.header.events({
   'click #signout' : function(e, t){
     e.preventDefault();
     Meteor.logout(function(){
-      NotificationMessages.sendInfo('成功退出登陆','欢迎回来');
+      Router.go('landing');
     });
   }
 })
