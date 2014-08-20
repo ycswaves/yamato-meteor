@@ -79,17 +79,17 @@
                     <dt><figure class="fa fa-home"></figure> 房间: </dt>
                       <dd>roomType</dd>
                     <dt><figure class="fa fa-cab"></figure> 近地铁: </dt>
-                      <dd>{{mrt}} {{transMRT mrt}}</dd>
+                      <dd>{{transMRT mrt}} ({{mrt}})</dd>
                   </dl>
                 </div>
 
                 <div class="col-md-4" >
                   <dl style="margin:20px 10px">
-                    <dt><figure class="fa fa-building"></figure> 有无中介:</dt>
-                      <dd>{{hasAgentFee}}</dd>
-                    <dt><figure class="fa fa-home"></figure> 入住时间:</dt>
+                    <dt><figure class="fa fa-building"></figure> 有无中介费: </dt>
+                      <dd>{{transAgt hasAgentFee}}</dd>
+                    <dt><figure class="fa fa-home"></figure> 入住时间: </dt>
                       <dd>{{transDatetime moveInDate}}</dd>
-                    <dt><figure class="fa fa-cab"></figure> 近地铁:</dt>
+                    <dt><figure class="fa fa-cab"></figure> 近地铁: </dt>
                       <dd>{{mrt}}</dd>
                   </dl>
                 </div>

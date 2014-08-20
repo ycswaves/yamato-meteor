@@ -25,3 +25,4 @@ mocha-web-velocity
 velocity-html-reporter
 spin
 iron-router
+moment

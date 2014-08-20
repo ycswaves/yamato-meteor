@@ -32,7 +32,14 @@ Handlebars.registerHelper('transPfaci',function(val){
 });
 
 // helper for move in date
-Handlebars.registerHelper('transDatetime',function(val){
-  return moment(val, "YYYY-MM-DD");
+Handlebars.registerHelper('transDatetime',function(date){
+  return moment(date).format('YYYY-MM-DD');
 });
+
+// helper for has agent fee
+Handlebars.registerHelper('transAgt',function(val){
+  return (val==1)? '有':'无';
+});
+
+
 
