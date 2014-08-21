@@ -11,6 +11,8 @@
     height: 15px;
     margin-right: 5px
   }
+  dt {margin-right: 5px}
+  dd {font-weight: 100}
   </style>
   <div class="page-gradient">
   <!-- Breadcrumb -->
@@ -74,34 +76,32 @@
               <div class="row">
                 <div class="col-md-4" >
                   <dl style="margin:20px 10px">
+                    <dt><img src="/img/tram4.svg" alt="mrt" style="width:12px; position:relative; top:-4px"> 近地铁: </dt>
+                      <dd>{{transMRT mrt}} ({{mrt}})</dd>
+                    <dt><figure class="fa fa-user"></figure> 有无中介费: </dt>
+                      <dd>{{transAgt hasAgentFee}}</dd>
+                  </dl>
+                </div>
+
+                <div class="col-md-4" >
+                  <dl style="margin:20px 10px">
                     <dt><figure class="fa fa-building"></figure> 房屋类型: </dt>
                       <dd>{{transPtype propertyType}}</dd>
                     <dt><figure class="fa fa-home"></figure> 房间: </dt>
                       <dd>roomType</dd>
-                    <dt><figure class="fa fa-cab"></figure> 近地铁: </dt>
-                      <dd>{{transMRT mrt}} ({{mrt}})</dd>
                   </dl>
                 </div>
 
                 <div class="col-md-4" >
                   <dl style="margin:20px 10px">
-                    <dt><figure class="fa fa-building"></figure> 有无中介费: </dt>
-                      <dd>{{transAgt hasAgentFee}}</dd>
-                    <dt><figure class="fa fa-home"></figure> 入住时间: </dt>
-                      <dd>{{transDatetime moveInDate}}</dd>
-                    <dt><figure class="fa fa-cab"></figure> 近地铁: </dt>
-                      <dd>{{mrt}}</dd>
-                  </dl>
-                </div>
-
-                <div class="col-md-4" >
-                  <dl style="margin:20px 10px">
-                    <dt><figure class="fa fa-building"></figure> 房屋类型:</dt>
-                      <dd>{{propertyType}}</dd>
-                    <dt><figure class="fa fa-home"></figure> 房间:</dt>
-                      <dd>roomType</dd>
-                    <dt><figure class="fa fa-cab"></figure> 近地铁:</dt>
-                      <dd>{{mrt}}</dd>
+                    <dt></dt>
+                      <dd>
+                        <img src="/img/bed.svg" alt="bedroom" style="width:13px; position:relative; top:-4px"> {{bedroom}}
+                        <span style="margin-right:10px"></span>
+                        <img src="/img/bathtub.svg" alt="bathroom" style="width:13px; position:relative; top:-3px"> {{bathroom}}
+                      </dd>
+                    <dt><figure class="fa fa-calendar"></figure> 入住时间: </dt>
+                      <dd>{{transDatetime moveInDate}} 起</dd>
                   </dl>
                 </div>
 

@@ -28,9 +28,11 @@
         facilities: ['noLandlord', 'aircon']
       };
 
-      expect(true).toBe(true); //test
+      spyOn(Meteor, "call");
+      Meteor.call('addProperty', formObj, function(){});
+      expect(Meteor.call).toHaveBeenCalled();
       // spyOn(Properties, "insert").andReturn(1);
-      // Meteor.methodMap.addProperty(formObj);
+
       // expect(Meteor.methodMap.addProperty).not.toThrow();
       //expect(Meteor.methodMap.addProperty).toThrow();
     });
