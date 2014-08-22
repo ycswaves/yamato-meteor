@@ -81,6 +81,35 @@
                                 </div>
                               </div><!-- /.form-group -->
                             </div><!-- /.col-md-4 -->
+                          </div><!-- /.row -->
+
+                          <div class="row">
+                            <div class="col-md-4 col-sm-4">
+                              <label>出租方式</label>
+                              <div class="form-group form-inline" id="renttype-form-group" style="padding-top:10px">
+                                <div class="radio" style="margin-right:30px">
+                                  <label>
+                                    <input type="radio" id="rent-whole" value="1" name="rent-type">整套
+                                  </label>
+                                </div>
+                                <div class="radio">
+                                  <label>
+                                    <input type="radio" id="rent-single" value="0" name="rent-type" checked>单间
+                                  </label>
+                                </div>
+                              </div><!-- /.form-group -->
+                            </div><!-- /.col-md-4 -->
+
+                            <div class="col-md-4 col-sm-4">
+                              <div class="form-group" id="room-form-group">
+                                <label for="room-type">出租房间</label>
+                                <select name="room-type" id="room-type">
+                                  {{#each arrayify rtypes}}
+                                  <option value="{{key}}">{{value}}</option>
+                                  {{/each}}
+                                </select>
+                              </div><!-- /.form-group -->
+                            </div><!-- /.col-md-4 -->
 
                             <div class="col-md-4 col-sm-4">
                               <div class="form-group" id="movein-form-group">
@@ -92,6 +121,7 @@
                             </div><!-- /.col-md-4 -->
 
                           </div><!-- /.row -->
+
                           <div class="row">
                             <div class="col-md-4 col-sm-4">
                               <div class="form-group" id="bedroom-form-group">
@@ -108,16 +138,6 @@
                             </div><!-- /.col-md-4 -->
 
                             <div class="col-md-4 col-sm-4">
-                              <div class="form-group" id="area-form-group">
-                                <label for="area">面积</label>
-                                <div class="input-group">
-                                  <input type="text" class="form-control" name="property-area">
-                                  <span class="input-group-addon">m<sup>2</sup></span>
-                                </div>
-                              </div><!-- /.form-group -->
-                            </div><!-- /.col-md-4 -->
-
-                            <div class="col-md-4 col-sm-4">
                               <div class="form-group" id="bathroom-form-group">
                                 <label for="bathroom">卫生间</label>
                                 <select name="bathroom">
@@ -128,6 +148,17 @@
                                 </select>
                               </div><!-- /.form-group -->
                             </div><!-- /.col-md-4 -->
+
+                            <div class="col-md-4 col-sm-4">
+                              <div class="form-group" id="area-form-group">
+                                <label for="area">面积</label>
+                                <div class="input-group">
+                                  <input type="text" class="form-control" name="property-area">
+                                  <span class="input-group-addon">m<sup>2</sup></span>
+                                </div>
+                              </div><!-- /.form-group -->
+                            </div><!-- /.col-md-4 -->
+
                           </div><!-- /.row -->
 
                           <div class="row">
@@ -176,7 +207,7 @@
 
                 <section id="property-features" class="block">
                   <section>
-                    <header><h2>房屋特色</h2></header>
+                    <header><h2>房屋配套</h2></header>
                     <ul class="submit-features">
                       {{#each arrayify facilities}}
                         <li><div class="checkbox"><label><input type="checkbox" value="{{key}}" class="property-facility">{{value}}</label></div></li>

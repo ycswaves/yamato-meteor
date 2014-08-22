@@ -18,6 +18,8 @@
         district: 'D16',
         propertyType: 'Condo',
         hasAgentFee: 0,
+        roomType: 'master',
+        rentType: 0,
         moveInDate: new Date(),
         bedroom: 3,
         area: 112,
@@ -29,7 +31,10 @@
       };
 
       spyOn(Meteor, "call");
-      Meteor.call('addProperty', formObj, function(){});
+      Meteor.call('addProperty', formObj, function(err, id){
+        console.log('err: ' + err || 'no error');
+        console.log('id: '+id);
+      });
       expect(Meteor.call).toHaveBeenCalled();
       // spyOn(Properties, "insert").andReturn(1);
 

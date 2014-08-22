@@ -41,6 +41,8 @@ Template.addProperty.events({
       , district = t.find('select[name="district"]').value || null
       // deal type
       , pType = t.find('select[name="property-type"]').value || null
+      , rType = t.find('select[name="room-type"]').value || null
+      , rentType = t.find('input:checked[name="rent-type"]').value || null
       , hasAgentFee = t.find('input:checked[name="has-agent-fee"]').value || null
       , moveInDate = t.find('input[name="move-in-date"]').value || null
       , bedroom = t.find('select[name="bedroom"]').value || null
@@ -67,7 +69,7 @@ Template.addProperty.events({
       imgTemp.forEach(function(file){
         // Images.insert will return file object of inserted image
         var file = Images.insert(file);
-        imageIDs.push(file._id); 
+        imageIDs.push(file._id);
       });
 
     /*********************************************
@@ -81,6 +83,8 @@ Template.addProperty.events({
       district: district,
       propertyType: pType,
       hasAgentFee: (hasAgentFee != null)? parseInt(hasAgentFee, 10) : null,
+      rentType: (rentType != null)? parseInt(rentType, 10) : null,
+      roomType: rType,
       moveInDate: (moveInDate != null)? new Date(moveInDate) : new Date(),
       bedroom: (bedroom != null)? parseInt(bedroom, 10) : null,
       area: (area != null)? parseInt(area, 10) : null,
@@ -130,7 +134,7 @@ Template.addProperty.events({
     else{
       Meteor.call('addProperty', formObj, function(err, id){
         if(err){
-          return; //todo: show norification?
+          return false; //todo: show norification?
         }
         console.log('go to property/'+id)
       });
@@ -160,5 +164,9 @@ Template.addProperty.helpers({
 
   ptypes: function(){
     return Config.getPropertyTypes();
+  },
+
+  rtypes: function(){
+    return Config.getRoomTypes();
   }
 });

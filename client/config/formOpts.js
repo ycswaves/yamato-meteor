@@ -52,6 +52,12 @@ var propertyTypes = {
   "landed": "别墅"
 };
 
+var roomTypes = {
+  "master": "主人房",
+  "common": "普通房",
+  "other": "其他"
+};
+
 var mrtList = {
   "NS": {
     "niceName": "NS - 南北线",
@@ -221,6 +227,10 @@ Config.getFacilities = function(){
 
 Config.getPropertyTypes = function(){
   return propertyTypes;
+}
+
+Config.getRoomTypes = function(){
+  return roomTypes;
 }
 
 Config.getAgency = function(line){

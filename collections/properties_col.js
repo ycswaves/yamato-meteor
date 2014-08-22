@@ -65,6 +65,16 @@ Schemas.Property = new SimpleSchema({
     label: "有无中介费",
     allowedValues: [0, 1]
   },
+  rentType: {
+    type: Number,
+    label: "出租方式",
+    allowedValues: [0, 1]
+  },
+  roomType: {
+    type: String,
+    label: "出租房间",
+    allowedValues: ['master', 'common', 'other'],
+  },
   moveInDate: {
     type: Date,
     label: "入住时间",
