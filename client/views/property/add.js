@@ -14,12 +14,33 @@ Template.addProperty.rendered = function() {
       accept: function(file, done) {
         //todo: process file
         imgTemp.push(file);
+      },
+      removedfile: function(file){
+        // remove preview
+        file.previewElement.parentNode.removeChild(file.previewElement);
+        // remove the file from temp queue
+        imgTemp.forEach(function(e, i){
+          if(e.name == file.name){
+            imgTemp.splice(i,1);
+          }
+        });
       }
     });
     render();
 }
 
 Template.addProperty.events({
+  'change #rent-type': function(e, t){
+    e.preventDefault();
+    var rentType = t.find('select[name="rent-type"]').value;
+    if(rentType == 1){
+      t.$('#room-form-group').parent().hide();
+    }
+    else{
+      t.$('#room-form-group').parent().show();
+    }
+  },
+
   'change #mrtlines': function(e, t){
     e.preventDefault();
     var mrtLine = t.find('select[name="mrtlines"]').value;
@@ -42,7 +63,7 @@ Template.addProperty.events({
       // deal type
       , pType = t.find('select[name="property-type"]').value || null
       , rType = t.find('select[name="room-type"]').value || null
-      , rentType = t.find('input:checked[name="rent-type"]').value || null
+      , rentType = t.find('select[name="rent-type"]').value || null
       , hasAgentFee = t.find('input:checked[name="has-agent-fee"]').value || null
       , moveInDate = t.find('input[name="move-in-date"]').value || null
       , bedroom = t.find('select[name="bedroom"]').value || null
@@ -69,7 +90,7 @@ Template.addProperty.events({
       imgTemp.forEach(function(file){
         // Images.insert will return file object of inserted image
         var file = Images.insert(file);
-        imageIDs.push(file._id);
+        imageIDs.push(file);
       });
 
     /*********************************************
@@ -134,6 +155,7 @@ Template.addProperty.events({
     else{
       Meteor.call('addProperty', formObj, function(err, id){
         if(err){
+          console.log(err+'aa');
           return false; //todo: show norification?
         }
         console.log('go to property/'+id)

@@ -85,18 +85,12 @@
 
                           <div class="row">
                             <div class="col-md-4 col-sm-4">
-                              <label>出租方式</label>
-                              <div class="form-group form-inline" id="renttype-form-group" style="padding-top:10px">
-                                <div class="radio" style="margin-right:30px">
-                                  <label>
-                                    <input type="radio" id="rent-whole" value="1" name="rent-type">整套
-                                  </label>
-                                </div>
-                                <div class="radio">
-                                  <label>
-                                    <input type="radio" id="rent-single" value="0" name="rent-type" checked>单间
-                                  </label>
-                                </div>
+                              <div class="form-group" id="renttype-form-group">
+                                <label>出租方式</label>
+                                <select name="rent-type" id="rent-type">
+                                  <option value="0">单间</option>
+                                  <option value="1">整套</option>
+                                </select>
                               </div><!-- /.form-group -->
                             </div><!-- /.col-md-4 -->
 

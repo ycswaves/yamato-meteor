@@ -68,7 +68,7 @@ Schemas.Property = new SimpleSchema({
   rentType: {
     type: Number,
     label: "出租方式",
-    allowedValues: [0, 1]
+    allowedValues: [0, 1] // 1 - whole department, 0 - single room
   },
   roomType: {
     type: String,

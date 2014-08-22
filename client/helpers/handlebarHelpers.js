@@ -41,5 +41,10 @@ Handlebars.registerHelper('transAgt',function(val){
   return (val==1)? '有':'无';
 });
 
+// helper for room type
+Handlebars.registerHelper('transRoom',function(rentType, room){
+  var allRoomTypes = Config.getRoomTypes();
+  return (rentType==1)? '整套' : allRoomTypes[room];
+});
 
 
