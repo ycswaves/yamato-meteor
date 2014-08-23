@@ -45,11 +45,7 @@ Router.map(function () {
   });
 
 	this.route('properties', {
-    path: '/properties',
-    template: 'propertyListing',
-    action: function () {
-     this.render();
-    }
+    controller: 'ListAllController'
   });
 
   this.route('inbox', {
