@@ -36,6 +36,18 @@ Router.map(function () {
     }
   });
 
+  this.route('myproperty', {
+    path: '/myproperty',
+    waitOn: function () {
+      return Meteor.subscribe('userData');
+    },
+    template: 'myProperties',
+    //onBeforeAction: filters.isLoggedIn(),
+    action: function () {
+     this.render();
+    }
+  });
+
   this.route('addProperty', {
     path: '/properties/add',
     template: 'addProperty',
@@ -45,7 +57,7 @@ Router.map(function () {
   });
 
 	this.route('properties', {
-    controller: 'ListAllController'
+    controller: 'ListController'
   });
 
   this.route('inbox', {
