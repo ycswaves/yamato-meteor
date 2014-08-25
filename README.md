@@ -58,3 +58,16 @@ Reminder:
 
   - Actions like `insert`, `update`, `edit` will need Meteor.call() because these actions involving DB modification, thus can only be done on server-side
 
+## Add new module in Meteor Project
+- Client Side
+  1. Create view html file and include html in `<template name="templ_name"></template>`.
+  2. Create view js file and define `template.templ_name.events()`, `template.templ_name.helpers()` or Iron-router controllers.
+  3. Add route in `router.js` and check if filter need to apply.
+  4. Add subscription in `subscriptions.js` if new collection is added
+
+- Server Side
+  1. Create `Meteor.method()` for the client side JS to make `Meteor.call()`. Normally the defined methods involve database operation
+  2. Add publication in `publications.js` if new collection is added
+  
+- Collection
+  1. Create `SimpleSchema` for newly added collection
