@@ -130,7 +130,7 @@ moment = function () { return {
     "_invalidDate": "Invalid date",
     "invalidDate": function emptyFn () {}
   },
-  "_d": "2014-08-23T10:02:40.099Z",
+  "_d": "2014-08-26T15:24:55.562Z",
   "clone": function emptyFn () {},
   "valueOf": function emptyFn () {},
   "unix": function emptyFn () {},
