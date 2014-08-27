@@ -58,7 +58,7 @@ Schemas.Property = new SimpleSchema({
   propertyType: {
     type: String,
     label: "房屋类型",
-    allowedValues: ['HDB', 'Condo', 'Landed'],
+    allowedValues: ['HDB', 'Condo', 'Landed']
   },
   hasAgentFee: {
     type: Number,
@@ -73,7 +73,7 @@ Schemas.Property = new SimpleSchema({
   roomType: {
     type: String,
     label: "出租房间",
-    allowedValues: ['master', 'common', 'other'],
+    allowedValues: ['master', 'common', 'other']
   },
   moveInDate: {
     type: Date,
@@ -123,7 +123,8 @@ Schemas.Property = new SimpleSchema({
         }
       },
     denyUpdate: true,
-    optional: true
+    optional: true // TODO: due to validation, need to set to optional,
+                  // otherwise set the value during insertion
   },
   updatedAt: {
     type: Date,
@@ -133,6 +134,25 @@ Schemas.Property = new SimpleSchema({
         }
       },
     denyInsert: true,
+    optional: true
+  },
+  status: {
+    type: String,
+    autoValue: function() {
+        if (this.isInsert) {
+          return 'open';
+        }
+      },
+    allowedValues: ['open', 'closed', 'deleted'],
+    optional: true
+  },
+  views: {
+    type: Number,
+    autoValue: function() {
+        if (this.isInsert) {
+          return 0;
+        }
+      },
     optional: true
   }
 });

@@ -47,4 +47,11 @@ Handlebars.registerHelper('transRoom',function(rentType, room){
   return (rentType==1)? '整套' : allRoomTypes[room];
 });
 
+// helper for get image url
+Handlebars.registerHelper('getOneURL',function(photos){
+  if(photos.length <= 0) return; //TODO: return placeholder
+  var imgObj = Images.findOne({_id: photos[0]});
+  return 'https://s3-ap-southeast-1.amazonaws.com/yamato-image/'+imgObj.copies.images.key;
+});
+
 

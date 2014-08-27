@@ -90,7 +90,7 @@ Template.addProperty.events({
       imgTemp.forEach(function(file){
         // Images.insert will return file object of inserted image
         var file = Images.insert(file);
-        imageIDs.push(file);
+        imageIDs.push(file._id);
       });
 
     /*********************************************
