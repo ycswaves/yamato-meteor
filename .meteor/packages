@@ -19,10 +19,6 @@ cfs-s3
 cfs-ejson-file
 cfs-filesystem
 cfs-gridfs
-jasmine-unit
-jasmine
-mocha-web-velocity
-velocity-html-reporter
 spin
 iron-router
 moment
