@@ -68,6 +68,13 @@ Reminder:
 - Server Side
   1. Create `Meteor.method()` for the client side JS to make `Meteor.call()`. Normally the defined methods involve database operation
   2. Add publication in `publications.js` if new collection is added
-  
+
 - Collection
   1. Create `SimpleSchema` for newly added collection
+
+## To Dos
+- Image uploading file size limit
+- Image preprocessing
+  - dimension resize
+  - watermark
+- Explore app testing solution

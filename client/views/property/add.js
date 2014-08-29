@@ -158,7 +158,8 @@ Template.addProperty.events({
           console.log(err+'aa');
           return false; //todo: show norification?
         }
-        console.log('go to property/'+id)
+        console.log('go to property/'+id);
+        Router.go('myproperty');
       });
     }
   }
