@@ -60,6 +60,14 @@ Router.map(function () {
     controller: 'ListController'
   });
 
+  this.route('propertyDetail', {
+    path: '/property/:id',
+    template: 'propertyDetail',
+    action: function () {
+      this.render();
+    }
+  });
+
   this.route('inbox', {
     path: '/inbox',
     template: 'inboxPage',
