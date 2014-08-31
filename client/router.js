@@ -65,6 +65,12 @@ Router.map(function () {
     template: 'propertyDetail',
     action: function () {
       this.render();
+    },
+    data: function () {
+      var params = this.params;
+      return {
+        property: Properties.findOne({_id: params.id})
+      }
     }
   });
 

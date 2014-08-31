@@ -74,6 +74,7 @@ Reminder:
 
 ## To Dos
 - Image uploading file size limit
+- AWS S3 public folder
 - Image preprocessing
   - dimension resize
   - watermark
