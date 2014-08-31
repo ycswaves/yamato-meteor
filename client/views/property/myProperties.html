@@ -45,7 +45,7 @@
                     {{#each properties}}
                     <tr>
                       <td class="image">
-                        <a href="property-detail.html"><img alt="" src="{{getOneURL photos}}"></a>
+                        <a href="{{pathFor 'propertyDetail' id=_id}}"><img alt="" src="{{getImageURL photos}}"></a>
                       </td>
                       <td>
                         <div class="inner">
@@ -54,8 +54,8 @@
                           <div class="tag price">$ {{price}}</div>
                         </div>
                       </td>
-                      <td>{{transDatetime createdAt}}</td>
-                      <td>236</td>
+                      <td>{{transDatetime createdAt 'YYYY-MM-DD HH:mm:ss'}}</td>
+                      <td>{{views}}</td>
                       <td class="actions">
                         <a href="#{{_id}}" class="edit"><i class="fa fa-pencil"></i>修改</a>
                         <a href="#"><i class="delete fa fa-trash-o"></i></a>

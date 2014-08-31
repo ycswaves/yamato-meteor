@@ -22,24 +22,22 @@
             </header>
             <section id="property-gallery">
               <div class="owl-carousel property-carousel">
+                {{#unless property.photos.length}}
+                  <div class="property-slide">
+                    <a href="#" class="image-popup">
+                      <img alt="" src="/img/properties/property-detail-01.jpg">
+                    </a>
+                  </div><!-- /.property-slide -->
+                {{/unless}}
+
+                {{#each property.photos}}
                 <div class="property-slide">
-                  <a href="assets/img/properties/property-detail-01.jpg" class="image-popup">
-                      <div class="overlay"><h3>Front View</h3></div>
-                      <img alt="" src="assets/img/properties/property-detail-01.jpg">
+                  <a href="#" class="image-popup">
+                      <img alt="" src="{{getImageURL this}}">
                   </a>
                 </div><!-- /.property-slide -->
-                <div class="property-slide">
-                  <a href="assets/img/properties/property-detail-02.jpg" class="image-popup">
-                      <div class="overlay"><h3>Bedroom</h3></div>
-                      <img alt="" src="assets/img/properties/property-detail-02.jpg">
-                  </a>
-                </div><!-- /.property-slide -->
-                <div class="property-slide">
-                  <a href="assets/img/properties/property-detail-03.jpg" class="image-popup">
-                      <div class="overlay"><h3>Bathroom</h3></div>
-                      <img alt="" src="assets/img/properties/property-detail-03.jpg">
-                  </a>
-                </div><!-- /.property-slide -->
+                {{/each}}
+
               </div><!-- /.property-carousel -->
             </section>
             <div class="row">

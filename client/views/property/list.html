@@ -36,13 +36,13 @@
               <div class="property" style="padding-left:0px">
                 <div class="row info">
                   <div class="col-md-3">
-                    <a href="property-detail.html">
-                      <img alt="" src="{{getOneURL photos}}">
+                    <a href="{{pathFor 'propertyDetail' id=_id}}">
+                      <img alt="" src="{{getImageURL photos}}">
                     </a>
                     <div class="tag price" style="position:absolute;top:0px">$ {{price}}</div>
                   </div>
                   <div class="col-md-5">
-                    <header><a href="property-detail.html"><h3>{{address}}</h3></a></header>
+                    <header><a href="{{pathFor 'propertyDetail' id=_id}}"><h3>{{address}}</h3></a></header>
                   </div >
                   <div class="col-md-4" style="border-left: 0px solid #eee; color:#aaa">
                     <dl style="margin:20px 10px">

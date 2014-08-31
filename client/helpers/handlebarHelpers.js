@@ -32,7 +32,10 @@ Handlebars.registerHelper('transPfaci',function(val){
 });
 
 // helper for move in date
-Handlebars.registerHelper('transDatetime',function(date){
+Handlebars.registerHelper('transDatetime',function(date, format){
+  if(format){
+    return moment(date).format(format);
+  }
   return moment(date).format('YYYY-MM-DD');
 });
 
@@ -48,10 +51,21 @@ Handlebars.registerHelper('transRoom',function(rentType, room){
 });
 
 // helper for get image url
-Handlebars.registerHelper('getOneURL',function(photos){
-  if(photos.length <= 0) return; //TODO: return placeholder
-  var imgObj = Images.findOne({_id: photos[0]});
-  return 'https://s3-ap-southeast-1.amazonaws.com/yamato-image/'+imgObj.copies.images.key;
+Handlebars.registerHelper('getImageURL',function(photos){
+  var imgObj;
+  if(typeof photos == 'string'){ // if argument is a photo id
+    imgObj = Images.findOne({_id: photos});
+  }
+  else if(photos.length > 0){ // if argument is array of photo IDs, return the 1st one
+    imgObj = Images.findOne({_id: photos[0]}); // used in my properties listing
+  }
+
+
+  if(typeof imgObj != 'object')
+    return '/img/properties/property-03.jpg'; //TODO: return placeholder
+  else
+    return 'https://s3-ap-southeast-1.amazonaws.com/yamato-image/'+imgObj.copies.images.key;
 });
+
 
 
