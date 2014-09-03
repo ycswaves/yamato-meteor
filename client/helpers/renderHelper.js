@@ -4,6 +4,9 @@ render = function(){
 
     $('.tool-tip').tooltip();
 
+    $('.carousel-indicators li:first-child').addClass('active');
+    $('.carousel-inner .item:first-child').addClass('active');
+
     var select = $('select');
     if (select.length > 0 ){
         select.selectpicker();
