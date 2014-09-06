@@ -29,6 +29,13 @@ Handlebars.registerHelper('arrayify',function(obj){
   return result;
 });
 
+Handlebars.registerHelper('nullHelper', function(obj){
+  if(obj == undefined)
+    return '无';
+  else
+    return obj;
+});
+
 // helper for district
 Handlebars.registerHelper('transDistr',function(val){
   var allDistr = Config.getDistrict();
