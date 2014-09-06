@@ -2,7 +2,7 @@
   {{#if notifications}}
   <div class="notification-box">
     <div style="width:350px">
-      <div class="panel panel-primary">
+      <div class="panel panel-primary" style="border-bottom-left-radius:0px;border-bottom-right-radius:0px">
         <div class="panel-heading">
         <button type="button" class="close">&times;</button>
           通知助手
@@ -22,16 +22,43 @@
 
 <template name="notificationMessage">
   <li class="left clearfix message">
-  <span class="notification-img pull-left">
-    <img src="http://placehold.it/50/{{color}}/fff&amp;text=Info" class="img-rounded">
-  </span>
-  <div class="notification-body clearfix">
-    <div class="header">
-      <strong class="primary-font">{{title}}</strong>
+    <span class="notification-img pull-left">
+      <div class="piece {{style}}"></div>
+    </span>
+    <div class="notification-body clearfix">
+      <div class="header">
+        <strong class="primary-font">{{title}}</strong>
+      </div>
+      <p>
+        {{{message}}}
+      </p>
     </div>
-    <p>
-      {{{message}}}
-    </p>
+  </li>
+</template>
+
+<template name="replyMessages">
+  <div id="reply-box" style="display: none">
+    <div class="reply-box">
+      <div class="reply-no-message">
+        没有新任何消息噢!
+      </div>
+      <img class="reply-bell" src="/img/bell.png">
+    </div>
   </div>
-</li>
+</template>
+
+<template name="replyMessage">
+  <li class="left clearfix message">
+    <span class="notification-img pull-left">
+      <div class="piece notice"></div>
+    </span>
+    <div class="notification-body clearfix">
+      <div class="header">
+        <strong class="primary-font">{{title}}</strong>
+      </div>
+      <p>
+        {{{message}}}
+      </p>
+    </div>
+  </li>
 </template>
