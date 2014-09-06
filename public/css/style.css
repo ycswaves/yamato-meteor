@@ -50,6 +50,11 @@ hr.divider {
 	width: 40px;
 }
 
+/* Margin */
+.m-l-md{
+	margin-left:25px;
+}
+
 /* Link */
 a {
 	-moz-transition: 0.2s;
@@ -1301,7 +1306,7 @@ ul.list-links li a:hover {
 
 /* Landing Page */
 .welcome {
-	background: url('http://demo.hiarn.com/closed-city/static-countdown/img/bg@1920.jpg') no-repeat center top;
+	background: url('http://demo.lovethem.es/extra/wp-content/uploads/2014/06/wood.jpg') no-repeat center top;
 	background-size: cover;
 	height: 100vh;
 	position: relative;

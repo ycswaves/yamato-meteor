@@ -19,10 +19,10 @@ NotificationMessages = {
     sendNotification(title, message, 'alert-error alert-danger', options);
   },
   sendSuccess: function(title, message, options) {
-    sendNotification(title, message, 'alert-success', options);
+    sendNotification(title, message, 'notice', options);
   },
   sendInfo: function(title, message, options) {
-    sendNotification(title, message, 'alert-info', options);
+    sendNotification(title, message, 'reply', options);
   },
   clear: function() {
     notificationMessages.remove({seen: true});
