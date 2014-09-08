@@ -63,6 +63,8 @@ Handlebars.registerHelper('transPfaci',function(val){
 
 // helper for move in date
 Handlebars.registerHelper('transDatetime',function(date, format){
+  if(date == undefined) return;
+
   if(typeof format == 'string'){
     return moment(date).format(format);
   }

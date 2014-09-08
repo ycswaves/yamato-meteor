@@ -66,7 +66,7 @@ Router.map(function () {
       var params = this.params;
       if(params.id){ //TODO: verify if user own this property
         return {
-          myProperty: Properties.find({_id: params.id})
+          myProperty: Properties.findOne({_id: params.id})
         }
       }
     }

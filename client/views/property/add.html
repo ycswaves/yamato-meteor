@@ -4,24 +4,32 @@
     <div class="container">
       <ol class="breadcrumb">
         <li><a href="#">首页</a></li>
-        <li class="active">发布新置业</li>
+        <li class="active">{{#if myProperty}}编辑{{else}}发布{{/if}}</li>
       </ol>
     </div>
     <!-- end Breadcrumb -->
     <div class="container">
-      <header><h1>发布新置业</h1></header>
+      <header>
+        <h1>
+        {{#if myProperty}}
+          <i class="fa fa-pencil-square"></i> 编辑
+        {{else}}
+          <i class="fa fa-bullhorn"></i> 发布
+        {{/if}}
+        </h1>
+      </header>
       <form role="form" id="propertyForm" class="form-submit" action="thank-you.html">
         <div class="row">
           <div class="block">
             <div class="col-md-9 col-sm-9">
               <section id="submit-form">
                 <section id="basic-information">
-                  <header><h2>基本信息</h2></header>
+                  <header><h2><i class="fa fa-list-alt"></i> 基本信息</h2></header>
                   <div class="row">
                     <div class="col-md-8">
                       <div class="form-group" id="address-form-group">
                         <label for="submit-title">地址 *</label>
-                        <input type="text" class="form-control" id="submit-title" name="address" >
+                        <input type="text" class="form-control" id="submit-title" name="address" value="{{myProperty.address}}">
                       </div><!-- /.form-group -->
                     </div>
                     <div class="col-md-4">
@@ -29,14 +37,14 @@
                         <label for="submit-price">价格 *</label>
                         <div class="input-group">
                           <span class="input-group-addon">$</span>
-                          <input type="text" class="form-control" id="submit-price" name="price" >
+                          <input type="text" class="form-control" id="submit-price" name="price" value="{{myProperty.price}}">
                         </div>
                       </div><!-- /.form-group -->
                     </div>
                   </div>
                   <div class="form-group" id="descr-form-group">
                     <label for="submit-description">描述</label>
-                    <textarea class="form-control" id="submit-description" rows="3" name="description"></textarea>
+                    <textarea class="form-control" id="submit-description" rows="3" name="description">{{myProperty.description}}</textarea>
                   </div><!-- /.form-group -->
                 </section><!-- /#basic-information -->
 
@@ -45,7 +53,7 @@
                     <div class="block clearfix">
                       <div class="col-md-12 col-sm-12">
                         <section id="summary">
-                          <header><h2>概览</h2></header>
+                          <header><h2><i class="fa fa-newspaper-o"></i> 概览</h2></header>
                           <div class="form-group" id="district-form-group">
                             <label for="district">区域</label>
                             <select id="district" name="district">
@@ -109,7 +117,7 @@
                               <div class="form-group" id="movein-form-group">
                                 <label for="move-in-date">入住时间</label>
                                 <div class="input-group">
-                                  <input type="text" class="form-control datepicker" id="move-in-date" name="move-in-date">
+                                  <input type="text" class="form-control datepicker" id="move-in-date" name="move-in-date" value="{{transDatetime myProperty.moveInDate}}">
                                 </div>
                               </div><!-- /.form-group -->
                             </div><!-- /.col-md-4 -->
@@ -186,7 +194,7 @@
                 </section>
 
                 <section class="block" id="gallery">
-                  <header><h2>图片上传</h2></header>
+                  <header><h2><i class="fa fa-picture-o"></i> 图片上传</h2></header>
                   <div class="center">
                     <div class="form-group">
                       <form action="/file-upload" class="dropzone" id="upload">
@@ -201,7 +209,7 @@
 
                 <section id="property-features" class="block">
                   <section>
-                    <header><h2>房屋配套</h2></header>
+                    <header><h2><i class="fa fa-star-o"></i> 房屋配套</h2></header>
                     <ul class="submit-features">
                       {{#each arrayify facilities}}
                         <li><div class="checkbox"><label><input type="checkbox" value="{{key}}" class="property-facility">{{value}}</label></div></li>
@@ -229,7 +237,7 @@
           <div class="block">
             <section id="property-contact" class="block">
               <section>
-                <header><h2>联系方式</h2></header>
+                <header><h2><i class="fa fa-phone-square"></i> 联系方式</h2></header>
                 <div class="col-md-9 col-sm-9">
                   <div class="row">
                     <div class="col-md-4 col-sm-4">

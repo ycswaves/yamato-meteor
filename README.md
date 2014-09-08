@@ -78,4 +78,5 @@ Reminder:
 - Image preprocessing
   - dimension resize
   - watermark
+  - limit number of images user can upload
 - Explore app testing solution
