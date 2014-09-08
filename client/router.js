@@ -56,6 +56,22 @@ Router.map(function () {
     }
   });
 
+  this.route('editProperty', {
+    path: '/properties/edit/:id',
+    template: 'addProperty', //share template with add property
+    action: function () {
+      this.render();
+    },
+    data: function () {
+      var params = this.params;
+      if(params.id){ //TODO: verify if user own this property
+        return {
+          myProperty: Properties.find({_id: params.id})
+        }
+      }
+    }
+  });
+
 	this.route('properties', {
     controller: 'ListController'
   });
