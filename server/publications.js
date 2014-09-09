@@ -11,3 +11,7 @@ Meteor.publish("properties", function() {
   // TODO: limit to 5 first
   return Properties.find({}, {sort: {createdAt: -1}, limit: 5});
 });
+
+Meteor.publish("propertyDetail", function(id) {
+  return Properties.find({_id: id});
+});

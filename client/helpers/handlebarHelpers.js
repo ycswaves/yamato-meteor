@@ -29,11 +29,24 @@ Handlebars.registerHelper('arrayify',function(obj){
   return result;
 });
 
+// used in display contact, in case of no value, '无' is displayed
 Handlebars.registerHelper('nullHelper', function(obj){
   if(obj == undefined)
     return '无';
   else
     return obj;
+});
+
+Handlebars.registerHelper('ifSelected', function(optVal, formVal){
+  if(optVal == formVal)
+    return 'selected';
+  else
+    return;
+});
+
+//for testing purpose
+Handlebars.registerHelper('log', function(obj){
+  console.log(obj);
 });
 
 // helper for district

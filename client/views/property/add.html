@@ -68,7 +68,7 @@
                                 <label for="property-type">房屋类型</label>
                                 <select name="property-type" id="property-type">
                                   {{#each arrayify ptypes}}
-                                  <option value="{{key}}">{{value}}</option>
+                                  <option value="{{key}}" {{ifSelected key ../myProperty.propertyType}}>{{value}}</option>
                                   {{/each}}
                                 </select>
                               </div><!-- /.form-group -->

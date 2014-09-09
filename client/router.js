@@ -30,7 +30,6 @@ Router.map(function () {
       return Meteor.subscribe('userData');
     },
     template: 'profilePage',
-    //onBeforeAction: filters.isLoggedIn(),
     action: function () {
      this.render();
     }
@@ -42,9 +41,13 @@ Router.map(function () {
       return Meteor.subscribe('userData');
     },
     template: 'myProperties',
-    //onBeforeAction: filters.isLoggedIn(),
     action: function () {
-     this.render();
+      if (this.ready()){
+        this.render();
+      }
+      else{
+        this.render('loading');
+      }
     }
   });
 
@@ -58,9 +61,17 @@ Router.map(function () {
 
   this.route('editProperty', {
     path: '/properties/edit/:id',
+    waitOn: function () {
+      return Meteor.subscribe('propertyDetail', this.params.id);
+    },
     template: 'addProperty', //share template with add property
     action: function () {
-      this.render();
+      if (this.ready()){
+        this.render();
+      }
+      else{
+        this.render('loading');
+      }
     },
     data: function () {
       var params = this.params;
@@ -78,9 +89,17 @@ Router.map(function () {
 
   this.route('propertyDetail', {
     path: '/property/:id',
+    waitOn: function () {
+      return Meteor.subscribe('propertyDetail', this.params.id);
+    },
     template: 'propertyDetail',
     action: function () {
-      this.render();
+      if (this.ready()){
+        this.render();
+      }
+      else{
+        this.render('loading');
+      }
     },
     data: function () {
       var params = this.params;
