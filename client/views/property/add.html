@@ -96,8 +96,8 @@
                               <div class="form-group" id="renttype-form-group">
                                 <label>出租方式</label>
                                 <select name="rent-type" id="rent-type">
-                                  <option value="0">单间</option>
-                                  <option value="1">整套</option>
+                                  <option value="0" {{ifSelected '0' myProperty.rentType}}>单间</option>
+                                  <option value="1" {{ifSelected '1' myProperty.rentType}}>整套</option>
                                 </select>
                               </div><!-- /.form-group -->
                             </div><!-- /.col-md-4 -->
@@ -107,7 +107,7 @@
                                 <label for="room-type">出租房间</label>
                                 <select name="room-type" id="room-type">
                                   {{#each arrayify rtypes}}
-                                  <option value="{{key}}">{{value}}</option>
+                                  <option value="{{key}}" {{ifSelected key ../myProperty.roomType}}>{{value}}</option>
                                   {{/each}}
                                 </select>
                               </div><!-- /.form-group -->
@@ -129,12 +129,12 @@
                               <div class="form-group" id="bedroom-form-group">
                                 <label for="bedroom">房间数</label>
                                 <select name="bedroom">
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                  <option value="3">4</option>
-                                  <option value="3">5</option>
-                                  <option value=">5"> > 5 </option>
+                                  <option value="1" >1</option>
+                                  <option value="2" >2</option>
+                                  <option value="3" >3</option>
+                                  <option value="4" >4</option>
+                                  <option value="5" >5</option>
+                                  <option value=">5" > > 5 </option>
                                 </select>
                               </div><!-- /.form-group -->
                             </div><!-- /.col-md-4 -->
@@ -143,9 +143,9 @@
                               <div class="form-group" id="bathroom-form-group">
                                 <label for="bathroom">卫生间</label>
                                 <select name="bathroom">
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
+                                  <option value="1" >1</option>
+                                  <option value="2" >2</option>
+                                  <option value="3" >3</option>
                                   <option value=">3"> > 3 </option>
                                 </select>
                               </div><!-- /.form-group -->
@@ -155,7 +155,7 @@
                               <div class="form-group" id="area-form-group">
                                 <label for="area">面积</label>
                                 <div class="input-group">
-                                  <input type="text" class="form-control" name="property-area">
+                                  <input type="text" class="form-control" name="property-area" value="{{myProperty.area}}">
                                   <span class="input-group-addon">m<sup>2</sup></span>
                                 </div>
                               </div><!-- /.form-group -->
