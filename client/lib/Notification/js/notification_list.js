@@ -1,4 +1,4 @@
-//Notification
+//Notifications
 Template.notificationMessage.rendered = function () {
   var message = this.data;
   Meteor.defer(function() {
@@ -43,9 +43,8 @@ Template.notificationMessages.events({
   }
 });
 
-//Reply
+//Messages
 Template.replyMessages.rendered = function () {
-  console.log($('#replyHelper'));
   $('#replyHelper').popover({
     html : true, 
     content: function() {
@@ -56,5 +55,4 @@ Template.replyMessages.rendered = function () {
     trigger: "click",
     template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content background-color-grey-light"></div></div>'
   });
-  console.log(2);
 };
