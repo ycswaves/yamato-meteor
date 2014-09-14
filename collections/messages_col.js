@@ -3,28 +3,19 @@ Messages = new Meteor.Collection("messages");
 var Schemas = {};
 
 Schemas.Message = new SimpleSchema({
-  propertyId: {
+  _id: {
+    type: String,
+    regEx: SimpleSchema.RegEx.Id
+  },
+  referId: {
     type: String,
     label: "原帖ID"
   },
-  senderId:{
+  referType: {
     type: String,
-    label: "发送者ID"
-  },
-  receiverId:{
-    type: String,
-    label: "接收者ID"
-  },
-  messages:{
-    type: [Object]
-  },
-  "messages.$.receiverId":{
-    type: String,
-    label: "接收者ID"
-  },
-  "messages.$.content":{
-    type: String,
-    label: "内容"
+    defaultValue: 'Property',
+    allowedValues: ['Property'],
+    label: "原帖类型"
   },
   createdAt: {
     type: Date,
@@ -38,16 +29,6 @@ Schemas.Message = new SimpleSchema({
         }
       },
     denyUpdate: true,
-    optional: true
-  },
-  updatedAt: {
-    type: Date,
-    autoValue: function() {
-        if (this.isUpdate) {
-          return new Date();
-        }
-      },
-    denyInsert: true,
     optional: true
   }
 });

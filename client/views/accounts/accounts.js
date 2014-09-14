@@ -164,5 +164,17 @@ Template.header.events({
 Template.header.helpers({
   loggedInUser: function(){
     return Meteor.user();
+  },
+  messageCount: function(){
+    var count = Messages.find(
+      {
+        messages: {
+          owner: Meteor.userId(),
+          isRead: false,
+          isValid: true
+        }
+      }
+    ).count();
+    return count || false;
   }
 })
