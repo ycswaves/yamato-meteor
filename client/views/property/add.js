@@ -66,9 +66,9 @@ Template.addProperty.events({
       , rentType = t.find('select[name="rent-type"]').value || null
       , hasAgentFee = t.find('input:checked[name="has-agent-fee"]').value || null
       , moveInDate = t.find('input[name="move-in-date"]').value || null
-      , bedroom = t.find('select[name="bedroom"]').value || null
+      , bedroom = t.find('input[name="bedroom"]').value || null
       , area = t.find('input[name="property-area"]').value || null
-      , bathroom = t.find('select[name="bathroom"]').value || null
+      , bathroom = t.find('input[name="bathroom"]').value || null
       , nearestMRT = t.find('select[name="stations"]').value || null
       // photo gallerty
       , facilities = t.findAll('input:checkbox.property-facility').reduce(function (pre, current) {
@@ -116,10 +116,12 @@ Template.addProperty.events({
       facilities: facilities
     };
 
-    /*********************************************
+    /*************************************************
         Map div id to schema, so as to attach
         error message in correspondant form-group
-    *********************************************/
+        key: schema attribute,
+        value: form-group div ID Selector(include '#')
+    **************************************************/
     var formErrDivID = {
       "address": "#address-form-group",
       //author: "",
@@ -130,7 +132,8 @@ Template.addProperty.events({
       //"hasAgentFee": hasAgentFee,
       "moveInDate": "#movein-form-group",
       "area": "#area-form-group",
-      //bathroom: bathroom,
+      "bedroom": "#bedroom-form-group",
+      "bathroom": "#bathroom-form-group",
       //mrt: nearestMRT,
       //facilities: facilities
       "contact.name": "#contact-person-form-group",
