@@ -37,9 +37,24 @@ Handlebars.registerHelper('nullHelper', function(obj){
     return obj;
 });
 
+//used in form editing to pre-select options
 Handlebars.registerHelper('ifSelected', function(optVal, formVal){
+  if(typeof formVal == 'object'){ // in case formVal is an Array (e.g property.facilities)
+    if(formVal.indexOf(optVal) > -1)
+      return 'checked';
+    else
+      return;
+  }
   if(optVal == formVal)
     return 'selected';
+  else
+    return;
+});
+
+//used in form editing to pre-checked options
+Handlebars.registerHelper('ifChecked', function(optVal, formVal){
+  if(optVal == formVal)
+    return 'checked';
   else
     return;
 });

@@ -79,12 +79,14 @@
                               <div class="form-group form-inline" id="hasAgent-form-group" style="padding-top:10px">
                                 <div class="radio" style="margin-right:30px">
                                   <label>
-                                    <input type="radio" id="has-agent-true" value="1" name="has-agent-fee">有
+                                    <input type="radio" id="has-agent-true" value="1"
+                                    {{ifChecked '1' myProperty.hasAgentFee}} name="has-agent-fee">有
                                   </label>
                                 </div>
                                 <div class="radio" data-agent-state="">
                                   <label>
-                                    <input type="radio" id="has-agent-false" value="0" name="has-agent-fee" checked>无
+                                    <input type="radio" id="has-agent-false" value="0"
+                                    {{ifChecked '0' myProperty.hasAgentFee}} name="has-agent-fee" checked>无
                                   </label>
                                 </div>
                               </div><!-- /.form-group -->
@@ -200,7 +202,13 @@
                     <header><h2><i class="fa fa-star-o"></i> 房屋配套</h2></header>
                     <ul class="submit-features">
                       {{#each arrayify facilities}}
-                        <li><div class="checkbox"><label><input type="checkbox" value="{{key}}" class="property-facility">{{value}}</label></div></li>
+                        <li>
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox" value="{{key}}" {{ifSelected key ../myProperty.facilities}} class="property-facility">{{value}}
+                            </label>
+                          </div>
+                        </li>
                       {{/each}}
                     </ul>
                   </section>
