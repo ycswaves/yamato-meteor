@@ -51,40 +51,19 @@ Router.map(function () {
     }
   });
 
+  this.route('properties', {
+    path: '/properties',
+    controller: 'ListController'
+  });
+
   this.route('addProperty', {
     path: '/properties/add',
-    template: 'addProperty',
-    action: function () {
-      this.render();
-    }
+    controller: 'AddPropertyController'
   });
 
   this.route('editProperty', {
     path: '/properties/edit/:id',
-    waitOn: function () {
-      return Meteor.subscribe('propertyDetail', this.params.id);
-    },
-    template: 'addProperty', //share template with add property
-    action: function () {
-      if (this.ready()){
-        this.render();
-      }
-      else{
-        this.render('loading');
-      }
-    },
-    data: function () {
-      var params = this.params;
-      if(params.id){ //TODO: verify if user own this property
-        return {
-          myProperty: Properties.findOne({_id: params.id})
-        }
-      }
-    }
-  });
-
-	this.route('properties', {
-    controller: 'ListController'
+    controller: 'EditPropertyController'
   });
 
   this.route('propertyDetail', {

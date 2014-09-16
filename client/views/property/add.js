@@ -1,6 +1,10 @@
 var imgTemp = []; //to hold the to be uploaded images temporarily
 
 Template.addProperty.rendered = function() {
+    if($('#propertyid').value == ''){
+      $('#property-features input[type="checkbox"]').prop('checked', false);
+    }//TODO: from edit to add, select box and checked box remained state, refresh edit cause problem
+
     $('.datepicker').pickadate({
       format: 'yyyy/mm/dd'
     });
@@ -8,7 +12,7 @@ Template.addProperty.rendered = function() {
 
     //Dropzone.autoDiscover = false;
     //dictResponseError = 'Error uploading file!';
-    $("#upload").dropzone({
+    $('#upload').dropzone({
       addRemoveLinks : true,
       maxFilesize: 7,
       accept: function(file, done) {
@@ -161,7 +165,7 @@ Template.addProperty.events({
           console.log(err+'aa');
           return false; //todo: show norification?
         }
-        console.log('go to property/'+id);
+        //console.log('go to property/'+id);
         Router.go('myproperty');
       });
     }
@@ -175,14 +179,14 @@ Template.addProperty.helpers({
     return Config.getDistrict();
   },
 
-  mrtlines: function(){
-    ReactiveDS.set('mrtline', Config.getStationsByLine('NS'));
-    return Config.getMRT();
-  },
+  // mrtlines: function(){
+  //   ReactiveDS.set('mrtline', Config.getStationsByLine('NS'));
+  //   return Config.getMRT();
+  // },
 
-  stations: function(){
-    return ReactiveDS.get('mrtline');
-  },
+  // stations: function(){
+  //   return ReactiveDS.get('mrtline');
+  // },
 
   facilities: function(){
     return Config.getFacilities();
@@ -196,3 +200,52 @@ Template.addProperty.helpers({
     return Config.getRoomTypes();
   }
 });
+
+AddPropertyController = RouteController.extend({
+  template: 'addProperty',
+  action: function () {
+    this.render();
+  },
+  data: function () {
+    ReactiveDS.set('mrtline', Config.getStationsByLine('NS'));
+    return {
+      myProperty: null,
+      mrtlines: Config.getMRT(), //mrtlines and stations are not in template helper becoz of sharing template
+      stations: ReactiveDS.get('mrtline') // with 'edit', the selected mrtlines and station can be different from default
+    }
+  }
+});
+
+EditPropertyController = RouteController.extend({
+  waitOn: function () {
+    return Meteor.subscribe('propertyDetail', this.params.id);
+  },
+  template: 'addProperty', //share template with add property
+  action: function () {
+    if (this.ready()){
+      this.render();
+    }
+    else{
+      this.render('loading');
+    }
+  },
+  data: function () {
+    var params = this.params;
+    if(params.id){ //TODO: verify if user own this property
+      var myProp = Properties.findOne({_id: params.id});
+      console.log(myProp);
+      var mrtLineCode = myProp.mrt.substr(0, 2);
+      return {
+        myProperty: myProp,
+        mrtlines: Config.getMRT(),
+        stations: Config.getStationsByLine(mrtLineCode)
+      }
+    }
+  }
+});
+
+
+
+
+
+

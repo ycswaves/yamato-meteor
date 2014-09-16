@@ -39,6 +39,7 @@ Handlebars.registerHelper('nullHelper', function(obj){
 
 //used in form editing to pre-select options
 Handlebars.registerHelper('ifSelected', function(optVal, formVal){
+  if(!formVal) return;
   if(typeof formVal == 'object'){ // in case formVal is an Array (e.g property.facilities)
     if(formVal.indexOf(optVal) > -1)
       return 'checked';
@@ -55,6 +56,16 @@ Handlebars.registerHelper('ifSelected', function(optVal, formVal){
 Handlebars.registerHelper('ifChecked', function(optVal, formVal){
   if(optVal == formVal)
     return 'checked';
+  else
+    return;
+});
+
+// used in form editing to check selected MRT Line
+Handlebars.registerHelper('ifLineMatch',function(optVal, formVal){
+  if(!formVal) return;
+  var line = formVal.substr(0, 2);
+  if(optVal == line)
+    return 'selected';
   else
     return;
 });

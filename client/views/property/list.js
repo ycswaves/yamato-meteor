@@ -3,7 +3,6 @@ Template.propertyListing.rendered = function() {
 }
 
 ListController = RouteController.extend({
-  path: '/properties',
   template: 'propertyListing',
   action: function () {
     this.render();
