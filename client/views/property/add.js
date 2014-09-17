@@ -230,9 +230,10 @@ EditPropertyController = RouteController.extend({
     }
   },
   data: function () {
-    var params = this.params;
-    if(params.id){ //TODO: verify if user own this property
-      var myProp = Properties.findOne({_id: params.id});
+    var params = this.params
+      , myProp = Properties.findOne({_id: params.id, author: Meteor.userId()});
+      console.log(myProp);
+    if(params.id && myProp!=undefined){ //TODO: verify if user own this property
       console.log(myProp);
       var mrtLineCode = myProp.mrt.substr(0, 2);
       return {
@@ -240,6 +241,9 @@ EditPropertyController = RouteController.extend({
         mrtlines: Config.getMRT(),
         stations: Config.getStationsByLine(mrtLineCode)
       }
+    }
+    else{
+      Router.go('profile');
     }
   }
 });
