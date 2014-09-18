@@ -1,9 +1,6 @@
 var imgTemp = []; //to hold the to be uploaded images temporarily
 
 Template.addProperty.rendered = function() {
-    if($('#propertyid').value == ''){
-      $('#property-features input[type="checkbox"]').prop('checked', false);
-    }//TODO: from edit to add, select box and checked box remained state, refresh edit cause problem
 
     $('.datepicker').pickadate({
       format: 'yyyy/mm/dd'
@@ -203,9 +200,11 @@ Template.addProperty.helpers({
 
 AddPropertyController = RouteController.extend({
   template: 'addProperty',
+
   action: function () {
     this.render();
   },
+
   data: function () {
     ReactiveDS.set('mrtline', Config.getStationsByLine('NS'));
     return {
@@ -213,6 +212,15 @@ AddPropertyController = RouteController.extend({
       mrtlines: Config.getMRT(), //mrtlines and stations are not in template helper becoz of sharing template
       stations: ReactiveDS.get('mrtline') // with 'edit', the selected mrtlines and station can be different from default
     }
+  },
+
+  onAfterAction: function(){
+    if($('input[name="propertyid"]').value == undefined){
+      $('div.icheckbox').removeClass('checked');
+      //$('#property-features input[type="checkbox"]').prop('checked', false);
+      $('#stations').selectpicker('refresh');
+    }//Due to the template we use, the checkbox and selection box need extra handle
+     // e.g removeClass
   }
 });
 
@@ -220,6 +228,7 @@ EditPropertyController = RouteController.extend({
   waitOn: function () {
     return Meteor.subscribe('propertyDetail', this.params.id);
   },
+
   template: 'addProperty', //share template with add property
   action: function () {
     if (this.ready()){
@@ -229,12 +238,11 @@ EditPropertyController = RouteController.extend({
       this.render('loading');
     }
   },
+
   data: function () {
     var params = this.params
       , myProp = Properties.findOne({_id: params.id, author: Meteor.userId()});
-      console.log(myProp);
-    if(params.id && myProp!=undefined){ //TODO: verify if user own this property
-      console.log(myProp);
+    if(params.id && myProp!=undefined){
       var mrtLineCode = myProp.mrt.substr(0, 2);
       return {
         myProperty: myProp,
