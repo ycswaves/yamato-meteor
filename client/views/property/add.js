@@ -86,7 +86,6 @@ Template.addProperty.events({
           wechat: t.find('input[name=contact-wechat]').value || null,
           email: t.find('input[name=contact-email]').value || null
         };
-
       var imageIDs = [];
       imgTemp.forEach(function(file){
         // Images.insert will return file object of inserted image
@@ -217,10 +216,10 @@ AddPropertyController = RouteController.extend({
   onAfterAction: function(){
     if($('input[name="propertyid"]').value == undefined){
       $('div.icheckbox').removeClass('checked');
-      //$('#property-features input[type="checkbox"]').prop('checked', false);
+      $('#property-features input[type="checkbox"]').prop('checked', false);
       $('#stations').selectpicker('refresh');
     }//Due to the template we use, the checkbox and selection box need extra handle
-     // e.g removeClass
+     // e.g removeClass, besides clear the actual checkbox
   }
 });
 
